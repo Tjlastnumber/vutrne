@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    class="antialiased bg-white dark:bg-black/80 text-slate-500 dark:text-slate-400"
+  >
     <router-view />
   </div>
 </template>
@@ -11,4 +14,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+</style>

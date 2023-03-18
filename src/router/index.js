@@ -3,18 +3,18 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-// const projects = {
-//   path: '/projects',
-//   name: 'Projcets',
-//   component: () => import(''),
-//   children: [
-//     {
-//       path: '/folder',
-//       name: 'Folder',
-//       component: () => import('')
-//     }
-//   ]
-// }
+const projects = {
+  path: '/projects',
+  name: 'Projcets',
+  component: () => import('@/pages/projects/index.vue')
+  // children: [
+  //   {
+  //     path: '/folder',
+  //     name: 'Folder',
+  //     component: () => import('')
+  //   }
+  // ]
+}
 
 // const visual = {
 //   path: '/visual',
@@ -23,7 +23,7 @@ Vue.use(VueRouter)
 // }
 
 const app = [
-  // projects,
+  projects,
   // visual,
   // {
   //   path: '/codeview',
@@ -41,7 +41,7 @@ const app = [
   // },
   {
     path: '/',
-    component: () => import('@/components/HelloWorld.vue')
+    redirect: '/projects'
   },
   {
     path: '/404',

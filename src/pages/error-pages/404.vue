@@ -1,12 +1,16 @@
 <template>
-  <div
-    id="err-404"
-    class="overflow-hidden"
-  >
-    <div class="error">
-      <div class="wrap">
-        <div class="text-[12px] 404">
-          <pre><code>
+  <div>
+    <div class="w-full">
+      <HeaderPanel :brand="'Visuel'" />
+    </div>
+    <div
+      id="err-404"
+      class="overflow-hidden"
+    >
+      <div class="bg-white error dark:bg-black-80 duration-500">
+        <div class="wrap">
+          <div class="text-[12px] 404">
+            <pre><code>
 <span class="green">&lt;!</span><span>DOCTYPE html</span><span class="green">&gt;</span>
 <span class="orange">&lt;html&gt;</span>
   <span class="orange">&lt;style&gt;</span>
@@ -29,6 +33,7 @@
 <br>
 </span>
 </code></pre>
+          </div>
         </div>
       </div>
     </div>
@@ -36,14 +41,17 @@
 </template>
 
 <script>
+import HeaderPanel from '../layout/HeaderPanel.vue'
 export default {
-  name: 'Error404Page'
+  name: 'Error404Page',
+  components: {
+    HeaderPanel
+  }
 }
 </script>
 
 <style scoped>
 .error {
-  background-color: black;
   font-family: 'Gilda Display', serif;
   overflow: hidden;
   width: 100%;
@@ -117,7 +125,6 @@ body:after {
   left: 0;
   right: 35%;
   opacity: 0;
-  color: white;
   -webkit-animation: noise-1 0.2s linear infinite;
   animation: noise-1 0.2s linear infinite;
 }
@@ -279,7 +286,6 @@ body:before {
   left: 40px;
   right: 0;
   opacity: 0;
-  color: white;
   -webkit-animation: noise-1 0.2s linear infinite;
   animation: noise-1 0.2s linear infinite;
 }
@@ -293,7 +299,6 @@ body:before {
 }
 
 code {
-  color: white;
 }
 
 span.blue {
