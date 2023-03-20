@@ -1,62 +1,40 @@
 <template>
-  <div
-    id="projects"
-    class="flex flex-col w-full h-full"
-  >
-    <div class="w-full">
-      <HeaderPanel :brand="brand" />
-    </div>
-    <nav
-      class="fixed inset-y-0 z-20 w-1/6 px-8 py-4 bg-white border-r dark:border-slate-900 top-14 col-start-2 duration-500 dark:bg-black-80"
-    >
-      <ul>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-        <li class="flex self-center">
-          <span class="mb-4 mr-4">📂</span><span> Test </span>
-        </li>
-      </ul>
-    </nav>
+  <div id="projects">
+    <LayoutPanel :right="false">
+      <template #header>
+        <HeaderPanel />
+      </template>
+      <template #left>
+        <CollapsePanel :name="'Projects'">
+          <CollapseItem>project1</CollapseItem>
+          <CollapseItem>project1</CollapseItem>
+          <CollapseItem>project1</CollapseItem>
+          <CollapseItem>project1</CollapseItem>
+        </CollapsePanel>
+        <CollapsePanel :name="'Favorites'">
+          <CollapseItem> file </CollapseItem>
+        </CollapsePanel>
+      </template>
+      <template #default>
+        test
+      </template>
+    </LayoutPanel>
   </div>
 </template>
 
 <script>
-import HeaderPanel from '@/pages/layout/HeaderPanel'
-// import SidebarPanel from '@/pages/layout/SidebarPanel'
+import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
+import CollapsePanel from '@/components/CollapsePanel.vue'
+import CollapseItem from '@/components/CollapseItem.vue'
+import HeaderPanel from '../layout/HeaderPanel.vue'
 
 export default {
   name: 'ProjectsPage',
   components: {
+    LayoutPanel,
+    CollapsePanel,
+    CollapseItem,
     HeaderPanel
-    // SidebarPanel
   },
   data () {
     return {

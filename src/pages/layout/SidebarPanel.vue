@@ -1,11 +1,9 @@
 <template>
-  <div
-    class="inset-0 right-auto z-20 justify-start w-1/4 px-8 pb-10 overflow-y-auto bg-white lg:block dark:bg-black duration-500 supports-backdrop-blur:bg-white/60"
+  <nav
+    class="fixed inset-y-0 z-20 px-4 bg-white border-x dark:border-slate-900 lg:w-1/6 sm:min-w-mincl-start-2 duration-500 dark:bg-black-80"
   >
-    <nav class="relative border-r">
-      <slot />
-    </nav>
-  </div>
+    <slot />
+  </nav>
 </template>
 
 <script>

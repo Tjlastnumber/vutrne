@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="antialiased bg-white dark:bg-black/80 text-slate-500 dark:text-slate-400"
+    class="font-mono antialiased text-gray-700 bg-white text-black/70 dark:text-gray-200 dark:bg-black/80 uration-300"
   >
     <router-view />
   </div>

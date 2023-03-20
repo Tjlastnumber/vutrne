@@ -52,7 +52,7 @@ export default {
 
 <style scoped>
 .error {
-  font-family: 'Gilda Display', serif;
+  font-family: OCR-A !important;
   overflow: hidden;
   width: 100%;
   height: auto;
@@ -114,7 +114,7 @@ export default {
 
 body:after {
   content: 'error 404';
-  font-family: OCR-A;
+  font-family: OCR-A !important;
   font-size: 100px;
   text-align: center;
   width: 550px;
@@ -181,7 +181,7 @@ body:after {
 
 body:before {
   content: 'error 404';
-  font-family: OCR-A;
+  font-family: OCR-A !important;
   font-size: 100px;
   text-align: center;
   width: 550px;
@@ -259,7 +259,7 @@ body:before {
 
 .info:before {
   content: 'Page not found';
-  font-family: OCR-A;
+  font-family: OCR-A !important;
   font-size: 5rem;
   text-align: center;
   width: 70%;
@@ -276,6 +276,7 @@ body:before {
 
 .info:after {
   content: 'Page not found';
+  font-family: OCR-A !important;
   font-size: 5rem;
   text-align: center;
   width: 70%;
@@ -298,9 +299,6 @@ body:before {
   position: absolute;
 }
 
-code {
-}
-
 span.blue {
   color: #48beef;
 }
@@ -318,7 +316,7 @@ span.green {
 }
 
 .viewFull {
-  font-family: OCR-A;
+  font-family: OCR-A !important;
   color: orange;
   text-decoration: blink;
 }
