@@ -11,14 +11,33 @@
           @tab-change="(e) => (currentTab = e.tabIndex)"
         >
           <template #Pages>
-            <CollapsePanel :name="'Pages'" />
-            <CollapsePanel :name="'Favorites'" />
+            <CollapsePanel :name="'Pages'">
+              <CollapseItem>default page</CollapseItem>
+            </CollapsePanel>
+            <CollapsePanel :name="'Favorites'">
+              <CollapseItem>favorites page</CollapseItem>
+            </CollapsePanel>
+          </template>
+          <template #Layers>
+            <CollapsePanel :name="'root'">
+              <CollapseItem>&lt;element&gt;</CollapseItem>
+            </CollapsePanel>
+          </template>
+          <template #Assets>
+            <CollapsePanel :name="'Components'">
+              <CollapseItem> button </CollapseItem>
+            </CollapsePanel>
+            <CollapsePanel :name="'Style'">
+              <CollapseItem> h1 </CollapseItem>
+            </CollapsePanel>
           </template>
         </TabPanel>
       </template>
       <template #default>
         <div class="w-full h-full bg-gray-200 dark:bg-black/60">
-          <div class="absolute w-1/3 bg-white h-1/3 left-1/3 top-1/3" />
+          <div class="absolute w-1/3 bg-white h-1/3 left-1/3 top-1/3">
+            <ChevronDownIcon />
+          </div>
         </div>
       </template>
     </LayoutPanel>
@@ -29,8 +48,9 @@
 import LayoutPanel from '../layout/LayoutPanel.vue'
 import HeaderPanel from '../layout/HeaderPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
-// import CollapseItem from '@/components/CollapseItem.vue'
+import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
+import ChevronDownIcon from '@/components/ChevronDownIcon.vue'
 
 export default {
   name: 'VisualPage',
@@ -38,8 +58,9 @@ export default {
     LayoutPanel,
     HeaderPanel,
     CollapsePanel,
-    // CollapseItem,
-    TabPanel
+    CollapseItem,
+    TabPanel,
+    ChevronDownIcon
   },
   data () {
     return {

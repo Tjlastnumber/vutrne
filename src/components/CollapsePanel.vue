@@ -7,14 +7,16 @@
       class="flex flex-row items-center justify-between text-xs text-black cursor-pointer dark:text-white"
       @click="isExpanded = !isExpanded"
     >
-      <div class="font-bold">
-        {{ name }}
-      </div>
-      <div
-        :class="isExpanded ? 'rotate-90' : ''"
-        class="duration-300"
-      >
-        ‣
+      <div class="flex flex-row items-center space-x-1">
+        <div
+          :class="isExpanded ? '' : '-rotate-90'"
+          class="duration-300"
+        >
+          <ChevronDownIcon current-color="dark:fill-white fill-black" />
+        </div>
+        <div class="font-bold">
+          {{ name }}
+        </div>
       </div>
     </div>
     <div
@@ -26,8 +28,13 @@
   </div>
 </template>
 <script>
+import ChevronDownIcon from './ChevronDownIcon.vue'
+
 export default {
   name: 'CollapsePanel',
+  components: {
+    ChevronDownIcon
+  },
   props: {
     name: {
       type: String,

@@ -5,14 +5,11 @@
         <HeaderPanel />
       </template>
       <template #left>
-        <CollapsePanel :name="'Projects'">
-          <CollapseItem>project1</CollapseItem>
-          <CollapseItem>project1</CollapseItem>
-          <CollapseItem>project1</CollapseItem>
-          <CollapseItem>project1</CollapseItem>
-        </CollapsePanel>
         <CollapsePanel :name="'Favorites'">
           <CollapseItem> file </CollapseItem>
+        </CollapsePanel>
+        <CollapsePanel :name="'Projects'">
+          <CollapseItem>project1</CollapseItem>
         </CollapsePanel>
       </template>
       <template #default>
