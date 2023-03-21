@@ -37,9 +37,7 @@ export default {
     HeaderPanel
   },
   data () {
-    return {
-      brand: 'Visuel'
-    }
+    return {}
   }
 }
 </script>

@@ -10,7 +10,7 @@
       >
         <slot name="left" />
       </SidebarPanel>
-      <div class="relative inset-0 w-full h-full bg-rose-500">
+      <div class="fixed inset-0 w-full h-full">
         <slot />
       </div>
       <SidebarPanel

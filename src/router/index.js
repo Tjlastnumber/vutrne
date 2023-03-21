@@ -16,15 +16,15 @@ const projects = {
   // ]
 }
 
-// const visual = {
-//   path: '/visual',
-//   name: 'Visual',
-//   component: () => import('')
-// }
+const visual = {
+  path: '/visual',
+  name: 'Visual',
+  component: () => import('@/pages/visual/index')
+}
 
 const app = [
   projects,
-  // visual,
+  visual,
   // {
   //   path: '/codeview',
   //   name: 'CodeView',
