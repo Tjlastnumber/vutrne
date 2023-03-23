@@ -10,19 +10,20 @@ module.exports = {
         DEFAULT: '#EEEEEE',
         primary: 'rgba(0, 0, 0, .87)',
         secondary: 'rgba(0, 0, 0, .54)',
+        hover: 'rgba(0, 0, 0, .03)',
         disabled: 'rgba(0, 0, 0, .10)'
       },
       dark: {
         DEFAULT: '#212121',
         primary: 'rgba(255, 255, 255, .87)',
         secondary: 'rgba(255, 255, 255, .70)',
-        disabled: 'rgba(255, 255, 255, .10)',
-        hover: 'rgba(0, 0, 0, .90)'
+        hover: 'rgba(255, 255, 255, .20)',
+        disabled: 'rgba(255, 255, 255, .10)'
       },
       primary: {
-        light: colors.black,
+        light: colors.emerald[600],
         DEFAULT: colors.emerald[500],
-        dark: colors.white
+        dark: colors.emerald[400]
       },
       secondary: {
         DEFAULT: colors.neutral[700],

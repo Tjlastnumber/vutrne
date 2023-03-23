@@ -40,6 +40,10 @@
             class="absolute w-1/3 bg-white dark:bg-dark h-1/3 left-1/3 top-1/3"
           >
             <DefaultButton> Click </DefaultButton>
+
+            <DefaultButton type="primary">
+              Click
+            </DefaultButton>
           </div>
         </div>
       </template>
