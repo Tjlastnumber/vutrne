@@ -16,7 +16,8 @@ module.exports = {
         DEFAULT: '#212121',
         primary: 'rgba(255, 255, 255, .87)',
         secondary: 'rgba(255, 255, 255, .70)',
-        disabled: 'rgba(255, 255, 255, .10)'
+        disabled: 'rgba(255, 255, 255, .10)',
+        hover: 'rgba(0, 0, 0, .90)'
       },
       primary: {
         light: colors.black,

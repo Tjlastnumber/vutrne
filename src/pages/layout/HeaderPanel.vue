@@ -11,9 +11,9 @@
             id="home-link"
             class="text-base font-extrabold"
           >
-            <MenuButton :menus="menus">
+            <MenuPanel :menus="menus">
               <button>{{ brand }}</button>
-            </MenuButton>
+            </MenuPanel>
           </div>
           <slot />
         </div>
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import MenuButton from '@/components/MenuButton.vue'
+import MenuPanel from '@/components/MenuPanel.vue'
 export default {
   name: 'HeaderPanel',
-  components: { MenuButton },
+  components: { MenuPanel },
   props: {
     brand: {
       type: String,

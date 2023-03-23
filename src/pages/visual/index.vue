@@ -37,34 +37,9 @@
         <div class="w-full h-full bg-gray-200 dark:bg-black/60">
           <div
             id="canvas"
-            class="absolute w-1/3 bg-white h-1/3 left-1/3 top-1/3"
+            class="absolute w-1/3 bg-white dark:bg-dark h-1/3 left-1/3 top-1/3"
           >
-            <MenuButton
-              :menus="[
-                {
-                  name: 'Dashboard'
-                },
-                { name: '|' },
-                {
-                  name: 'File',
-                  children: [{}]
-                },
-                {
-                  name: 'View',
-                  children: [
-                    { name: 'Undo' },
-                    { name: 'Redo' },
-                    '|',
-                    { name: 'Cut' },
-                    { name: 'Copy' },
-                    { name: 'Pause' },
-                    '|'
-                  ]
-                }
-              ]"
-            >
-              Click
-            </MenuButton>
+            <DefaultButton> Click </DefaultButton>
           </div>
         </div>
       </template>
@@ -78,7 +53,7 @@ import HeaderPanel from '../layout/HeaderPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
-import MenuButton from '@/components/MenuButton.vue'
+import DefaultButton from '@/components/DefaultButton.vue'
 
 export default {
   name: 'VisualPage',
@@ -88,7 +63,7 @@ export default {
     CollapsePanel,
     CollapseItem,
     TabPanel,
-    MenuButton
+    DefaultButton
   },
   data () {
     return {

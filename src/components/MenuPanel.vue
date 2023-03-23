@@ -1,7 +1,6 @@
 <template>
   <VDropdown placement="bottom-start">
     <slot />
-
     <template #popper>
       <div class="w-auto p-2 dark:bg-black">
         <div
@@ -18,7 +17,7 @@
 <script>
 import MenuItem from './MenuItem.vue'
 export default {
-  name: 'MenuButton',
+  name: 'MenuPanel',
   components: { MenuItem },
   props: {
     menus: {
