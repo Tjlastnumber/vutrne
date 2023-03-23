@@ -35,8 +35,36 @@
       </template>
       <template #default>
         <div class="w-full h-full bg-gray-200 dark:bg-black/60">
-          <div class="absolute w-1/3 bg-white h-1/3 left-1/3 top-1/3">
-            <ChevronDownIcon />
+          <div
+            id="canvas"
+            class="absolute w-1/3 bg-white h-1/3 left-1/3 top-1/3"
+          >
+            <MenuButton
+              :menus="[
+                {
+                  name: 'Dashboard'
+                },
+                { name: '|' },
+                {
+                  name: 'File',
+                  children: [{}]
+                },
+                {
+                  name: 'View',
+                  children: [
+                    { name: 'Undo' },
+                    { name: 'Redo' },
+                    '|',
+                    { name: 'Cut' },
+                    { name: 'Copy' },
+                    { name: 'Pause' },
+                    '|'
+                  ]
+                }
+              ]"
+            >
+              Click
+            </MenuButton>
           </div>
         </div>
       </template>
@@ -50,7 +78,7 @@ import HeaderPanel from '../layout/HeaderPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
-import ChevronDownIcon from '@/components/ChevronDownIcon.vue'
+import MenuButton from '@/components/MenuButton.vue'
 
 export default {
   name: 'VisualPage',
@@ -60,7 +88,7 @@ export default {
     CollapsePanel,
     CollapseItem,
     TabPanel,
-    ChevronDownIcon
+    MenuButton
   },
   data () {
     return {

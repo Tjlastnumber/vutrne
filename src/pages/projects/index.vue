@@ -2,7 +2,7 @@
   <div id="projects">
     <LayoutPanel :right="false">
       <template #header>
-        <HeaderPanel />
+        <HeaderPanel v-tooltip.bottom="brand" />
       </template>
       <template #left>
         <CollapsePanel :name="'Favorites'">

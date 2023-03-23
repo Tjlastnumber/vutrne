@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Style */
+@media (prefers-color-scheme: dark) {
+  .v-popper--theme-dropdown .v-popper__inner {
+    border: none;
+    border-radius: 8px;
+    background: #000;
+  }
+}
+
+.v-popper--theme-dropdown .v-popper__inner {
+  border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .v-popper--theme-dropdown .v-popper__arrow-outer {
+    border-color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .v-popper--theme-dropdown .v-popper__arrow-inner {
+    border-color: black;
+  }
+}
+
+.v-popper--theme-sub-menu .v-popper__inner {
+  border: none;
+  border-radius: 8px;
+}
+
+.v-popper--theme-sub-menu .v-popper__inner {
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.v-popper--theme-sub-menu .v-popper__arrow-outer {
+  border: nono;
+}
+
+.v-popper--theme-sub-menu .v-popper__arrow-outer {
+  visibility: hidden;
+}
+
+.v-popper--theme-sub-menu .v-popper__arrow-inner {
+  visibility: hidden;
+}
+
+.dark .v-popper--theme-sub-menu .v-popper__arrow-inner {
+  visibility: hidden;
+}

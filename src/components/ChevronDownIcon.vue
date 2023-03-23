@@ -18,15 +18,15 @@ export default {
   props: {
     width: {
       type: String,
-      default: 'w-5'
+      default: 'w-4'
     },
     height: {
       type: String,
-      default: 'h-5'
+      default: 'h-4'
     },
     currentColor: {
       type: String,
-      default: 'black'
+      default: 'fill-black dark:fill-white'
     }
   },
   computed: {

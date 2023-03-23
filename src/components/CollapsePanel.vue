@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex flex-col pt-4 border-t select-none dark:border-gray-600 space-y-1"
+    class="flex flex-col pt-4 border-t select-none border-light-disabled dark:border-dark-disabled space-y-1"
     :class="isExpanded ? '' : 'pb-4'"
   >
     <div
-      class="flex flex-row items-center justify-between text-xs text-black cursor-pointer dark:text-white"
+      class="flex flex-row items-center justify-between text-xs cursor-pointer text-light-primary hover:text-black dark:text-dark-primary dark:hover:text-white"
       @click="isExpanded = !isExpanded"
     >
       <div class="flex flex-row items-center space-x-1">
@@ -12,7 +12,7 @@
           :class="isExpanded ? '' : '-rotate-90'"
           class="duration-300"
         >
-          <ChevronDownIcon current-color="dark:fill-white fill-black" />
+          <ChevronDownIcon />
         </div>
         <div class="font-bold">
           {{ name }}

@@ -1,38 +1,62 @@
 <template>
-  <div>
-    <header
-      class="sticky top-0 z-40 flex-none w-full bg-white border-b border-gray-200 dark:border-gray-600 duration-500 dark:bg-black-80 supports-backdrop-blur:bg-white/60"
-    >
-      <div class="mx-auto max-w-screen-2xl">
+  <div
+    class="sticky top-0 z-40 flex-none w-full border-b border-light-disabled dark:border-dark-disabled duration-500 dark:bg-dark supports-backdrop-blur:bg-white/60 bg-light"
+  >
+    <div class="mx-auto max-w-screen-2xl">
+      <div class="px-8 py-4 font-mono duration-500">
         <div
-          class="px-8 py-4 font-mono text-black dark:text-white duration-500"
+          class="relative flex flex-row items-center justify-between text-xs font-normal"
         >
           <div
-            class="relative flex flex-row items-center justify-between text-xs font-normal"
+            id="home-link"
+            class="text-base font-extrabold"
           >
-            <div
-              id="home-link"
-              class="font-extrabold text-base"
-            >
-              <router-link to="/">
-                {{ brand }}
-              </router-link>
-            </div>
-            <slot />
+            <MenuButton :menus="menus">
+              <button>{{ brand }}</button>
+            </MenuButton>
           </div>
+          <slot />
         </div>
       </div>
-    </header>
+    </div>
   </div>
 </template>
 
 <script>
+import MenuButton from '@/components/MenuButton.vue'
 export default {
   name: 'HeaderPanel',
+  components: { MenuButton },
   props: {
     brand: {
       type: String,
       default: 'Visuel'
+    }
+  },
+  data () {
+    return {
+      menus: [
+        {
+          name: 'Dashboard'
+        },
+        {
+          name: '|'
+        },
+        {
+          name: 'File'
+        },
+        {
+          name: 'View',
+          children: [
+            { name: 'Undo' },
+            { name: 'Redo' },
+            '|',
+            { name: 'Cut' },
+            { name: 'Copy', children: [ { name: 'Copy' } ] },
+            { name: 'Pause' }
+          ]
+        }
+      ]
     }
   }
 }
