@@ -50,7 +50,7 @@ export default {
           children: [
             { name: 'Undo' },
             { name: 'Redo' },
-            '|',
+            { name: '|' },
             { name: 'Cut' },
             { name: 'Copy', children: [ { name: 'Copy' } ] },
             { name: 'Pause' }

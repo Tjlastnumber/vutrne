@@ -9,7 +9,9 @@ Vue.config.productionTip = false
 Vue.use(FloatingVue, {
   themes: {
     'sub-menu': {
-      $extend: 'menu',
+      $extend: 'dropdown',
+      triggers: [ 'hover', 'focus' ],
+      popperTriggers: [ 'hover', 'focus' ],
       placement: 'right-start'
     }
   }

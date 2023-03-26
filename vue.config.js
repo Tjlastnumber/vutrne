@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
+
 module.exports = defineConfig({
   transpileDependencies: true,
   chainWebpack: (config) => {
@@ -8,5 +9,8 @@ module.exports = defineConfig({
       .use('url-loader')
       .loader('url-loader')
       .end()
+  },
+  devServer: {
+    host: 'localhost'
   }
 })

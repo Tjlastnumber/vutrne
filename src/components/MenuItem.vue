@@ -2,7 +2,7 @@
   <div class="text-xs font-normal">
     <div
       v-if="menu === '|' || menu.name === '|'"
-      class="w-full h-px my-2 select-none bg-light-disabled dark:bg-neutral"
+      class="w-full h-px my-2 select-none bg-light-disabled dark:bg-dark-secondary"
     />
     <div
       v-else-if="!hasChildren"
@@ -19,7 +19,7 @@
       theme="sub-menu"
     >
       <button
-        class="relative flex flex-row space-x-32 items-center justify-between w-full p-2 rounded-md hover:text-light-primary dark:text-white/60 hover:bg-primary dark:hover:text-white"
+        class="relative flex flex-row space-x-32 items-center justify-between w-full p-2 rounded-md hover:text-light-primary dark:text-dark-secondary hover:bg-primary dark:hover:text-white"
       >
         <span>
           {{ menu.name || menu }}
@@ -59,7 +59,7 @@ export default {
   },
   props: {
     menu: {
-      type: Object,
+      type: [ Object, String ],
       default: null,
       require: true
     }

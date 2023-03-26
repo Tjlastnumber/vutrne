@@ -25,6 +25,7 @@ module.exports = {
     ],
     // js lint settings
     'array-element-newline': [ 'error', 'consistent' ],
-    'array-bracket-spacing': [ 2, 'always' ]
+    'array-bracket-spacing': [ 2, 'always' ],
+    'space-before-function-paren': [ 'error', 'always' ]
   }
 }

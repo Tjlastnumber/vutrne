@@ -1,6 +1,6 @@
 <template>
   <button
-    class="px-8 py-4 text-xs font-medium rounded-lg ring-inset ring-1 ring-light-primary hover:bg-light-hover active:bg-white bg-light border-light-disabled dark:text-dark-primary dark:bg-dark-disabled dark:hover:bg-dark-hover disabled:dark:hover:bg-dark-secondary hover:drop-shadow-md duration-300"
+    class="px-8 py-4 text-xs font-medium rounded-lg ring-inset ring-2 ring-primary hover:bg-light-hover active:bg-white bg-light border-light-disabled dark:text-dark-primary dark:bg-dark-disabled dark:hover:bg-dark-hover active:dark:bg-dark-active disabled:dark:hover:bg-dark-secondary hover:drop-shadow-md duration-300"
     :class="typeClass"
   >
     <slot />
@@ -15,7 +15,7 @@ export default {
       type: String,
       default: 'default',
       validator (v) {
-        return [ 'primary', 'disabled', 'default' ].includes(v)
+        return [ 'primary', 'default' ].includes(v)
       }
     }
   },
@@ -24,12 +24,20 @@ export default {
       let result = ''
       switch (this.type) {
         case 'primary':
-          result =
-            'bg-primary dark:bg-primary-dark text-black dark:text-black hover:bg-primary hover:dark:bg-primary active:bg-primary-dark active:dark:bg-primary-light'
+          result = [
+            'bg-primary',
+            'text-black',
+            'hover:bg-primary-hover',
+            'active:bg-primary-active',
+            'dark:bg-primary',
+            'dark:text-black',
+            'dark:hover:bg-primary-hover',
+            'dark:hover:ring-primary-hover',
+            'dark:active:bg-primary-active',
+            'dark:active:ring-primary-active'
+          ]
           break
-        case 'disabled':
-          result = 'disabled'
-          break
+        case 'defautl':
         default:
           result = ''
           break
