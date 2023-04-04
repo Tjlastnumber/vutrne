@@ -7,7 +7,7 @@
       id="err-404"
       class="overflow-hidden"
     >
-      <div class="bg-white error dark:bg-black-80 duration-500">
+      <div class="bg-light error dark:bg-dark duration-500">
         <div class="wrap">
           <div class="text-[12px] 404">
             <pre><code>

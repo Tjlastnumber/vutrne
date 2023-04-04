@@ -22,4 +22,8 @@ html {
 body {
   min-height: 100%;
 }
+
+img {
+  max-width: none !important;
+}
 </style>

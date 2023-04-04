@@ -1,14 +1,14 @@
 <template>
   <div
-    class="overflow-hidden bg-transparent"
-    @wheel="onZoom"
+    class="absolute top-0 left-0 overflow-hidden bg-transparent"
+    @wheel.prevent="onMouseWheel"
+    @mousedown.middle.prevent="onMouseMiddleDown"
   >
     <!-- must translateStyle first -->
     <div
-      class="w-full h-full select-none origin-center zoomer transition-transform"
+      class="absolute top-0 left-0 w-full h-full select-none origin-center zoomer"
       :style="`transform: ${translateStyle} ${scaleStyle}`"
     >
-      >
       <slot />
     </div>
   </div>
@@ -17,26 +17,43 @@
 <script>
 export default {
   name: 'ZoomContainer',
+  props: {
+    scale: {
+      type: Number,
+      default: 1
+    }
+  },
   data () {
     return {
-      scale: 1,
+      scaleProp: 1,
       minScale: 0.1,
       containerLeft: 0,
       containerTop: 0,
       x: 0,
       y: 0,
       cw: 1,
-      ch: 1
+      ch: 1,
+      translateX: 0,
+      translateY: 0
     }
   },
   computed: {
     translateStyle () {
-      const x = this.x * this.cw
-      const y = this.y * this.ch
-      return `translate(${x}px, ${y}px)`
+      return `translate(${this.translateX}px, ${this.translateY}px)`
     },
     scaleStyle () {
-      return `scale(${this.scale})`
+      return `scale(${this.scaleProp})`
+    }
+  },
+  watch: {
+    translateX () {
+      this.x = this.translateX / this.cw
+    },
+    translateY () {
+      this.y = this.translateY / this.ch
+    },
+    scale (nv) {
+      this.scaleProp = nv
     }
   },
   mounted () {
@@ -48,25 +65,54 @@ export default {
       const { width, height } = window.getComputedStyle(this.$el)
       this.cw = parseFloat(width)
       this.ch = parseFloat(height)
-      console.log(this.cw, this.ch)
     },
     getContainerCenter () {
       return { x: this.cw / 2, y: this.ch / 2 }
     },
-    onZoom (event) {
-      event.preventDefault()
-      let scaleDelta = (Math.pow(1.1, Math.sign(event.wheelDelta)))
-      let newScale = this.scale * scaleDelta
+    onZoom ({ scaleDelta, clientX, clientY }) {
+      let newScale = this.scaleProp * scaleDelta
       newScale = Math.max(newScale, this.minScale)
-      scaleDelta = newScale / this.scale
-      this.scale = newScale
-      // translate
-      const pointerXDelta = event.clientX / this.cw
-      const pointerYDelta = event.clientY / this.ch
-      const centerX = 0.5 - pointerXDelta
-      const centerY = 0.5 - pointerYDelta
-      this.x = (centerX + this.x) * scaleDelta - centerX
-      this.y = (centerY + this.y) * scaleDelta - centerY
+      scaleDelta = newScale / this.scaleProp
+      this.scaleProp = newScale
+      // 归一化处理
+      const pointerXDelta = clientX / this.cw
+      const pointerYDelta = clientY / this.ch
+      // 中心点移动到指针焦点的偏移量
+      const fx = 0.5 - pointerXDelta
+      const fy = 0.5 - pointerYDelta
+      // 计算缩放目标的单位偏移量
+      this.x = (fx + this.x) * scaleDelta - fx
+      this.y = (fy + this.y) * scaleDelta - fy
+      this.translateX = this.x * this.cw
+      this.translateY = this.y * this.ch
+      this.$emit('scale', { scale: this.scaleProp, scalePercent: `${this.scaleProp * 100}%` })
+    },
+    onMouseWheel (ev) {
+      if (ev.ctrlKey || ev.metaKey) {
+        const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
+        this.onZoom({ scaleDelta, clientX: ev.clientX, clientY: ev.clientY })
+      } else {
+        this.translateX -= ev.deltaX / this.scale
+        this.translateY -= ev.deltaY / this.scale
+      }
+    },
+    onMouseMiddleDown () {
+      const move = (moveEvent) => {
+        const { movementX, movementY } = moveEvent
+        this.translateX += movementX / this.scale
+        this.translateY += movementY / this.scale
+      }
+
+      const up = () => {
+        window.removeEventListener('mousemove', move)
+        window.removeEventListener('mouseup', up)
+      }
+
+      window.addEventListener('mousemove', move)
+      window.addEventListener('mouseup', up)
+    },
+    fit () {
+      // this.visibleSize = gg
     }
   }
 }

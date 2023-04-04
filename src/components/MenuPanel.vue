@@ -2,7 +2,7 @@
   <VDropdown placement="bottom-start">
     <slot />
     <template #popper>
-      <div class="w-auto p-2 dark:bg-black">
+      <div class="w-auto p-2 bg-light/30 dark:bg-neutral-800/50 shadow-lg drop-shadow-2xl backdrop-blur-[100px]">
         <div
           v-for="(menu, index) in menus"
           :key="index"

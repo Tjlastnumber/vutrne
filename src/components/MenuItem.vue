@@ -6,10 +6,12 @@
     />
     <div
       v-else-if="!hasChildren"
-      class="relative flex flex-row items-center justify-between w-full p-2 select-none rounded-md space-x-0 hover:bg-primary hover:text-black dark:text-white/60 dark:hover:bg-primary dark:hover:text-white"
+      class="relative w-full p-2 select-none rounded-md space-x-0 hover:bg-primary hover:text-black dark:text-white/60 dark:hover:bg-primary dark:hover:text-white"
     >
       <router-link :to="'/visual'">
-        {{ menu.name || menu }}
+        <div class="flex flex-row items-center justify-between">
+          <span>{{ menu.name || menu }}</span>
+        </div>
       </router-link>
     </div>
 
@@ -19,7 +21,7 @@
       theme="sub-menu"
     >
       <button
-        class="relative flex flex-row space-x-32 items-center justify-between w-full p-2 rounded-md hover:text-light-primary dark:text-dark-secondary hover:bg-primary dark:hover:text-white"
+        class="relative flex flex-row items-center justify-between w-full p-2 space-x-32 rounded-md hover:text-light-primary dark:text-dark-secondary hover:bg-primary dark:hover:text-white"
       >
         <span>
           {{ menu.name || menu }}
@@ -36,7 +38,7 @@
       <template #popper>
         <div
           v-if="hasChildren"
-          class="p-2 dark:bg-neutral-light"
+          class="p-2 dark:bg-neutral-800/50 shadow-lg drop-shadow-2xl backdrop-blur-[100px]"
         >
           <MenuItem
             v-for="(children, index) in menu.children"

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <LayoutPanel
-      :header="false"
-      :left="false"
-      :right="false"
-    >
+    <LayoutPanel>
       <template #header>
         <HeaderPanel />
       </template>
@@ -29,7 +25,13 @@
           </template>
           <template #Assets>
             <CollapsePanel :name="'Components'">
-              <CollapseItem> button </CollapseItem>
+              <CollapseItem>
+                <component
+                  :is="component.name"
+                  v-for="component in components"
+                  :key="component.id"
+                />
+              </CollapseItem>
             </CollapsePanel>
             <CollapsePanel :name="'Style'">
               <CollapseItem> h1 </CollapseItem>
@@ -38,23 +40,7 @@
         </TabPanel>
       </template>
       <template #default>
-        <div class="w-full h-full bg-gray-200 dark:bg-black/60">
-          <ZoomContainer
-            class="relative w-full h-full border-dark-primary"
-          >
-            <div
-              id="canvas"
-              class="absolute w-auto h-auto bg-white top-1/3 left-1/3 dark:bg-dark"
-            >
-              <img
-                src="https://picsum.photos/1024/800"
-                width="100%"
-                height="100%"
-                draggable="false"
-              >
-            </div>
-          </ZoomContainer>
-        </div>
+        <WorkspaceView />
       </template>
     </LayoutPanel>
   </div>
@@ -66,7 +52,7 @@ import HeaderPanel from '../layout/HeaderPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
-import ZoomContainer from '@/components/ZoomContainer.vue'
+import WorkspaceView from '../components/WorkspaceView.vue'
 
 export default {
   name: 'VisualPage',
@@ -76,7 +62,7 @@ export default {
     CollapsePanel,
     CollapseItem,
     TabPanel,
-    ZoomContainer
+    WorkspaceView
   },
   data () {
     return {

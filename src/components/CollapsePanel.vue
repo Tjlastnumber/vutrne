@@ -21,7 +21,7 @@
     </div>
     <div
       v-show="isExpanded"
-      class="flex flex-col text-center justify-center space-y-1 pt-2 pb-3"
+      class="flex flex-col justify-center pt-2 pb-2 text-center space-y-1"
     >
       <slot />
     </div>
