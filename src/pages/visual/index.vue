@@ -2,7 +2,14 @@
   <div>
     <LayoutPanel>
       <template #header>
-        <HeaderPanel />
+        <HeaderPanel>
+          <template #center>
+            <Avatar />
+          </template>
+          <template #right>
+            <Avatar />
+          </template>
+        </HeaderPanel>
       </template>
       <template #left>
         <TabPanel
@@ -53,6 +60,7 @@ import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
 import WorkspaceView from '../components/WorkspaceView.vue'
+import Avatar from '@/components/Avatar.vue'
 
 export default {
   name: 'VisualPage',
@@ -62,7 +70,8 @@ export default {
     CollapsePanel,
     CollapseItem,
     TabPanel,
-    WorkspaceView
+    WorkspaceView,
+    Avatar
   },
   data () {
     return {

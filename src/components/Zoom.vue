@@ -1,13 +1,13 @@
 <template>
   <div
-    class="absolute top-0 left-0 overflow-hidden bg-transparent"
+    class="bg-transparent border-dark-primary"
     @wheel.prevent="onMouseWheel"
     @mousedown.middle.prevent="onMouseMiddleDown"
   >
     <!-- must translateStyle first -->
     <div
-      class="absolute top-0 left-0 w-full h-full select-none origin-center zoomer"
-      :style="`transform: ${translateStyle} ${scaleStyle}`"
+      class="w-full h-full select-none origin-center zoomer"
+      :style="`transform: ${transformStyle}`"
     >
       <slot />
     </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'ZoomContainer',
+  name: 'Zoom', // eslint-disable-line
   props: {
     scale: {
       type: Number,
@@ -29,20 +29,17 @@ export default {
       minScale: 0.1,
       containerLeft: 0,
       containerTop: 0,
+      translateX: 0,
+      translateY: 0,
       x: 0,
       y: 0,
       cw: 1,
-      ch: 1,
-      translateX: 0,
-      translateY: 0
+      ch: 1
     }
   },
   computed: {
-    translateStyle () {
-      return `translate(${this.translateX}px, ${this.translateY}px)`
-    },
-    scaleStyle () {
-      return `scale(${this.scaleProp})`
+    transformStyle () {
+      return `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scaleProp})`
     }
   },
   watch: {
@@ -73,7 +70,6 @@ export default {
       let newScale = this.scaleProp * scaleDelta
       newScale = Math.max(newScale, this.minScale)
       scaleDelta = newScale / this.scaleProp
-      this.scaleProp = newScale
       // 归一化处理
       const pointerXDelta = clientX / this.cw
       const pointerYDelta = clientY / this.ch
@@ -81,6 +77,7 @@ export default {
       const fx = 0.5 - pointerXDelta
       const fy = 0.5 - pointerYDelta
       // 计算缩放目标的单位偏移量
+      this.scaleProp = newScale
       this.x = (fx + this.x) * scaleDelta - fx
       this.y = (fy + this.y) * scaleDelta - fy
       this.translateX = this.x * this.cw

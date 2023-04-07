@@ -2,21 +2,21 @@
   <div
     class="fixed top-0 z-40 flex-none w-full border-b border-light-disabled dark:border-dark-disabled duration-500 dark:bg-dark supports-backdrop-blur:bg-white/60 bg-light"
   >
-    <div class="mx-auto max-w-screen-2xl">
-      <div class="px-8 py-4 font-mono duration-500">
+    <div class="px-8 py-4 font-mono duration-500">
+      <div
+        class="relative flex flex-row items-center justify-between text-xs font-normal"
+      >
         <div
-          class="relative flex flex-row items-center justify-between text-xs font-normal"
+          id="home-link"
+          class="text-base font-extrabold"
         >
-          <div
-            id="home-link"
-            class="text-base font-extrabold"
-          >
-            <MenuPanel :menus="menus">
-              <button>{{ brand }}</button>
-            </MenuPanel>
-          </div>
-          <slot />
+          <MenuPanel :menus="menus">
+            <button>{{ brand }}</button>
+          </MenuPanel>
+          <slot name="left" />
         </div>
+        <slot name="center" />
+        <slot name="right" />
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ import 'floating-vue/dist/style.css'
 import './style/main.css'
 import Plugin from '@/core/plugin'
 import plugins from '@/plugins/index'
+import './directive'
 
 Plugin.use(plugins)
 

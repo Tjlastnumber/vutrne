@@ -1,10 +1,14 @@
 <template>
-  <div class="top-0 left-0 w-full h-full bg-light-disabled dark:bg-dark/80">
-    <ZoomContainer
+  <div
+    v-stroke="canvas"
+    class="top-0 left-0 w-full h-full bg-light-disabled dark:bg-dark/80"
+  >
+    <Zoom
       class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
     >
       <div
         id="canvas"
+        ref="canvas"
         class="absolute w-9/12 overflow-hidden bg-white dark:bg-dark translate-x-48 translate-y-20 h-5/6"
       >
         <img
@@ -19,17 +23,27 @@
         </button>
         <div class="w-20 h-20 bg-zinc-500" />
       </div>
-    </ZoomContainer>
+    </Zoom>
   </div>
 </template>
 
 <script>
-import ZoomContainer from '@/components/ZoomContainer.vue'
+import Zoom from '@/components/Zoom.vue'
 
 export default {
   name: 'WorkspaceView',
   components: {
-    ZoomContainer
+    Zoom
+  },
+  data () {
+    return {
+      canvas: {}
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.canvas = this.$refs.canvas
+    })
   }
 }
 </script>
