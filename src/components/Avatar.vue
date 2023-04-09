@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center w-6 h-6 text-center rounded-full cursor-pointer place-content-center text-light bg-dark">
+  <div class="flex items-center justify-center w-6 h-6 text-center rounded-full cursor-pointer place-content-center text-light bg-dark dark:text-light-primary dark:bg-light">
     <img
       v-if="imgUrl"
       class="rounded-full"

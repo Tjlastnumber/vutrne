@@ -14,8 +14,8 @@
       <template #left>
         <TabPanel
           :tabs="['Pages', 'Layers', 'Assets']"
-          :current-tab="currentTab"
-          @tab-change="(e) => (currentTab = e.tabIndex)"
+          :current-tab="leftTab"
+          @tab-change="(e) => (leftTab = e.tabIndex)"
         >
           <template #Pages>
             <CollapsePanel :name="'Pages'">
@@ -32,13 +32,7 @@
           </template>
           <template #Assets>
             <CollapsePanel :name="'Components'">
-              <CollapseItem>
-                <component
-                  :is="component.name"
-                  v-for="component in components"
-                  :key="component.id"
-                />
-              </CollapseItem>
+              <CollapseItem> Components </CollapseItem>
             </CollapsePanel>
             <CollapsePanel :name="'Style'">
               <CollapseItem> h1 </CollapseItem>
@@ -48,6 +42,29 @@
       </template>
       <template #default>
         <WorkspaceView />
+      </template>
+      <template #right>
+        <TabPanel
+          :tabs="['Style', 'Css', 'Event']"
+          :current-tab="rightTab"
+          @tab-change="(e) => (rightTab = e.tabIndex)"
+        >
+          <template #Style>
+            <CollapsePanel :name="'Style'">
+              <CollapseItem>Style Page</CollapseItem>
+            </CollapsePanel>
+          </template>
+          <template #Css>
+            <CollapsePanel :name="'Css'">
+              <CollapseItem>Css</CollapseItem>
+            </CollapsePanel>
+          </template>
+          <template #Event>
+            <CollapsePanel :name="'Event'">
+              <CollapseItem>Event Bind</CollapseItem>
+            </CollapsePanel>
+          </template>
+        </TabPanel>
       </template>
     </LayoutPanel>
   </div>
@@ -75,7 +92,8 @@ export default {
   },
   data () {
     return {
-      currentTab: 0
+      leftTab: 0,
+      rightTab: 0
     }
   }
 }

@@ -6,6 +6,7 @@
     <main class="w-full h-full">
       <SidebarPanel
         v-show="left"
+        left
         :class="header ? 'top-14' : 'top-0'"
       >
         <slot name="left" />
@@ -15,7 +16,7 @@
       </div>
       <SidebarPanel
         v-show="right"
-        class="right-0"
+        right
         :class="header ? 'top-14' : 'top-0'"
       >
         <slot name="right" />

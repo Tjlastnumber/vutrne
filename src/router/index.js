@@ -22,9 +22,16 @@ const visual = {
   component: () => import('@/pages/visual/index')
 }
 
+const test = {
+  path: '/test',
+  name: 'Test',
+  component: () => import('@/pages/test')
+}
+
 const app = [
   projects,
   visual,
+  test,
   // {
   //   path: '/codeview',
   //   name: 'CodeView',
