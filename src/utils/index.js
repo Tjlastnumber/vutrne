@@ -24,3 +24,32 @@ export function isString (v) {
 export function emptyString (v) {
   return isNumber(v) || isNone(v) || v.trim() === ''
 }
+
+/**
+ * 防抖函数
+ * @param {Function} func
+ * @param {Number} wait
+ * @param {Boolean} immediate
+ */
+export function debounce (func, wait, maxWait, immediate) {
+  let timeout
+  const time = new Date()
+  return () => {
+    const cxt = this
+    const args = arguments
+    const now = new Date()
+    const later = () => {
+      if (!immediate) func.apply(cxt, args)
+    }
+
+    if (maxWait && now - time > maxWait) {
+      timeout = setTimeout(later, wait)
+      func.apply(cxt)
+    }
+
+    const callNow = immediate & !timeout
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+    if (callNow) func.apply(cxt, args)
+  }
+}
