@@ -1,18 +1,24 @@
 <template>
   <div class="h-full">
-    <SplitPanel>
-      <div class="relative inset-0 h-full bg-slate-900" />
-    </SplitPanel>
-    <div class="fixed inset-0 w-full h-full right bg-rose-900" />
+    <TextBox
+      :value="value"
+      class="p-1 text-sm"
+
+    />
   </div>
 </template>
 
 <script>
-import SplitPanel from '@/components/SplitPanel.vue'
+import TextBox from '@/components/TextBox.vue'
 
 export default {
   name: 'TestPage',
-  components: { SplitPanel }
+  components: { TextBox },
+  data () {
+    return {
+      value: 'text'
+    }
+  }
 }
 </script>
 

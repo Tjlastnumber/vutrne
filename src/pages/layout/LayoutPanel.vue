@@ -4,33 +4,41 @@
       <slot name="header" />
     </header>
     <main class="w-full h-full">
-      <SidebarPanel
+      <!-- left panel -->
+      <SplitPanel
         v-show="left"
+        class="fixed inset-y-0 z-20 px-4 bg-light dark:bg-dark"
         left
-        :class="header ? 'top-14' : 'top-0'"
+        :class="haveHeader"
       >
         <slot name="left" />
-      </SidebarPanel>
+      </SplitPanel>
+      <!-- main panel -->
       <div class="fixed inset-0 w-full h-full">
         <slot />
       </div>
-      <SidebarPanel
+      <!-- right panel -->
+      <SplitPanel
         v-show="right"
+        class="fixed inset-y-0 z-20 px-4 bg-light dark:bg-dark"
         right
-        :class="header ? 'top-14' : 'top-0'"
+        :can-change-size="false"
+        :class="haveHeader"
       >
         <slot name="right" />
-      </SidebarPanel>
+      </SplitPanel>
     </main>
     <footer />
   </div>
 </template>
 
 <script>
-import SidebarPanel from './SidebarPanel.vue'
+import SplitPanel from '@/components/SplitPanel.vue'
 export default {
   name: 'LayoutPanel',
-  components: { SidebarPanel },
+  components: {
+    SplitPanel
+  },
   props: {
     header: {
       type: Boolean,
@@ -43,6 +51,11 @@ export default {
     right: {
       type: Boolean,
       default: true
+    }
+  },
+  computed: {
+    haveHeader () {
+      return this.header ? 'top-14' : 'top-0'
     }
   }
 }

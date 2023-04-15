@@ -1,7 +1,10 @@
 <template>
   <div
     class="absolute inset-y-0 z-10"
-    :class="dock"
+    :class="{
+      'right-0': right,
+      'left-0': left && !right
+    }"
     :style="{width: `${width}px`}"
   >
     <div
@@ -10,8 +13,14 @@
       <slot />
     </div>
     <div
-      class="absolute top-0 z-20 w-1 h-full cursor-col-resize border-light-disabled dark:border-dark-disabled"
-      :class="right ? 'left-0' : 'right-0'"
+      class="absolute top-0 z-20 w-1 h-full border-light-disabled dark:border-dark-disabled"
+      :class="{
+        'left-0': right,
+        'border-l': right,
+        'right-0': !right && left,
+        'border-r': !right && left,
+        'cursor-col-resize': canChangeSize
+      }"
       @mousedown="startDrag"
     />
   </div>
@@ -36,6 +45,10 @@ export default {
     right: {
       type: Boolean,
       default: false
+    },
+    canChangeSize: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -43,20 +56,13 @@ export default {
       width: 240
     }
   },
-  computed: {
-    dock () {
-      return this.right
-        ? 'right-0'
-        : this.left
-          ? 'left-0'
-          : ''
-    }
-  },
   methods: {
     /**
      * @param {MouseEvent} ev
      */
     startDrag (ev) {
+      if (!this.canChangeSize) return
+
       const sp = ev.movementX
 
       const onDrag = (e) => {

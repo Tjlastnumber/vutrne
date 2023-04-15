@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute stroke"
+    class="absolute pointer-events-none stroke"
     :style="styleTranslate"
   >
     <svg
@@ -30,10 +30,16 @@ export default {
     target: {
       type: [ Element, HTMLElement, Object ],
       default: undefined
+    },
+    space: {
+      type: [ Element, HTMLElement, Object ],
+      default: undefined
     }
   },
   data () {
     return {
+      top: 0,
+      left: 0,
       width: 0,
       height: 0,
       strokeWidth: 1,
@@ -42,7 +48,7 @@ export default {
   },
   computed: {
     styleTranslate () {
-      return ''
+      return { top: `${this.top}px`, left: `${this.left}px` }
     }
   },
   watch: {
@@ -54,8 +60,13 @@ export default {
         const rect = nv.getBoundingClientRect()
         this.width = rect.width
         this.height = rect.height
+        this.top = rect.top
+        this.left = rect.left
       }
+      console.log('stroke target change')
     }
+  },
+  mounted () {
   }
 }
 </script>

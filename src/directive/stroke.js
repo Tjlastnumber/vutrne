@@ -11,8 +11,7 @@ Object.keys(_props).forEach((k) => {
     _options[k] = typeof dv === 'function' ? dv() : dv
   }
 })
-
-function zoomerInstance (Vue, options) {
+function strokeInstance (Vue, options) { /* eslint-disable-line */
   options = options || {}
   if (_instance && _instance.$el.parentNode) {
     Object.assign(_instance, _options, options)
@@ -31,11 +30,14 @@ export default {
        * @param {Element} el
        */
       bind (el) {
-        el.$stroke = zoomerInstance(Vue, {})
+        el.$stroke = strokeInstance(Vue, {})
         el.appendChild(el.$stroke.$el)
       },
       componentUpdated (el, { value: target }) {
         el.$stroke.target = target
+      },
+      update (el, binding) {
+        el.$stroke.target = binding.target
       }
     })
   }

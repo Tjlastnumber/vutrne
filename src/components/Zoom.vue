@@ -40,6 +40,15 @@ export default {
   computed: {
     transformStyle () {
       return `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scaleProp})`
+    },
+    transform () {
+      return {
+        target: this.$el,
+        scale: this.scaleProp,
+        scalePercent: `${this.scaleProp * 100}%`,
+        x: this.translateX,
+        y: this.translateY
+      }
     }
   },
   watch: {
@@ -62,11 +71,14 @@ export default {
       const { width, height } = window.getComputedStyle(this.$el)
       this.cw = parseFloat(width)
       this.ch = parseFloat(height)
+
+      this.$emit('movearea', this.transform)
     },
     getContainerCenter () {
       return { x: this.cw / 2, y: this.ch / 2 }
     },
     onZoom ({ scaleDelta, clientX, clientY }) {
+      this.$emit('startScale', this.transform)
       let newScale = this.scaleProp * scaleDelta
       newScale = Math.max(newScale, this.minScale)
       scaleDelta = newScale / this.scaleProp
@@ -82,15 +94,22 @@ export default {
       this.y = (fy + this.y) * scaleDelta - fy
       this.translateX = this.x * this.cw
       this.translateY = this.y * this.ch
-      this.$emit('scale', { scale: this.scaleProp, scalePercent: `${this.scaleProp * 100}%` })
+
+      // event
+      this.$emit('scale', this.transform)
     },
     onMouseWheel (ev) {
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
-        this.onZoom({ scaleDelta, clientX: ev.clientX, clientY: ev.clientY })
+        this.onZoom({
+          scaleDelta,
+          clientX: ev.clientX,
+          clientY: ev.clientY
+        })
       } else {
         this.translateX -= ev.deltaX / this.scale
         this.translateY -= ev.deltaY / this.scale
+        this.$emit('movearea', this.transform)
       }
     },
     onMouseMiddleDown () {
@@ -98,6 +117,8 @@ export default {
         const { movementX, movementY } = moveEvent
         this.translateX += movementX / this.scale
         this.translateY += movementY / this.scale
+
+        this.$emit('movearea', this.transform)
       }
 
       const up = () => {
@@ -107,9 +128,6 @@ export default {
 
       window.addEventListener('mousemove', move)
       window.addEventListener('mouseup', up)
-    },
-    fit () {
-      // this.visibleSize = gg
     }
   }
 }

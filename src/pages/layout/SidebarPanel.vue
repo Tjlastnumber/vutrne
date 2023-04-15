@@ -6,7 +6,7 @@
     <SplitPanel
       :left="left"
       :right="right"
-      :max-width="360"
+      :max-width="maxWidth"
       class="bg-light dark:bg-dark"
     >
       <div class="px-4">
@@ -29,6 +29,14 @@ export default {
     right: {
       type: Boolean,
       default: false
+    },
+    canChangeSize: {
+      type: Boolean,
+      default: true
+    },
+    maxWidth: {
+      type: Number,
+      default: 360
     }
   },
   computed: {

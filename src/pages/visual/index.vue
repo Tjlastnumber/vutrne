@@ -7,7 +7,9 @@
             <Avatar />
           </template>
           <template #right>
-            <Avatar />
+            <div>
+              <Avatar />
+            </div>
           </template>
         </HeaderPanel>
       </template>
@@ -51,7 +53,26 @@
         >
           <template #Style>
             <CollapsePanel :name="'Style'">
-              <CollapseItem>Style Page</CollapseItem>
+              <TextBox
+                v-model="componentStyle.position.top"
+                text="top"
+                class="w-full"
+              />
+              <TextBox
+                v-model="componentStyle.position.right"
+                text="right"
+                class="w-full"
+              />
+              <TextBox
+                v-model="componentStyle.position.bottom"
+                text="bottom"
+                class="w-full"
+              />
+              <TextBox
+                v-model="componentStyle.position.left"
+                text="left"
+                class="w-full"
+              />
             </CollapsePanel>
           </template>
           <template #Css>
@@ -78,6 +99,7 @@ import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
 import WorkspaceView from '../components/WorkspaceView.vue'
 import Avatar from '@/components/Avatar.vue'
+import TextBox from '@/components/TextBox.vue'
 
 export default {
   name: 'VisualPage',
@@ -88,12 +110,21 @@ export default {
     CollapseItem,
     TabPanel,
     WorkspaceView,
-    Avatar
+    Avatar,
+    TextBox
   },
   data () {
     return {
       leftTab: 0,
-      rightTab: 0
+      rightTab: 0,
+      componentStyle: {
+        position: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        }
+      }
     }
   }
 }

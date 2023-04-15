@@ -5,6 +5,9 @@
   >
     <Zoom
       class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
+      @startScale="onStartScale"
+      @scale="onScale"
+      @movearea="onMoveArea"
     >
       <div
         id="canvas"
@@ -22,6 +25,7 @@
           Click
         </button>
         <div class="w-20 h-20 bg-zinc-500" />
+        <TextBox text="Label" />
       </div>
     </Zoom>
   </div>
@@ -29,21 +33,48 @@
 
 <script>
 import Zoom from '@/components/Zoom.vue'
+import TextBox from '@/components/TextBox.vue'
 
 export default {
   name: 'WorkspaceView',
   components: {
-    Zoom
+    Zoom,
+    TextBox
+  },
+  model: {
+    prop: 'scale',
+    event: 'change'
+  },
+  props: {
+    scale: {
+      type: Number,
+      default: 100
+    }
   },
   data () {
     return {
-      canvas: {}
+      canvas: {},
+      hoverEl: {}
     }
   },
   mounted () {
     this.$nextTick(() => {
       this.canvas = this.$refs.canvas
     })
+  },
+  methods: {
+    onScale () {
+      this.canvas = {}
+      this.canvas = this.$refs.canvas
+    },
+    onStartScale () {
+    },
+    onMoveArea () {
+      this.canvas = {}
+      this.canvas = this.$refs.canvas
+    },
+    onHover () {
+    }
   }
 }
 </script>
