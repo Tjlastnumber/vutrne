@@ -38,6 +38,7 @@ export default {
       },
       update (el, binding) {
         el.$stroke.target = binding.target
+        console.log('>>>>>>>>>> event <<<<<<<<<<')
       }
     })
   }

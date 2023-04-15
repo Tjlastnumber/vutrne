@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { debounce } from '@/utils'
+
 export default {
   name: 'Zoom', // eslint-disable-line
   props: {
@@ -79,6 +81,7 @@ export default {
     },
     onZoom ({ scaleDelta, clientX, clientY }) {
       this.$emit('startScale', this.transform)
+
       let newScale = this.scaleProp * scaleDelta
       newScale = Math.max(newScale, this.minScale)
       scaleDelta = newScale / this.scaleProp
@@ -94,31 +97,32 @@ export default {
       this.y = (fy + this.y) * scaleDelta - fy
       this.translateX = this.x * this.cw
       this.translateY = this.y * this.ch
-
-      // event
       this.$emit('scale', this.transform)
+    },
+    onMove (x, y) {
+      this.translateX += x / this.scale
+      this.translateY += y / this.scale
+      this.$emit('movearea', this.transform)
     },
     onMouseWheel (ev) {
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
-        this.onZoom({
+        const scale = debounce(() => this.onZoom({
           scaleDelta,
           clientX: ev.clientX,
           clientY: ev.clientY
-        })
+        }))
+        scale()
       } else {
-        this.translateX -= ev.deltaX / this.scale
-        this.translateY -= ev.deltaY / this.scale
-        this.$emit('movearea', this.transform)
+        const movearea = debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))
+        movearea()
       }
     },
     onMouseMiddleDown () {
       const move = (moveEvent) => {
         const { movementX, movementY } = moveEvent
-        this.translateX += movementX / this.scale
-        this.translateY += movementY / this.scale
-
-        this.$emit('movearea', this.transform)
+        const movearea = debounce(() => this.onMove(movementX, movementY))
+        movearea()
       }
 
       const up = () => {

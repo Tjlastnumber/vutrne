@@ -31,7 +31,7 @@ export function emptyString (v) {
  * @param {Number} wait
  * @param {Boolean} immediate
  */
-export function debounce (func, wait, maxWait, immediate) {
+export function debounce (func, wait = 300, maxWait = 500, immediate = true) {
   let timeout
   const time = new Date()
   return () => {

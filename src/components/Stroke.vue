@@ -63,7 +63,6 @@ export default {
         this.top = rect.top
         this.left = rect.left
       }
-      console.log('stroke target change')
     }
   },
   mounted () {
