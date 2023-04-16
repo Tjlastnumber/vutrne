@@ -1,54 +1,31 @@
 <template>
-  <div
-    class="absolute pointer-events-none stroke"
-    :style="styleTranslate"
-  >
-    <svg
-      :width="width"
-      :height="height"
-      :viewBox="`0 0 ${width} ${height}`"
-    >
-      <rect
-        width="100%"
-        height="100%"
-        :stroke="color"
-        :fill="fill"
-        :stroke-width="strokeWidth"
-      />
-    </svg>
-  </div>
+  <RectBox
+    class="stroke"
+    color="stroke-cyan-500"
+    :width="width"
+    :height="height"
+    :top="top"
+    :left="left"
+    :stroke-width="4"
+  />
 </template>
 
 <script>
+import RectMixins from './mixins/Rect'
+import RectBox from './RectBox.vue'
+
 export default {
   name: 'Stroke', // eslint-disable-line
+  components: { RectBox },
+  mixins: [ RectMixins ],
   props: {
-    color: {
-      type: String,
-      default: 'black'
+    ignore: {
+      type: [ Element, HTMLElement, Object ],
+      default: undefined
     },
     target: {
       type: [ Element, HTMLElement, Object ],
       default: undefined
-    },
-    space: {
-      type: [ Element, HTMLElement, Object ],
-      default: undefined
-    }
-  },
-  data () {
-    return {
-      top: 0,
-      left: 0,
-      width: 0,
-      height: 0,
-      strokeWidth: 1,
-      fill: 'none'
-    }
-  },
-  computed: {
-    styleTranslate () {
-      return { top: `${this.top}px`, left: `${this.left}px` }
     }
   },
   watch: {
@@ -56,7 +33,13 @@ export default {
      * @param {Element} nv
      */
     target (nv) {
-      if (nv) {
+      if (!nv) {
+        this.width = 0
+        this.height = 0
+        this.top = 0
+        this.left = 0
+      }
+      if (this.ignore !== nv && nv.getBoundingClientRect) {
         const rect = nv.getBoundingClientRect()
         this.width = rect.width
         this.height = rect.height
@@ -64,8 +47,6 @@ export default {
         this.left = rect.left
       }
     }
-  },
-  mounted () {
   }
 }
 </script>

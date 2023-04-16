@@ -11,6 +11,7 @@ Object.keys(_props).forEach((k) => {
     _options[k] = typeof dv === 'function' ? dv() : dv
   }
 })
+
 function strokeInstance (Vue, options) { /* eslint-disable-line */
   options = options || {}
   if (_instance && _instance.$el.parentNode) {
@@ -29,16 +30,17 @@ export default {
       /**
        * @param {Element} el
        */
-      bind (el) {
-        el.$stroke = strokeInstance(Vue, {})
-        el.appendChild(el.$stroke.$el)
+      bind (el, _, vnode) {
+        Vue.$stroke = strokeInstance(Vue, {})
+        Vue.$stroke.ignore = el
+        vnode.context.$stroke = Vue.$stroke
+        el.appendChild(Vue.$stroke.$el)
       },
-      componentUpdated (el, { value: target }) {
-        el.$stroke.target = target
+      componentUpdated (_, { value: target }) {
+        Vue.$stroke.target = target
       },
-      update (el, binding) {
-        el.$stroke.target = binding.target
-        console.log('>>>>>>>>>> event <<<<<<<<<<')
+      update (_, binding) {
+        Vue.$stroke.target = binding.target
       }
     })
   }
