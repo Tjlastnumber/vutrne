@@ -16,8 +16,10 @@
         id="canvas"
         ref="canvas"
         class="absolute w-9/12 overflow-hidden bg-white dark:bg-dark translate-x-48 translate-y-20 h-5/6"
+        @mousedown.left.prevent="onSelectedElement"
       >
         <img
+          ref="img"
           vv-component
           src="https://picsum.photos/1024/800"
           width="500"
@@ -41,18 +43,24 @@
         />
       </div>
     </Zoom>
+    <ResizeBox
+      ref="resizeBox"
+      :active-element="selectedElement"
+    />
   </div>
 </template>
 
 <script>
 import Zoom from '@/components/Zoom.vue'
 import TextBox from '@/components/TextBox.vue'
+import ResizeBox from '@/components/ResizeBox.vue'
 
 export default {
   name: 'Workspace', /* eslint-disable-line */
   components: {
     Zoom,
-    TextBox
+    TextBox,
+    ResizeBox
   },
   model: {
     prop: 'scale',
@@ -66,18 +74,22 @@ export default {
   },
   data () {
     return {
-      hoverElement: {}
+      selectedElement: []
     }
   },
   methods: {
+    onSelectedElement (e) {
+      this.selectedElement = [ e.target ]
+    },
     refreshTarget () {
       this.$stroke.refreshTarget()
+      this.$refs.resizeBox.refreshTarget()
     },
     onMouseMove (e) {
-      this.$stroke.setTarget(
+      this.$stroke.setTarget([
         e.composedPath
           ? e.composedPath()[0]
-          : e.target
+          : e.target ]
       )
     },
     onMouseDown (e) {

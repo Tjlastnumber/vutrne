@@ -16,6 +16,14 @@ export default {
       type: Number,
       default: 0
     },
+    right: {
+      type: Number,
+      default: 0
+    },
+    bottom: {
+      type: Number,
+      default: 0
+    },
     width: {
       type: Number,
       default: 0

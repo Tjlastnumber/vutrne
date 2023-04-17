@@ -27,9 +27,6 @@ function strokeInstance (Vue, options) { /* eslint-disable-line */
 export default {
   install (Vue) {
     Vue.directive('stroke', {
-      /**
-       * @param {Element} el
-       */
       bind (el, _, vnode) {
         vnode.context.$stroke = strokeInstance(Vue, {})
         el.appendChild(_instance.$el)

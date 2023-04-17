@@ -1,13 +1,13 @@
 <template>
   <div
-    class="bg-transparent border-dark-primary cursor-"
+    class="bg-transparent border-dark-primary"
     :class="cursorStyle"
     @wheel.prevent="onMouseWheel"
     @mousedown.middle.prevent="onMouseMiddleDown"
   >
     <!-- must translateStyle first -->
     <div
-      class="w-full h-full select-none origin-center zoomer"
+      class="w-full h-full select-none origin-center zoomer will-change-transform"
       :style="`transform: ${transformStyle}`"
     >
       <slot />

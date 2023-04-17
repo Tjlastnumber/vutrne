@@ -1,5 +1,6 @@
 <template>
   <RectBox
+    ref="rect"
     class="static"
     :width="width"
     :height="height"
@@ -12,12 +13,12 @@
 </template>
 
 <script>
-import Rect from './mixins/Rect'
+import RectMixin from './mixins/Rect'
 import RectBox from './RectBox.vue'
 
 export default {
   components: { RectBox },
-  mixins: [ Rect ],
+  mixins: [ RectMixin ],
   methods: {
     dragging (op, np) {
       this.top = Math.min(np.y, op.y)
@@ -56,8 +57,10 @@ export default {
       window.addEventListener('mouseup', onMouseUp)
       window.addEventListener('mousemove', onMouseMove)
       window.addEventListener('wheel', onWheel)
-    }
+    },
+    selected () {
 
+    }
   }
 }
 </script>

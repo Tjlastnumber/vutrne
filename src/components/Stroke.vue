@@ -6,57 +6,71 @@
     :height="height"
     :top="top"
     :left="left"
-    :stroke-width="4"
+    :stroke-width="strokeWidth"
   />
 </template>
 
 <script>
-import RectMixins from './mixins/Rect'
 import RectBox from './RectBox.vue'
+import { selection } from '@/utils/transform'
+
+const inital = {
+  width: 0,
+  height: 0,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0
+}
 
 export default {
   name: 'Stroke', // eslint-disable-line
   components: { RectBox },
-  mixins: [ RectMixins ],
   props: {
     ignore: {
       type: [ Element, HTMLElement, Object ],
       default: undefined
+    },
+    strokeWidth: {
+      type: Number,
+      default: 4
     }
   },
   data () {
     return {
-      target: undefined
+      target: [],
+      top: 0,
+      left: 0,
+      width: 0,
+      height: 0
     }
   },
   watch: {
     /**
-     * @param {Element} nv
+     * @param {Array} nv
      */
     target (nv) {
-      if (!nv) {
-        this.width = 0
-        this.height = 0
-        this.top = 0
-        this.left = 0
+      if (!nv || nv.lenght === 0) {
+        this.width = inital.width
+        this.height = inital.height
+        this.top = inital.top
+        this.left = inital.left
       }
-      if (nv.getBoundingClientRect) {
-        const rect = nv.getBoundingClientRect()
-        this.width = rect.width
-        this.height = rect.height
-        this.top = rect.top
-        this.left = rect.left
-      }
+      const rect = selection(nv)
+      this.width = rect.width
+      this.height = rect.height
+      this.top = rect.top
+      this.left = rect.left
     }
   },
   methods: {
     refreshTarget () {
       const cache = this.target
-      this.target = {}
+      this.target = []
       this.target = cache
     },
     setTarget (el) {
-      this.target = el
+      this.target = el instanceof Array ? el : [ el ]
     }
   }
 }
