@@ -1,7 +1,7 @@
 <template>
   <RectBox
     class="stroke"
-    color="stroke-cyan-500"
+    color="stroke-sky-400"
     :width="width"
     :height="height"
     :top="top"
@@ -22,10 +22,11 @@ export default {
     ignore: {
       type: [ Element, HTMLElement, Object ],
       default: undefined
-    },
-    target: {
-      type: [ Element, HTMLElement, Object ],
-      default: undefined
+    }
+  },
+  data () {
+    return {
+      target: undefined
     }
   },
   watch: {
@@ -39,13 +40,23 @@ export default {
         this.top = 0
         this.left = 0
       }
-      if (this.ignore !== nv && nv.getBoundingClientRect) {
+      if (nv.getBoundingClientRect) {
         const rect = nv.getBoundingClientRect()
         this.width = rect.width
         this.height = rect.height
         this.top = rect.top
         this.left = rect.left
       }
+    }
+  },
+  methods: {
+    refreshTarget () {
+      const cache = this.target
+      this.target = {}
+      this.target = cache
+    },
+    setTarget (el) {
+      this.target = el
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div
-    class="bg-transparent border-dark-primary"
+    class="bg-transparent border-dark-primary cursor-"
+    :class="cursorStyle"
     @wheel.prevent="onMouseWheel"
     @mousedown.middle.prevent="onMouseMiddleDown"
   >
@@ -36,7 +37,8 @@ export default {
       x: 0,
       y: 0,
       cw: 1,
-      ch: 1
+      ch: 1,
+      cursorStyle: 'cursor-auto'
     }
   },
   computed: {
@@ -107,25 +109,26 @@ export default {
     onMouseWheel (ev) {
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
-        const scale = debounce(() => this.onZoom({
+        debounce(() => this.onZoom({
           scaleDelta,
           clientX: ev.clientX,
           clientY: ev.clientY
-        }))
-        scale()
+        }))()
       } else {
-        const movearea = debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))
-        movearea()
+        debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))()
       }
     },
     onMouseMiddleDown () {
+      this.cursorStyle = 'cursor-grab'
+
       const move = (moveEvent) => {
+        this.cursorStyle = 'cursor-grabbing'
         const { movementX, movementY } = moveEvent
-        const movearea = debounce(() => this.onMove(movementX, movementY))
-        movearea()
+        debounce(() => this.onMove(movementX, movementY))()
       }
 
       const up = () => {
+        this.cursorStyle = 'cursor-auto'
         window.removeEventListener('mousemove', move)
         window.removeEventListener('mouseup', up)
       }

@@ -1,6 +1,6 @@
-import Stroke from '../components/Stroke.vue'
+import SelectionBox from '../components/SelectionBox.vue'
 
-const _props = Stroke.props || Stroke.mixins[0].props
+const _props = SelectionBox.props || SelectionBox.mixins[0].props
 let _instance
 const _options = {}
 
@@ -12,12 +12,12 @@ Object.keys(_props).forEach((k) => {
   }
 })
 
-function strokeInstance (Vue, options) { /* eslint-disable-line */
+function getInstance (Vue, options) { /* eslint-disable-line */
   options = options || {}
   if (_instance && _instance.$el.parentNode) {
     Object.assign(_instance, _options, options)
   } else {
-    _instance = new (Vue.extend(Stroke))({
+    _instance = new (Vue.extend(SelectionBox))({
       propsData: options
     }).$mount()
   }
@@ -25,14 +25,21 @@ function strokeInstance (Vue, options) { /* eslint-disable-line */
 }
 
 export default {
+
   install (Vue) {
-    Vue.directive('stroke', {
+    Vue.directive('selection-box', {
       /**
        * @param {Element} el
        */
       bind (el, _, vnode) {
-        vnode.context.$stroke = strokeInstance(Vue, {})
+        vnode.context.$selectionBox = getInstance(Vue, {})
         el.appendChild(_instance.$el)
+      },
+      componentUpdated (_, { value: target }) {
+        _instance.target = target
+      },
+      update (_, binding) {
+        _instance.target = binding.target
       }
     })
   }
