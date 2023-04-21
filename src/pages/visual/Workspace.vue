@@ -1,6 +1,6 @@
 <template>
   <div
-    v-stroke="hoverElements"
+    v-stroke="hoverElement"
     v-selection-box
     class="top-0 left-0 w-full h-full bg-light-disabled dark:bg-dark/80"
     @mousemove="onMouseMove"
@@ -73,23 +73,31 @@ export default {
   },
   data () {
     return {
-      hoverElements: [],
+      hoverElement: undefined,
       selectedElement: []
+    }
+  },
+  computed: {
+    isComponent () {
+      return this.hoverElement.getAttribute('vv-component') !== null
     }
   },
   methods: {
     onSelectedElement (e) {
-      if (e.target.getAttribute('vv-component') === null) return
-      this.selectedElement = [ e.target ]
+      this.hoverElement = e.target
+      if (this.isComponent) {
+        this.selectedElement = [ this.hoverElement ]
+      }
     },
     refreshTarget () {
       this.$stroke.refreshTarget()
       this.$refs.resizeBox.refreshTarget()
     },
     onMouseMove (e) {
-      if (e.target.getAttribute('vv-component') === null) return
-      this.hoverElements = [ e.composedpath ? e.composedpath()[0] : e.target ]
-      this.$stroke.setTarget(this.hoverElements)
+      this.hoverElement = e.composedpath ? e.composedpath()[0] : e.target
+      if (this.isComponent) {
+        this.$stroke.setTarget([ this.hoverElement ])
+      }
     }
   }
 }

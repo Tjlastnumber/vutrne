@@ -7,16 +7,25 @@
     @keydown="onKeyDown"
     @keyup="onKeyUp"
   >
-    <div
-      class="absolute w-full h-2 bg-red-500 pointer-events-auto -top-2 hover:cursor-n-resize"
-      @click="onMove"
-    />
-    <div class="absolute inset-y-0 w-2 bg-red-500 pointer-events-auto -left-2 hover:cursor-w-resize" />
-    <div class="absolute inset-y-0 w-2 bg-red-500 pointer-events-auto -right-2 hover:cursor-e-resize" />
-    <div class="absolute w-full h-2 bg-red-500 pointer-events-auto -bottom-2 hover:cursor-s-resize" />
+    <div class="absolute w-full h-4 pointer-events-auto -top-2 hover:cursor-ns-resize" />
+    <div class="absolute inset-y-0 w-4 pointer-events-auto -left-2 hover:cursor-ew-resize" />
+    <div class="absolute inset-y-0 w-4 pointer-events-auto -right-2 hover:cursor-ew-resize" />
+    <div class="absolute w-full h-4 pointer-events-auto -bottom-2 hover:cursor-ns-resize" />
+    <div class="absolute top-0 left-0 w-3 h-3 hover:cursor-nw-resize">
+      <div class="absolute w-2 h-2 bg-white border -top-1/4 -left-1/4 border-sky-500" />
+    </div>
+    <div class="absolute top-0 right-0 w-3 h-3 hover:cursor-ne-resize">
+      <div class="absolute w-2 h-2 bg-white border -top-1/4 -right-1/4 border-sky-500" />
+    </div>
+    <div class="absolute bottom-0 left-0 w-3 h-3 hover:cursor-sw-resize">
+      <div class="absolute w-2 h-2 bg-white border -bottom-1/4 -left-1/4 border-sky-500" />
+    </div>
+    <div class="absolute bottom-0 right-0 w-3 h-3 hover:cursor-se-resize">
+      <div class="absolute w-2 h-2 bg-white border -bottom-1/4 -right-1/4 border-sky-500" />
+    </div>
   </Stroke>
 </template>
-
+left
 <script>
 import Stroke from './Stroke.vue'
 import Rect from '@/types/rect.js'
