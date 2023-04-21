@@ -1,7 +1,7 @@
 <template>
   <RectBox
     class="pointer-events-none stroke"
-    color="stroke-blue-400"
+    color="stroke-sky-500"
     :width="width"
     :height="height"
     :top="top"

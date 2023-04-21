@@ -12,16 +12,16 @@
     <div class="absolute inset-y-0 w-4 pointer-events-auto -right-2 hover:cursor-ew-resize" />
     <div class="absolute w-full h-4 pointer-events-auto -bottom-2 hover:cursor-ns-resize" />
     <div class="absolute top-0 left-0 w-3 h-3 hover:cursor-nw-resize">
-      <div class="absolute w-2 h-2 bg-white border -top-1/4 -left-1/4 border-sky-500" />
+      <div class="absolute w-[9px] h-[9px] bg-white border-[1.5px] -top-1/4 -left-1/4 border-sky-500" />
     </div>
     <div class="absolute top-0 right-0 w-3 h-3 hover:cursor-ne-resize">
-      <div class="absolute w-2 h-2 bg-white border -top-1/4 -right-1/4 border-sky-500" />
+      <div class="absolute w-[9px] h-[9px] bg-white border-[1.5px] -top-1/4 -right-1/4 border-sky-500" />
     </div>
     <div class="absolute bottom-0 left-0 w-3 h-3 hover:cursor-sw-resize">
-      <div class="absolute w-2 h-2 bg-white border -bottom-1/4 -left-1/4 border-sky-500" />
+      <div class="absolute w-[9px] h-[9px] bg-white border-[1.5px] -bottom-1/4 -left-1/4 border-sky-500" />
     </div>
     <div class="absolute bottom-0 right-0 w-3 h-3 hover:cursor-se-resize">
-      <div class="absolute w-2 h-2 bg-white border -bottom-1/4 -right-1/4 border-sky-500" />
+      <div class="absolute w-[9px] h-[9px] bg-white border-[1.5px] -bottom-1/4 -right-1/4 border-sky-500" />
     </div>
   </Stroke>
 </template>
@@ -86,10 +86,6 @@ export default {
 <style>
 .resize-container {
   z-index: 99999;
-}
-
-.c {
-  pointer-events: none;
 }
 
 </style>

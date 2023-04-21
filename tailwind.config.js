@@ -35,6 +35,11 @@ module.exports = {
       disabled: {
         DEFAULT: colors.neutral[300]
       }
+    },
+    borderWidth: {
+      1.5: {
+        border: '1.5px'
+      }
     }
   },
   plugins: []
