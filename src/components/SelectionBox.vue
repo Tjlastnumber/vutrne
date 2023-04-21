@@ -2,23 +2,37 @@
   <RectBox
     ref="rect"
     class="static"
+    color="stroke-blue-400"
+    fill="fill-blue-400/20"
+    :style="{ opacity }"
     :width="width"
     :height="height"
-    :top="top"
     :left="left"
+    :top="top"
     :stroke-width="2"
-    color="stroke-sky-500"
-    fill="fill-sky-400/50"
   />
 </template>
 
 <script>
-import RectMixin from './mixins/Rect'
 import RectBox from './RectBox.vue'
 
 export default {
   components: { RectBox },
-  mixins: [ RectMixin ],
+  data () {
+    return {
+      width: 0,
+      height: 0,
+      top: 0,
+      left: 0,
+      opacity: 0,
+      show: false
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$parent.$el.addEventListener('mousedown', this.startDrag)
+    })
+  },
   methods: {
     dragging (op, np) {
       this.top = Math.min(np.y, op.y)
@@ -27,12 +41,32 @@ export default {
       this.height = Math.abs(np.y - op.y)
     },
     clear () {
-      this.top = 0
-      this.left = 0
-      this.width = 0
-      this.height = 0
+      // 隐藏动画
+      const fadeOut = () => {
+        if (this.show) return
+        this.opacity -= 0.05
+        if (this.opacity < 0) {
+          this.top = 0
+          this.left = 0
+          this.width = 0
+          this.height = 0
+          return
+        }
+        window.requestAnimationFrame(fadeOut)
+      }
+      this.show = false
+      fadeOut()
     },
-    startDrag (clientX, clientY) {
+    startDrag (e) {
+      if (e.button !== 0) {
+        // 不是左键点击
+        return
+      }
+      this.show = true
+      this.opacity = 1
+
+      let { clientX, clientY } = e
+
       const onMouseMove = (ev) => {
         this.dragging(
           { x: clientX, y: clientY },
@@ -57,9 +91,6 @@ export default {
       window.addEventListener('mouseup', onMouseUp)
       window.addEventListener('mousemove', onMouseMove)
       window.addEventListener('wheel', onWheel)
-    },
-    selected () {
-
     }
   }
 }

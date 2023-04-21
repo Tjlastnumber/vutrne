@@ -21,7 +21,7 @@
         'border-r': !right && left,
         'cursor-col-resize': canChangeSize
       }"
-      @mousedown="startDrag"
+      @mousedown="dragStart"
     />
   </div>
 </template>
@@ -53,31 +53,34 @@ export default {
   },
   data () {
     return {
-      width: 240
+      width: 240,
+      dragging: false,
+      movement: {
+        x: 0,
+        y: 0
+      }
     }
   },
   methods: {
     /**
      * @param {MouseEvent} ev
      */
-    startDrag (ev) {
+    dragStart (ev) {
       if (!this.canChangeSize) return
 
-      const sp = ev.movementX
+      const dragEnd = () => {
+        window.removeEventListener('mousemove', dragMove)
+        window.removeEventListener('mouseup', dragEnd)
+      }
 
-      const onDrag = (e) => {
-        const translateX = e.movementX - sp
-        const posX = this.width + (this.right ? -translateX : translateX)
+      const dragMove = (e) => {
+        const offsetX = e.movementX - ev.movementX
+        const posX = this.width + (this.right ? -offsetX : offsetX)
         this.width = Math.max(Math.min(posX, this.maxWidth), this.minWidth)
       }
 
-      const endDrag = () => {
-        document.documentElement.removeEventListener('mousemove', onDrag)
-        document.documentElement.removeEventListener('mouseup', endDrag)
-      }
-
-      document.documentElement.addEventListener('mousemove', onDrag)
-      document.documentElement.addEventListener('mouseup', endDrag)
+      window.addEventListener('mousemove', dragMove)
+      window.addEventListener('mouseup', dragEnd)
     }
   }
 }

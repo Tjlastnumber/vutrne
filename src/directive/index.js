@@ -1,5 +1,5 @@
 import stroke from './stroke'
-import selectionBox from './seletionBox'
+import selectionBox from './selectionBox'
 import Vue from 'vue'
 
 Vue.use(stroke)

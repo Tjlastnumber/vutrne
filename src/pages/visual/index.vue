@@ -97,7 +97,7 @@ import HeaderPanel from '../layout/HeaderPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
-import Workspace from '../components/Workspace.vue'
+import Workspace from './Workspace.vue'
 import Avatar from '@/components/Avatar.vue'
 import TextBox from '@/components/TextBox.vue'
 

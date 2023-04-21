@@ -1,8 +1,9 @@
 <template>
   <div
-    class="absolute pointer-events-none stroke"
+    class="absolute pointer-events-none"
     :style="styleTranslate"
   >
+    <slot />
     <svg
       :width="width"
       :height="height"
@@ -19,9 +20,9 @@
 </template>
 
 <script>
-import Rect from './mixins/Rect'
+import rectangle from '@/mixins/rectangle'
 export default {
   name: 'RectBox',
-  mixins: [ Rect ]
+  mixins: [ rectangle ]
 }
 </script>

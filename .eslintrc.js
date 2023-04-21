@@ -14,6 +14,8 @@ module.exports = {
   plugins: [ 'vue' ],
   rules: {
     // vue lint settings
+    'vue/one-component-per-file': 'off',
+    'vue/no-template-shadow': 'off',
     'vue/component-definition-name-casing': [ 'error', 'PascalCase' ],
     'vue/component-name-in-template-casing': [
       'error',

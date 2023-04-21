@@ -1,13 +1,15 @@
 <template>
   <RectBox
-    class="stroke"
-    color="stroke-sky-400"
+    class="pointer-events-none stroke"
+    color="stroke-blue-400"
     :width="width"
     :height="height"
     :top="top"
     :left="left"
     :stroke-width="strokeWidth"
-  />
+  >
+    <slot />
+  </RectBox>
 </template>
 
 <script>

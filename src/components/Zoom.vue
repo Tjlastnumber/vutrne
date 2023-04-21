@@ -2,10 +2,7 @@
   <div
     class="bg-transparent border-dark-primary"
     :class="cursorStyle"
-    @wheel.prevent="onMouseWheel"
-    @mousedown.middle.prevent="onMouseMiddleDown"
   >
-    <!-- must translateStyle first -->
     <div
       class="w-full h-full select-none origin-center zoomer will-change-transform"
       :style="`transform: ${transformStyle}`"
@@ -43,6 +40,7 @@ export default {
   },
   computed: {
     transformStyle () {
+      // must translateStyle first
       return `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scaleProp})`
     },
     transform () {
@@ -68,7 +66,14 @@ export default {
   },
   mounted () {
     window.addEventListener('resize', this.onWindowResize)
+    window.addEventListener('mousedown', this.onMouseMiddleDown)
+    window.addEventListener('wheel', this.onMouseWheel)
     this.onWindowResize()
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.onWindowResize)
+    window.removeEventListener('mousedown', this.onMouseMiddleDown)
+    window.removeEventListener('wheel', this.onMouseWheel)
   },
   methods: {
     onWindowResize () {
@@ -106,6 +111,9 @@ export default {
       this.translateY += y / this.scale
       this.$emit('movearea', this.transform)
     },
+    /**
+     * @param {MouseEvent} ev
+     **/
     onMouseWheel (ev) {
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
@@ -118,23 +126,25 @@ export default {
         debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))()
       }
     },
-    onMouseMiddleDown () {
-      this.cursorStyle = 'cursor-grab'
+    onMouseMiddleDown (e) {
+      if (e.button === 1) {
+        this.cursorStyle = 'cursor-grab'
 
-      const move = (moveEvent) => {
-        this.cursorStyle = 'cursor-grabbing'
-        const { movementX, movementY } = moveEvent
-        debounce(() => this.onMove(movementX, movementY))()
+        const move = (moveEvent) => {
+          this.cursorStyle = 'cursor-grabbing'
+          const { movementX, movementY } = moveEvent
+          debounce(() => this.onMove(movementX, movementY))()
+        }
+
+        const up = () => {
+          this.cursorStyle = 'cursor-auto'
+          window.removeEventListener('mousemove', move)
+          window.removeEventListener('mouseup', up)
+        }
+
+        window.addEventListener('mousemove', move)
+        window.addEventListener('mouseup', up)
       }
-
-      const up = () => {
-        this.cursorStyle = 'cursor-auto'
-        window.removeEventListener('mousemove', move)
-        window.removeEventListener('mouseup', up)
-      }
-
-      window.addEventListener('mousemove', move)
-      window.addEventListener('mouseup', up)
     }
   }
 }

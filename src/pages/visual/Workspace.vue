@@ -1,10 +1,9 @@
 <template>
   <div
-    v-stroke
+    v-stroke="hoverElements"
     v-selection-box
     class="top-0 left-0 w-full h-full bg-light-disabled dark:bg-dark/80"
     @mousemove="onMouseMove"
-    @mousedown.left="onMouseDown"
   >
     <Zoom
       class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
@@ -16,7 +15,7 @@
         id="canvas"
         ref="canvas"
         class="absolute w-9/12 overflow-hidden bg-white dark:bg-dark translate-x-48 translate-y-20 h-5/6"
-        @mousedown.left.prevent="onSelectedElement"
+        @mousedown.left.prevent.stop="onSelectedElement"
       >
         <img
           ref="img"
@@ -74,11 +73,13 @@ export default {
   },
   data () {
     return {
+      hoverElements: [],
       selectedElement: []
     }
   },
   methods: {
     onSelectedElement (e) {
+      if (e.target.getAttribute('vv-component') === null) return
       this.selectedElement = [ e.target ]
     },
     refreshTarget () {
@@ -86,14 +87,9 @@ export default {
       this.$refs.resizeBox.refreshTarget()
     },
     onMouseMove (e) {
-      this.$stroke.setTarget([
-        e.composedPath
-          ? e.composedPath()[0]
-          : e.target ]
-      )
-    },
-    onMouseDown (e) {
-      this.$selectionBox.startDrag(e.clientX, e.clientY)
+      if (e.target.getAttribute('vv-component') === null) return
+      this.hoverElements = [ e.composedpath ? e.composedpath()[0] : e.target ]
+      this.$stroke.setTarget(this.hoverElements)
     }
   }
 }

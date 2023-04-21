@@ -1,6 +1,6 @@
 import SelectionBox from '../components/SelectionBox.vue'
 
-const _props = SelectionBox.props || SelectionBox.mixins[0].props
+const _props = SelectionBox.props || (SelectionBox.mixins && SelectionBox.mixins[0].props) || {}
 let _instance
 const _options = {}
 
@@ -34,6 +34,7 @@ export default {
       bind (el, _, vnode) {
         vnode.context.$selectionBox = getInstance(Vue, {})
         el.appendChild(_instance.$el)
+        _instance.$parent = vnode.context
       },
       componentUpdated (_, { value: target }) {
         _instance.target = target
