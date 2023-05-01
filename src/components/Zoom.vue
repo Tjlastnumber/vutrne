@@ -1,11 +1,10 @@
 <template>
   <div
     class="bg-transparent border-dark-primary"
-    :class="cursorStyle"
   >
     <div
       class="w-full h-full select-none origin-center zoomer will-change-transform"
-      :style="`transform: ${transformStyle}`"
+      :style="`willChange: transform; transform: ${transformStyle}`"
     >
       <slot />
     </div>
@@ -128,16 +127,16 @@ export default {
     },
     onMouseMiddleDown (e) {
       if (e.button === 1) {
-        this.cursorStyle = 'cursor-grab'
-
+        const style = document.body.style
+        style.cursor = 'grab'
         const move = (moveEvent) => {
-          this.cursorStyle = 'cursor-grabbing'
+          style.cursor = 'grabbing'
           const { movementX, movementY } = moveEvent
           debounce(() => this.onMove(movementX, movementY))()
         }
 
         const up = () => {
-          this.cursorStyle = 'cursor-auto'
+          style.cursor = 'auto'
           window.removeEventListener('mousemove', move)
           window.removeEventListener('mouseup', up)
         }

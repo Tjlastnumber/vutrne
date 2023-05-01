@@ -20,6 +20,8 @@ export function colliding (r1, r2) {
 }
 
 /**
+ * 获取元素集合的矩形累加大小
+ *
  * @param {Array} els
  **/
 export function selection (els) {
@@ -54,4 +56,17 @@ export function selection (els) {
   } catch {
   }
   return rect
+}
+
+/**
+ * @param {HTMLElement, Array} els
+ **/
+export function elementsPosition (els) {
+  els = els instanceof Array ? els : [ els ]
+  els.map((el) => { return { offsetTop: el.offsetTop, offsetLeft: el.offsetLeft } })
+    .reduce((prev, current) => {
+      const offsetTop = Math.min(prev.offsetTop, current.offsetTop)
+      const offsetLeft = Math.min(prev.offsetLeft, current.offsetLeft)
+      return { offsetTop, offsetLeft }
+    })
 }

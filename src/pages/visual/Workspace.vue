@@ -7,15 +7,12 @@
   >
     <Zoom
       class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
-      @startScale="refreshTarget"
-      @scale="refreshTarget"
+      @startScale="onScale"
+      @scale="onScale"
       @movearea="refreshTarget"
     >
-      <div
-        id="canvas"
-        ref="canvas"
-        class="absolute w-9/12 overflow-hidden bg-white dark:bg-dark translate-x-48 translate-y-20 h-5/6"
-        @mousedown.left.prevent.stop="onSelectedElement"
+      <Container
+        @mousedown.left.native="onSelectedElement"
       >
         <img
           ref="img"
@@ -23,43 +20,28 @@
           src="https://picsum.photos/1024/800"
           width="500"
           height="300"
-          draggable="false"
         >
-
-        <button
-          vv-component
-          class="p-4 text-black bg-white rounded-md ring-1 ring-rose-500"
-        >
-          Click
-        </button>
-        <div
-          vv-component
-          class="w-20 h-20 bg-zinc-500"
-        />
-        <TextBox
-          vv-component
-          text="Label"
-        />
-      </div>
+      </Container>
     </Zoom>
     <ResizeBox
       ref="resizeBox"
-      :active-element="selectedElement"
+      :active-elements="activeElement"
     />
   </div>
 </template>
 
 <script>
 import Zoom from '@/components/Zoom.vue'
-import TextBox from '@/components/TextBox.vue'
 import ResizeBox from '@/components/ResizeBox.vue'
+import Container from '@/components/Container.vue'
+import { isComponent, isNone } from '@/utils'
 
 export default {
   name: 'Workspace', /* eslint-disable-line */
   components: {
     Zoom,
-    TextBox,
-    ResizeBox
+    ResizeBox,
+    Container
   },
   model: {
     prop: 'scale',
@@ -74,29 +56,40 @@ export default {
   data () {
     return {
       hoverElement: undefined,
-      selectedElement: []
+      activeElement: []
     }
   },
-  computed: {
-    isComponent () {
-      return this.hoverElement.getAttribute('vv-component') !== null
+  watch: {
+    hoverElement (nv) {
+      if (isNone(nv)) {
+        this.$stroke.hide()
+      } else {
+        this.$stroke.setTarget([ nv ])
+      }
+    },
+    activeElement () {
+      this.$stroke.hide()
     }
   },
   methods: {
-    onSelectedElement (e) {
-      this.hoverElement = e.target
-      if (this.isComponent) {
-        this.selectedElement = [ this.hoverElement ]
-      }
-    },
     refreshTarget () {
       this.$stroke.refreshTarget()
       this.$refs.resizeBox.refreshTarget()
     },
+    onSelectedElement (e) {
+      const activeElement = e.target
+      if (isComponent(activeElement)) {
+        this.activeElement = [ activeElement ]
+      }
+    },
+    onScale (e) {
+      this.refreshTarget()
+      window.globalScale = e.scale
+    },
     onMouseMove (e) {
-      this.hoverElement = e.composedpath ? e.composedpath()[0] : e.target
-      if (this.isComponent) {
-        this.$stroke.setTarget([ this.hoverElement ])
+      const hoverElement = e.composedpath ? e.composedpath()[0] : e.target
+      if (isComponent(hoverElement)) {
+        this.hoverElement = hoverElement
       }
     }
   }

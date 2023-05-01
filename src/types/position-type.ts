@@ -1,8 +1,8 @@
-type Position = 
+type PositionType = 
   'absolute' | 
   'relative' |
   'fixed'    |
   'static'   |
   'sticky'
 
-export default Position
+export default PositionType

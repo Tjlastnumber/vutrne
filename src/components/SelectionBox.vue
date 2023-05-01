@@ -25,7 +25,8 @@ export default {
       top: 0,
       left: 0,
       opacity: 0,
-      show: false
+      show: false,
+      hide: true
     }
   },
   mounted () {
@@ -40,16 +41,21 @@ export default {
       this.width = Math.abs(np.x - op.x)
       this.height = Math.abs(np.y - op.y)
     },
+    reset () {
+      this.opacity = 0
+      this.top = 0
+      this.left = 0
+      this.width = 0
+      this.height = 0
+    },
     clear () {
       // 隐藏动画
       const fadeOut = () => {
         if (this.show) return
         this.opacity -= 0.05
         if (this.opacity < 0) {
-          this.top = 0
-          this.left = 0
-          this.width = 0
-          this.height = 0
+          window.cancelAnimationFrame(fadeOut)
+          this.reset()
           return
         }
         window.requestAnimationFrame(fadeOut)
@@ -62,8 +68,11 @@ export default {
         // 不是左键点击
         return
       }
-      this.show = true
+      if (this.opacity > 0) {
+        this.reset()
+      }
       this.opacity = 1
+      this.show = true
 
       let { clientX, clientY } = e
 

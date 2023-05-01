@@ -73,6 +73,9 @@ export default {
     },
     setTarget (el) {
       this.target = el instanceof Array ? el : [ el ]
+    },
+    hide () {
+      this.target = undefined
     }
   }
 }

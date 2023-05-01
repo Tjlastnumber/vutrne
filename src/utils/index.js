@@ -1,3 +1,4 @@
+
 export function isNumber (v) {
   return typeof v === 'number'
 }
@@ -52,4 +53,11 @@ export function debounce (func, wait = 300, maxWait = 500, immediate = true) {
     timeout = setTimeout(later, wait)
     if (callNow) func.apply(cxt, args)
   }
+}
+
+/**
+ * @param {Element} el
+ */
+export function isComponent (el) {
+  return !isNone(el.getAttribute('vv-component'))
 }

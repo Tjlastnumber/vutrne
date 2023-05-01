@@ -13,6 +13,7 @@
           </template>
         </HeaderPanel>
       </template>
+
       <template #left>
         <TabPanel
           :tabs="['Pages', 'Layers', 'Assets']"
@@ -23,15 +24,14 @@
             <CollapsePanel :name="'Pages'">
               <CollapseItem>default page</CollapseItem>
             </CollapsePanel>
-            <CollapsePanel :name="'Favorites'">
-              <CollapseItem>favorites page</CollapseItem>
-            </CollapsePanel>
           </template>
+
           <template #Layers>
             <CollapsePanel :name="'root'">
               <CollapseItem>&lt;element&gt;</CollapseItem>
             </CollapsePanel>
           </template>
+
           <template #Assets>
             <CollapsePanel :name="'Components'">
               <CollapseItem> Components </CollapseItem>
@@ -42,9 +42,11 @@
           </template>
         </TabPanel>
       </template>
+
       <template #default>
         <Workspace />
       </template>
+
       <template #right>
         <TabPanel
           :tabs="['Style', 'Css', 'Event']"
@@ -117,6 +119,7 @@ export default {
     return {
       leftTab: 0,
       rightTab: 0,
+      pages: [],
       componentStyle: {
         position: {
           top: 0,
