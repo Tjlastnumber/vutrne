@@ -61,3 +61,7 @@ export function debounce (func, wait = 300, maxWait = 500, immediate = true) {
 export function isComponent (el) {
   return !isNone(el.getAttribute('vv-component'))
 }
+
+export function generatId () {
+  return new Date().getTime()
+}

@@ -8,11 +8,19 @@
       v-else-if="!hasChildren"
       class="relative w-full p-2 select-none rounded-md space-x-0 hover:bg-primary hover:text-black dark:text-white/60 dark:hover:bg-primary dark:hover:text-white"
     >
-      <router-link :to="'/visual'">
+      <router-link
+        v-if="menu.to"
+        :to="menu.to"
+      >
         <div class="flex flex-row items-center justify-between">
           <span>{{ menu.name || menu }}</span>
         </div>
       </router-link>
+      <div v-else>
+        <div class="flex flex-row items-center justify-between">
+          <span>{{ menu.name || menu }}</span>
+        </div>
+      </div>
     </div>
 
     <VDropdown

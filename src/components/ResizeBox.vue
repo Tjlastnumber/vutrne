@@ -4,7 +4,7 @@
     ref="stroke"
     class="pointer-events-auto select-none resize-container will-change-transform"
     :stroke-width="3"
-    @mousedown.native.left.stop.exact="onSelected"
+    @mousedown.native.left.stop.exact="onDrag"
     @mousedown.native.right="onMouseRightDown"
     @keydown.native="onKeyDown"
     @keyup.native="onKeyUp"
@@ -34,7 +34,7 @@ import Rect from '@/types/rect.js'
 export default {
   components: { Stroke },
   props: {
-    activeElements: {
+    target: {
       type: Array,
       default: () => []
     }
@@ -46,18 +46,14 @@ export default {
     }
   },
   computed: {
-    rect () {
-      return new Rect(this.$el)
-    }
   },
   watch: {
-    activeElements (nv) {
+    target (nv) {
       this.show = true
       this.$refs.stroke.setTarget(nv)
     }
   },
   mounted () {
-    window.addEventListener('mousemove', this.colliding)
     this.$nextTick(() => {
       this.$parent.$el.addEventListener('keydown', this.onKeyDown)
       this.$parent.$el.addEventListener('keyup', this.onKeyUp)
@@ -75,10 +71,9 @@ export default {
     refreshTarget () {
       this.$refs.stroke.refreshTarget()
     },
-    onMove (e) {
-    },
-    onSelected () {
-      const rects = this.activeElements.map(el => new Rect(el, window.globalScale))
+    onDrag () {
+      const rects = this.target.map(el => new Rect(el, window.globalScale))
+
       const onMouseMove = (ev) => {
         const { movementX, movementY } = ev
         for (const rect of rects) {
@@ -97,8 +92,6 @@ export default {
       document.addEventListener('mouseleave', onMouseUp)
     },
     onMouseRightDown () {
-      const rects = this.activeElements.map(el => new Rect(el, window.globalScale))
-      rects.forEach(r => r.resize(100, 100))
     }
   }
 }

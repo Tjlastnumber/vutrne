@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-transparent border-dark-primary"
+    class="bg-transparent border-dark-primary will-change-transform"
   >
     <div
       class="w-full h-full select-none origin-center zoomer will-change-transform"
@@ -13,6 +13,10 @@
 
 <script>
 import { debounce } from '@/utils'
+
+function setGlobalCursor (cssStyle) {
+  document.body.style.cursor = cssStyle
+}
 
 export default {
   name: 'Zoom', // eslint-disable-line
@@ -86,8 +90,6 @@ export default {
       return { x: this.cw / 2, y: this.ch / 2 }
     },
     onZoom ({ scaleDelta, clientX, clientY }) {
-      this.$emit('startScale', this.transform)
-
       let newScale = this.scaleProp * scaleDelta
       newScale = Math.max(newScale, this.minScale)
       scaleDelta = newScale / this.scaleProp
@@ -127,16 +129,15 @@ export default {
     },
     onMouseMiddleDown (e) {
       if (e.button === 1) {
-        const style = document.body.style
-        style.cursor = 'grab'
+        setGlobalCursor('grab')
         const move = (moveEvent) => {
-          style.cursor = 'grabbing'
+          setGlobalCursor('grabbing')
           const { movementX, movementY } = moveEvent
           debounce(() => this.onMove(movementX, movementY))()
         }
 
         const up = () => {
-          style.cursor = 'auto'
+          setGlobalCursor('auto')
           window.removeEventListener('mousemove', move)
           window.removeEventListener('mouseup', up)
         }

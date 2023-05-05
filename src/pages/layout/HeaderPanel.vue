@@ -11,7 +11,7 @@
           class="text-base font-extrabold"
         >
           <MenuPanel :menus="menus">
-            <button>{{ brand }}</button>
+            <button>{{ appName }}</button>
           </MenuPanel>
           <slot name="left" />
         </div>
@@ -24,36 +24,18 @@
 
 <script>
 import MenuPanel from '@/components/MenuPanel.vue'
+import { mapState } from 'vuex'
+
 export default {
   name: 'HeaderPanel',
   components: { MenuPanel },
   data () {
-    return {
-      brand: 'Visuel',
-      menus: [
-        {
-          name: 'Dashboard'
-        },
-        {
-          name: '|'
-        },
-        {
-          name: 'File'
-        },
-        {
-          name: 'View',
-          children: [
-            { name: 'Undo' },
-            { name: 'Redo' },
-            { name: '|' },
-            { name: 'Cut' },
-            { name: 'Copy', children: [ { name: 'Copy' } ] },
-            { name: 'Pause' }
-          ]
-        }
-      ]
-    }
-  }
+    return { }
+  },
+  computed: mapState({
+    appName: state => state.appName,
+    menus: state => state.menus
+  })
 }
 </script>
 

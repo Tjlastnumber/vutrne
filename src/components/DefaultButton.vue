@@ -1,7 +1,7 @@
 <template>
   <button
-    class="px-8 py-4 text-xs font-medium rounded-lg ring-inset ring-2 ring-primary hover:bg-light-hover active:bg-white bg-light border-light-disabled dark:text-dark-primary dark:bg-dark-disabled dark:hover:bg-dark-hover active:dark:bg-dark-active disabled:dark:hover:bg-dark-secondary hover:drop-shadow-md duration-300"
     :class="typeClass"
+    class="text-xs font-medium rounded-lg ring-inset hover:bg-light-hover active:bg-white bg-light border-light-disabled dark:text-dark-primary dark:bg-dark-disabled dark:hover:bg-dark-hover active:dark:bg-dark-active disabled:dark:hover:bg-dark-secondary hover:drop-shadow-md duration-300"
   >
     <slot />
   </button>

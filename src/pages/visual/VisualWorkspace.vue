@@ -7,9 +7,8 @@
   >
     <Zoom
       class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
-      @startScale="onScale"
       @scale="onScale"
-      @movearea="refreshTarget"
+      @movearea="refreshTarget()"
     >
       <Container
         @mousedown.left.native="onSelectedElement"
@@ -25,7 +24,7 @@
     </Zoom>
     <ResizeBox
       ref="resizeBox"
-      :active-elements="activeElement"
+      :target="activeElement"
     />
   </div>
 </template>

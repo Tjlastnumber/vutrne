@@ -14,7 +14,7 @@
 
 <script>
 import RectBox from './RectBox.vue'
-import { selection } from '@/utils/transform'
+import { computeArea } from '@/utils/transform'
 
 const inital = {
   width: 0,
@@ -30,8 +30,8 @@ export default {
   components: { RectBox },
   props: {
     ignore: {
-      type: [ Element, HTMLElement, Object ],
-      default: undefined
+      type: Array,
+      default: () => []
     },
     strokeWidth: {
       type: Number,
@@ -58,7 +58,7 @@ export default {
         this.top = inital.top
         this.left = inital.left
       }
-      const rect = selection(nv)
+      const rect = computeArea(nv)
       this.width = rect.width
       this.height = rect.height
       this.top = rect.top
@@ -67,9 +67,11 @@ export default {
   },
   methods: {
     refreshTarget () {
-      const cache = this.target
-      this.target = []
-      this.target = cache
+      if (!this.target || this.target.length > 0) {
+        const cache = this.target
+        this.target = []
+        this.target = cache
+      }
     },
     setTarget (el) {
       this.target = el instanceof Array ? el : [ el ]

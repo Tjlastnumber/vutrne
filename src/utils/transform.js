@@ -24,7 +24,7 @@ export function colliding (r1, r2) {
  *
  * @param {Array} els
  **/
-export function selection (els) {
+export function computeArea (els) {
   let rect = {}
   try {
     rect = els.filter(el => el.getBoundingClientRect)

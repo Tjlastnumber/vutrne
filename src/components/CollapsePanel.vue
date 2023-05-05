@@ -14,14 +14,20 @@
         >
           <ChevronDownIcon />
         </div>
-        <div class="font-bold">
-          {{ name }}
+        <div class="font-bold leading-5">
+          <slot name="header">
+            {{ name }}
+          </slot>
         </div>
       </div>
+      <div>
+        <slot name="HeaderRight" />
+      </div>
     </div>
+
     <div
       v-show="isExpanded"
-      class="flex flex-col justify-center pt-2 pb-2 text-center space-y-1"
+      class="pt-2 pb-2 space-y-1"
     >
       <slot />
     </div>

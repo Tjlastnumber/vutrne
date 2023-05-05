@@ -2,34 +2,21 @@
   <div>
     <LayoutPanel>
       <template #header>
-        <HeaderPanel>
-          <template #center>
-            <Avatar />
-          </template>
-          <template #right>
-            <div>
-              <Avatar />
-            </div>
-          </template>
-        </HeaderPanel>
+        <VisualHeader />
       </template>
 
       <template #left>
         <TabPanel
           :tabs="['Pages', 'Layers', 'Assets']"
           :current-tab="leftTab"
-          @tab-change="(e) => (leftTab = e.tabIndex)"
+          @tab-change="$event => leftTab = $event.tabIndex"
         >
           <template #Pages>
-            <CollapsePanel :name="'Pages'">
-              <CollapseItem>default page</CollapseItem>
-            </CollapsePanel>
+            <VisualPages />
           </template>
 
           <template #Layers>
-            <CollapsePanel :name="'root'">
-              <CollapseItem>&lt;element&gt;</CollapseItem>
-            </CollapsePanel>
+            <VisualLayers />
           </template>
 
           <template #Assets>
@@ -95,31 +82,32 @@
 
 <script>
 import LayoutPanel from '../layout/LayoutPanel.vue'
-import HeaderPanel from '../layout/HeaderPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
-import Workspace from './Workspace.vue'
-import Avatar from '@/components/Avatar.vue'
-import TextBox from '@/components/TextBox.vue'
+import Workspace from './VisualWorkspace.vue'
+import TextBox from '@/components/TextBox'
+import VisualHeader from './VisualHeader'
+import VisualPages from './VisualPages'
+import VisualLayers from './VisualLayers.vue'
 
 export default {
   name: 'VisualPage',
   components: {
     LayoutPanel,
-    HeaderPanel,
+    VisualHeader,
     CollapsePanel,
     CollapseItem,
     TabPanel,
     Workspace,
-    Avatar,
-    TextBox
+    TextBox,
+    VisualPages,
+    VisualLayers
   },
   data () {
     return {
       leftTab: 0,
       rightTab: 0,
-      pages: [],
       componentStyle: {
         position: {
           top: 0,

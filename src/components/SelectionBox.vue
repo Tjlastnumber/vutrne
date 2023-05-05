@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { raf } from '@/utils/raf'
 import RectBox from './RectBox.vue'
 
 export default {
@@ -54,11 +55,11 @@ export default {
         if (this.show) return
         this.opacity -= 0.05
         if (this.opacity < 0) {
-          window.cancelAnimationFrame(fadeOut)
+          raf(fadeOut)
           this.reset()
           return
         }
-        window.requestAnimationFrame(fadeOut)
+        raf(fadeOut)
       }
       this.show = false
       fadeOut()

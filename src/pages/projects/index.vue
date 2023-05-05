@@ -6,10 +6,20 @@
       </template>
       <template #left>
         <CollapsePanel :name="'Favorites'">
-          <CollapseItem> file </CollapseItem>
+          <CollapseItem
+            v-for="project in favorites"
+            :key="project.id"
+          >
+            {{ project.name }}
+          </CollapseItem>
         </CollapsePanel>
         <CollapsePanel :name="'Projects'">
-          <CollapseItem>project1</CollapseItem>
+          <CollapseItem
+            v-for="project in projects"
+            :key="project.id"
+          >
+            {{ project.name }}
+          </CollapseItem>
         </CollapsePanel>
       </template>
       <template #default>
@@ -24,6 +34,8 @@ import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
 import HeaderPanel from '../layout/HeaderPanel.vue'
+import { mapState, mapActions } from 'vuex'
+import namespace, { init } from './store/namespace'
 
 export default {
   name: 'ProjectsPage',
@@ -35,6 +47,16 @@ export default {
   },
   data () {
     return {}
+  },
+  computed: mapState(namespace, {
+    projects: state => state.projects,
+    favorites: state => state.favorites
+  }),
+  mounted () {
+    this.init({ projects: [ { name: 'p1' }, { name: 'p2' } ], favorites: [ { name: 'f1' } ] })
+  },
+  methods: {
+    ...mapActions(namespace, [ init ])
   }
 }
 </script>
