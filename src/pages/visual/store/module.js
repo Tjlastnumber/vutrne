@@ -34,8 +34,7 @@ const mutations = {
     pages.splice(index, 0, page)
     storage.set(PAGES_KEY, pages)
   },
-  'PAGE_EDIT' ({ pages }, { index, page }) {
-    pages.splice(index, 1, page)
+  'PAGES_COMMIT' ({ pages }) {
     storage.set(PAGES_KEY, pages)
   }
 }

@@ -15,7 +15,7 @@
 import { debounce } from '@/utils'
 
 function setGlobalCursor (cssStyle) {
-  document.body.style.cursor = cssStyle
+  document.body.style.setProperty('cursor', cssStyle, 'important')
 }
 
 export default {
@@ -37,8 +37,7 @@ export default {
       x: 0,
       y: 0,
       cw: 1,
-      ch: 1,
-      cursorStyle: 'cursor-auto'
+      ch: 1
     }
   },
   computed: {

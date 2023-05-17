@@ -22,6 +22,7 @@
         v-show="right"
         class="fixed inset-y-0 z-20 px-4 bg-light dark:bg-dark"
         right
+        :min-width="250"
         :can-change-size="false"
         :class="haveHeader"
       >

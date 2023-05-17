@@ -45,7 +45,6 @@
               <TextBox
                 v-model="componentStyle.position.top"
                 text="top"
-                class="w-full"
               />
               <TextBox
                 v-model="componentStyle.position.right"

@@ -5,7 +5,7 @@
       'right-0': right,
       'left-0': left && !right
     }"
-    :style="{width: `${width}px`}"
+    :style="{width: styleWidth}"
   >
     <div
       class="w-full h-full overflow-auto"
@@ -32,7 +32,7 @@ export default {
   props: {
     minWidth: {
       type: Number,
-      default: 200
+      default: 240
     },
     maxWidth: {
       type: Number,
@@ -59,6 +59,11 @@ export default {
         x: 0,
         y: 0
       }
+    }
+  },
+  computed: {
+    styleWidth () {
+      return typeof this.width === 'number' ? `${Math.max(this.width, this.minWidth)}px` : this.width
     }
   },
   methods: {

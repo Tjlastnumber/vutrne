@@ -10,7 +10,12 @@
 <script>
 export default {
   name: 'App',
-  components: {}
+  components: {},
+  mounted () {
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+    })
+  }
 }
 </script>
 

@@ -77,9 +77,7 @@ export default {
     },
     onSelectedElement (e) {
       const activeElement = e.target
-      if (isComponent(activeElement)) {
-        this.activeElement = [ activeElement ]
-      }
+      this.activeElement = isComponent(activeElement) ? [ activeElement ] : undefined
     },
     onScale (e) {
       this.refreshTarget()

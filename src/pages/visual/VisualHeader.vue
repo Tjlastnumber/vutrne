@@ -4,6 +4,7 @@
       <div>
         <TextBox
           v-model.lazy="currentPage.name"
+          class="text-center"
           state="lable"
         />
       </div>

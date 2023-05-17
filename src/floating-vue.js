@@ -3,6 +3,7 @@ import FloatingVue from 'floating-vue'
 import 'floating-vue/dist/style.css'
 
 Vue.use(FloatingVue, {
+  instanceMove: true,
   themes: {
     'sub-menu': {
       $extend: 'dropdown',

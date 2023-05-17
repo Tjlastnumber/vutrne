@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute w-9/12 overflow-hidden bg-white dark:bg-dark translate-x-48 translate-y-20 h-5/6"
+    class="absolute w-9/12 overflow-hidden bg-white translate-x-48 translate-y-20 h-5/6"
   >
     <slot />
   </div>

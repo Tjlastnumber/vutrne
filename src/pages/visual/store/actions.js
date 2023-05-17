@@ -13,6 +13,10 @@ export function pagesDelete ({ state, commit }, index) {
   }
 }
 
+export function pagesCommit ({ commit }) {
+  commit('PAGES_COMMIT')
+}
+
 export function setCurrentPage ({ state, commit }, index) {
   if (!index || index < 0) index = 0
   if (index > state.pages.lenght) index = state.pages.lenght - 1

@@ -1,5 +1,7 @@
 <template>
-  <div class="flex items-center justify-center w-6 h-6 text-center rounded-full cursor-pointer place-content-center text-light bg-dark dark:text-light-primary dark:bg-light">
+  <div
+    class="flex items-center justify-center w-6 h-6 text-center rounded-full cursor-pointer place-content-center text-light bg-dark dark:text-light-primary dark:bg-light"
+  >
     <img
       v-if="imgUrl"
       class="rounded-full"
@@ -7,9 +9,7 @@
       height="20"
       :src="imgUrl"
     >
-    <span v-else>
-      {{ firstName }}
-    </span>
+    <span v-else>{{ firstName }}</span>
   </div>
 </template>
 
@@ -31,7 +31,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

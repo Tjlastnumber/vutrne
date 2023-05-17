@@ -12,13 +12,12 @@ export function parseMatrix (el) {
   const transform = style.transform
   if (isNone(transform)) return def
   const matrix = new DOMMatrix(style.transform)
-  const values = {
+  return {
     translateX: matrix.m41,
     translateY: matrix.m42,
     scale: Math.hypot(matrix.m11, matrix.m12),
     rotation: -Math.atan2(-matrix.m21, matrix.m11) * (180 / Math.PI)
   }
-  return values
 }
 
 export default class Rect {

@@ -6,6 +6,7 @@
     <SplitPanel
       :left="left"
       :right="right"
+      :min-width="minWidth"
       :max-width="maxWidth"
       class="bg-light dark:bg-dark"
     >
@@ -37,6 +38,10 @@ export default {
     maxWidth: {
       type: Number,
       default: 360
+    },
+    minWidth: {
+      type: Number,
+      default: 240
     }
   },
   computed: {

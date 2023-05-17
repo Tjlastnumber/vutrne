@@ -1,24 +1,21 @@
 <template>
   <div
-    class="fixed top-0 z-40 flex-none w-full border-b border-light-disabled dark:border-dark-disabled duration-500 dark:bg-dark supports-backdrop-blur:bg-white/60 bg-light"
+    class="fixed top-0 z-40 flex items-center justify-between w-full px-8 py-2 font-mono text-xs font-normal border-b h-14 max-h-14 border-light-disabled dark:border-dark-disabled duration-500 dark:bg-dark supports-backdrop-blur:bg-white/60 bg-light"
   >
-    <div class="px-8 py-4 font-mono duration-500">
-      <div
-        class="relative flex flex-row items-center justify-between text-xs font-normal"
+    <div
+      id="home-link"
+      class="text-base font-extrabold"
+    >
+      <MenuPanel
+        placement="bottom-start"
+        :menus="menus"
       >
-        <div
-          id="home-link"
-          class="text-base font-extrabold"
-        >
-          <MenuPanel :menus="menus">
-            <button>{{ appName }}</button>
-          </MenuPanel>
-          <slot name="left" />
-        </div>
-        <slot name="center" />
-        <slot name="right" />
-      </div>
+        <button>{{ appName }}</button>
+      </MenuPanel>
+      <slot name="left" />
     </div>
+    <slot name="center" />
+    <slot name="right" />
   </div>
 </template>
 
