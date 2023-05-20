@@ -1,14 +1,14 @@
 class BaseComponent {
-  constructor ({ name, el }) {
+  constructor({ name, el }) {
     this.name = name
     this.el = el
   }
 
-  get name () {
+  get name() {
     return this.name
   }
 
-  set name (name) {
+  set name(name) {
     this.name = name
   }
 }

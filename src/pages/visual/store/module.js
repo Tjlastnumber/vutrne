@@ -14,27 +14,27 @@ const state = {
 }
 
 const mutations = {
-  'CURRENT_PAGE' (state, page) {
+  'CURRENT_PAGE'(state, page) {
     state.currentPage = page
     storage.set(CURRENT_PAGE_KEY, page)
   },
-  'PAGES_ADD' ({ pages }, page) {
+  'PAGES_ADD'({ pages }, page) {
     pages.push(page)
     storage.set(PAGES_KEY, pages)
   },
-  'PAGES_DELETE' ({ pages }, index) {
+  'PAGES_DELETE'({ pages }, index) {
     pages.splice(index, 1)
     storage.set(PAGES_KEY, pages)
   },
-  'PAGES_MOVE' ({ pages }, { start, end }) {
+  'PAGES_MOVE'({ pages }, { start, end }) {
     pages.splice(end, 0, state.pages.splice(start, 1))
     storage.set(PAGES_KEY, pages)
   },
-  'PAGES_INSERT' ({ pages }, { index, page }) {
+  'PAGES_INSERT'({ pages }, { index, page }) {
     pages.splice(index, 0, page)
     storage.set(PAGES_KEY, pages)
   },
-  'PAGES_COMMIT' ({ pages }) {
+  'PAGES_COMMIT'({ pages }) {
     storage.set(PAGES_KEY, pages)
   }
 }

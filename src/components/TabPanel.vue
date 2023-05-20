@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    selectTab (index) {
+    selectTab(index) {
       this.$emit('tab-change', { tabIndex: index })
     }
   }

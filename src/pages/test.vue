@@ -3,7 +3,6 @@
     <TextBox
       :value="value"
       class="p-1 text-sm"
-
     />
   </div>
 </template>
@@ -14,7 +13,7 @@ import TextBox from '@/components/TextBox.vue'
 export default {
   name: 'TestPage',
   components: { TextBox },
-  data () {
+  data() {
     return {
       value: 'text'
     }

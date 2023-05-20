@@ -1,28 +1,28 @@
 
-export function isNumber (v) {
+export function isNumber(v) {
   return typeof v === 'number'
 }
 
-export function isNone (o) {
+export function isNone(o) {
   return o === undefined || o === null || typeof o === 'undefined'
 }
 
-export function isUndef (v) {
+export function isUndef(v) {
   return v === undefined
 }
 
-export function isObj (o) {
+export function isObj(o) {
   return o !== null && typeof o === 'object'
 }
 
-export function isString (v) {
+export function isString(v) {
   return typeof v === 'string'
 }
 
 /**
  * @param {String} v
  **/
-export function emptyString (v) {
+export function emptyString(v) {
   return isNumber(v) || isNone(v) || v.trim() === ''
 }
 
@@ -32,7 +32,7 @@ export function emptyString (v) {
  * @param {Number} wait
  * @param {Boolean} immediate
  */
-export function debounce (func, wait = 300, maxWait = 500, immediate = true) {
+export function debounce(func, wait = 300, maxWait = 500, immediate = true) {
   let timeout
   const time = new Date()
   return () => {
@@ -58,10 +58,10 @@ export function debounce (func, wait = 300, maxWait = 500, immediate = true) {
 /**
  * @param {Element} el
  */
-export function isComponent (el) {
+export function isComponent(el) {
   return !isNone(el.getAttribute('vv-component'))
 }
 
-export function generatId () {
+export function generatId() {
   return new Date().getTime()
 }

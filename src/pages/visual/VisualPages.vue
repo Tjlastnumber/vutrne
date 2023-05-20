@@ -66,7 +66,7 @@ export default {
     TextBox,
     MenuPanel
   },
-  data () {
+  data() {
     return {
       contextmenu: [
         { name: 'Delete' },
@@ -78,14 +78,14 @@ export default {
   computed: {
     ...mapState(namespace, [ 'pages', 'currentPage' ])
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.setCurrentPage()
     })
   },
   methods: {
     ...mapActions(namespace, [ 'pagesAdd', 'setCurrentPage', 'pagesCommit' ]),
-    showContextMenu (page) {
+    showContextMenu(page) {
       this.isShowContextMenu = true
       console.log(page)
     }

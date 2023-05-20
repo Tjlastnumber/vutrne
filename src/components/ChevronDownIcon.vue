@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    currentClass () {
+    currentClass() {
       return this.width + ' ' + this.height + ' ' + this.currentColor
     }
   }

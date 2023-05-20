@@ -38,7 +38,7 @@ export default {
       default: 4
     }
   },
-  data () {
+  data() {
     return {
       target: [],
       top: 0,
@@ -51,7 +51,7 @@ export default {
     /**
      * @param {Array} nv
      */
-    target (nv) {
+    target(nv) {
       if (!nv || nv.lenght === 0) {
         this.width = inital.width
         this.height = inital.height
@@ -66,17 +66,17 @@ export default {
     }
   },
   methods: {
-    refreshTarget () {
+    refreshTarget() {
       if (!this.target || this.target.length > 0) {
         const cache = this.target
         this.target = []
         this.target = cache
       }
     },
-    setTarget (el) {
+    setTarget(el) {
       this.target = el instanceof Array ? el : [ el ]
     },
-    hide () {
+    hide() {
       this.target = undefined
     }
   }

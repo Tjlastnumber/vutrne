@@ -6,10 +6,10 @@ const state = {
 }
 
 const mutations = {
-  'INIT_PROJECTS' (state, projects) {
+  'INIT_PROJECTS'(state, projects) {
     state.projects = projects
   },
-  'INIT_FAVORITES' (state, favorites) {
+  'INIT_FAVORITES'(state, favorites) {
     state.favorites = favorites
   }
 }

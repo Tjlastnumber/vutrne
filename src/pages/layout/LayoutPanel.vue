@@ -55,7 +55,7 @@ export default {
     }
   },
   computed: {
-    haveHeader () {
+    haveHeader() {
       return this.header ? 'top-14' : 'top-0'
     }
   }

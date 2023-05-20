@@ -14,7 +14,7 @@
 <script>
 import { debounce } from '@/utils'
 
-function setGlobalCursor (cssStyle) {
+function setGlobalCursor(cssStyle) {
   document.body.style.setProperty('cursor', cssStyle, 'important')
 }
 
@@ -26,7 +26,7 @@ export default {
       default: 1
     }
   },
-  data () {
+  data() {
     return {
       scaleProp: 1,
       minScale: 0.1,
@@ -41,11 +41,11 @@ export default {
     }
   },
   computed: {
-    transformStyle () {
+    transformStyle() {
       // must translateStyle first
       return `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scaleProp})`
     },
-    transform () {
+    transform() {
       return {
         target: this.$el,
         scale: this.scaleProp,
@@ -56,39 +56,39 @@ export default {
     }
   },
   watch: {
-    translateX () {
+    translateX() {
       this.x = this.translateX / this.cw
     },
-    translateY () {
+    translateY() {
       this.y = this.translateY / this.ch
     },
-    scale (nv) {
+    scale(nv) {
       this.scaleProp = nv
     }
   },
-  mounted () {
+  mounted() {
     window.addEventListener('resize', this.onWindowResize)
     window.addEventListener('mousedown', this.onMouseMiddleDown)
     window.addEventListener('wheel', this.onMouseWheel)
     this.onWindowResize()
   },
-  destroyed () {
+  destroyed() {
     window.removeEventListener('resize', this.onWindowResize)
     window.removeEventListener('mousedown', this.onMouseMiddleDown)
     window.removeEventListener('wheel', this.onMouseWheel)
   },
   methods: {
-    onWindowResize () {
+    onWindowResize() {
       const { width, height } = window.getComputedStyle(this.$el)
       this.cw = parseFloat(width)
       this.ch = parseFloat(height)
 
       this.$emit('movearea', this.transform)
     },
-    getContainerCenter () {
+    getContainerCenter() {
       return { x: this.cw / 2, y: this.ch / 2 }
     },
-    onZoom ({ scaleDelta, clientX, clientY }) {
+    onZoom({ scaleDelta, clientX, clientY }) {
       let newScale = this.scaleProp * scaleDelta
       newScale = Math.max(newScale, this.minScale)
       scaleDelta = newScale / this.scaleProp
@@ -106,7 +106,7 @@ export default {
       this.translateY = this.y * this.ch
       this.$emit('scale', this.transform)
     },
-    onMove (x, y) {
+    onMove(x, y) {
       this.translateX += x / this.scale
       this.translateY += y / this.scale
       this.$emit('movearea', this.transform)
@@ -114,7 +114,7 @@ export default {
     /**
      * @param {MouseEvent} ev
      **/
-    onMouseWheel (ev) {
+    onMouseWheel(ev) {
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
         debounce(() => this.onZoom({
@@ -126,7 +126,7 @@ export default {
         debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))()
       }
     },
-    onMouseMiddleDown (e) {
+    onMouseMiddleDown(e) {
       if (e.button === 1) {
         setGlobalCursor('grab')
         const move = (moveEvent) => {

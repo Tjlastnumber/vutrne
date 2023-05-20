@@ -48,7 +48,7 @@ export default {
       require: true
     }
   },
-  data () {
+  data() {
     return {
       isExpanded: true
     }

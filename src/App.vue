@@ -11,7 +11,7 @@
 export default {
   name: 'App',
   components: {},
-  mounted () {
+  mounted() {
     document.addEventListener('contextmenu', (e) => {
       e.preventDefault()
     })

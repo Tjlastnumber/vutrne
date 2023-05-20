@@ -11,7 +11,7 @@
 export default {
   name: 'BaseButton',
   methods: {
-    onClick (ev) {
+    onClick(ev) {
       this.$emit('click', ev)
     }
   }

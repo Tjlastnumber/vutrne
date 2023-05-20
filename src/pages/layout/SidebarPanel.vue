@@ -45,7 +45,7 @@ export default {
     }
   },
   computed: {
-    dock () {
+    dock() {
       return this.right
         ? 'right-0'
         : this.left

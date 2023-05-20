@@ -23,7 +23,7 @@ export default {
     },
     imgUrl: {
       type: String,
-      default () {
+      default() {
         const i = Math.random() * 10
         return `http://randomuser.me/portraits/women/${i.toFixed()}.jpg`
       }

@@ -75,7 +75,7 @@ export default {
     }
   },
   computed: {
-    hasChildren () {
+    hasChildren() {
       return !!this.menu.children
     }
   }

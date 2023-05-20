@@ -50,25 +50,25 @@ export default {
       default: 'edit' /* edit, label */
     }
   },
-  data () {
+  data() {
     return {
       edit: false
     }
   },
   computed: {
-    isEdit () {
+    isEdit() {
       return this.state === 'edit'
     }
   },
   methods: {
-    editMode () {
+    editMode() {
       this.edit = true
       this.$nextTick(() => {
         this.$refs.editor.focus()
         this.$refs.editor.select()
       })
     },
-    commit (e) {
+    commit(e) {
       this.edit = false
       this.$emit('input', e.target.value)
     }

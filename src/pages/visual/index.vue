@@ -103,7 +103,7 @@ export default {
     VisualPages,
     VisualLayers
   },
-  data () {
+  data() {
     return {
       leftTab: 0,
       rightTab: 0,

@@ -4,7 +4,7 @@ import BaseTextbox from './BaseTextbox.vue'
 const components = [ BaseButton, BaseTextbox ]
 
 export default {
-  install (Vue) {
+  install(Vue) {
     components.forEach(c => {
       Vue.component(c.name, c)
     })

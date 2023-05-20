@@ -14,13 +14,13 @@ export default {
     type: {
       type: String,
       default: 'default',
-      validator (v) {
+      validator(v) {
         return [ 'primary', 'default' ].includes(v)
       }
     }
   },
   computed: {
-    typeClass () {
+    typeClass() {
       let result = ''
       switch (this.type) {
         case 'primary':

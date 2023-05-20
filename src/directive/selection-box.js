@@ -26,20 +26,20 @@ function getInstance (Vue, options) { /* eslint-disable-line */
 
 export default {
 
-  install (Vue) {
+  install(Vue) {
     Vue.directive('selection-box', {
       /**
        * @param {Element} el
        */
-      bind (el, _, vnode) {
+      bind(el, _, vnode) {
         vnode.context.$selectionBox = getInstance(Vue, {})
         el.appendChild(_instance.$el)
         _instance.$parent = vnode.context
       },
-      componentUpdated (_, { value: target }) {
+      componentUpdated(_, { value: target }) {
         _instance.target = target
       },
-      update (_, binding) {
+      update(_, binding) {
         _instance.target = binding.target
       }
     })

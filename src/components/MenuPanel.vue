@@ -27,7 +27,7 @@ export default {
       default: () => []
     }
   },
-  data () {
+  data() {
     return {
       currentMenu: -1
     }

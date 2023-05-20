@@ -52,38 +52,38 @@ export default {
       default: 100
     }
   },
-  data () {
+  data() {
     return {
       hoverElement: undefined,
       activeElement: []
     }
   },
   watch: {
-    hoverElement (nv) {
+    hoverElement(nv) {
       if (isNone(nv)) {
         this.$stroke.hide()
       } else {
         this.$stroke.setTarget([ nv ])
       }
     },
-    activeElement () {
+    activeElement() {
       this.$stroke.hide()
     }
   },
   methods: {
-    refreshTarget () {
+    refreshTarget() {
       this.$stroke.refreshTarget()
       this.$refs.resizeBox.refreshTarget()
     },
-    onSelectedElement (e) {
+    onSelectedElement(e) {
       const activeElement = e.target
       this.activeElement = isComponent(activeElement) ? [ activeElement ] : undefined
     },
-    onScale (e) {
+    onScale(e) {
       this.refreshTarget()
       window.globalScale = e.scale
     },
-    onMouseMove (e) {
+    onMouseMove(e) {
       const hoverElement = e.composedpath ? e.composedpath()[0] : e.target
       if (isComponent(hoverElement)) {
         this.hoverElement = hoverElement

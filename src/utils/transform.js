@@ -1,21 +1,21 @@
 
-export function resize () {
+export function resize() {
 
 }
 
-export function scale () {
+export function scale() {
 
 }
 
-export function rotation () {
+export function rotation() {
 
 }
 
-export function translate () {
+export function translate() {
 
 }
 
-export function colliding (r1, r2) {
+export function colliding(r1, r2) {
 
 }
 
@@ -24,7 +24,7 @@ export function colliding (r1, r2) {
  *
  * @param {Array} els
  **/
-export function computeArea (els) {
+export function computeArea(els) {
   let rect = {}
   try {
     rect = els.filter(el => el.getBoundingClientRect)
@@ -61,7 +61,7 @@ export function computeArea (els) {
 /**
  * @param {HTMLElement, Array} els
  **/
-export function elementsPosition (els) {
+export function elementsPosition(els) {
   els = els instanceof Array ? els : [ els ]
   els.map((el) => { return { offsetTop: el.offsetTop, offsetLeft: el.offsetLeft } })
     .reduce((prev, current) => {

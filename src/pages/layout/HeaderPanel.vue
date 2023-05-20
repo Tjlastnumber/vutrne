@@ -26,7 +26,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'HeaderPanel',
   components: { MenuPanel },
-  data () {
+  data() {
     return { }
   },
   computed: mapState({

@@ -51,7 +51,7 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       width: 240,
       dragging: false,
@@ -62,7 +62,7 @@ export default {
     }
   },
   computed: {
-    styleWidth () {
+    styleWidth() {
       return typeof this.width === 'number' ? `${Math.max(this.width, this.minWidth)}px` : this.width
     }
   },
@@ -70,7 +70,7 @@ export default {
     /**
      * @param {MouseEvent} ev
      */
-    dragStart (ev) {
+    dragStart(ev) {
       if (!this.canChangeSize) return
 
       const dragEnd = () => {

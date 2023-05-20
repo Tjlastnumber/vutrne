@@ -28,7 +28,7 @@ export default {
     CollapseItem,
     TextBox
   },
-  data () {
+  data() {
     return {
       components: 'element'
     }

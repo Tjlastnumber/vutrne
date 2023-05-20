@@ -45,14 +45,14 @@ export default {
     CollapseItem,
     HeaderPanel
   },
-  data () {
+  data() {
     return {}
   },
   computed: mapState(namespace, {
     projects: state => state.projects,
     favorites: state => state.favorites
   }),
-  mounted () {
+  mounted() {
     this.init({ projects: [ { name: 'p1' }, { name: 'p2' } ], favorites: [ { name: 'f1' } ] })
   },
   methods: {

@@ -19,7 +19,7 @@ import RectBox from './RectBox.vue'
 
 export default {
   components: { RectBox },
-  data () {
+  data() {
     return {
       width: 0,
       height: 0,
@@ -30,26 +30,26 @@ export default {
       hide: true
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.$parent.$el.addEventListener('mousedown', this.startDrag)
     })
   },
   methods: {
-    dragging (op, np) {
+    dragging(op, np) {
       this.top = Math.min(np.y, op.y)
       this.left = Math.min(np.x, op.x)
       this.width = Math.abs(np.x - op.x)
       this.height = Math.abs(np.y - op.y)
     },
-    reset () {
+    reset() {
       this.opacity = 0
       this.top = 0
       this.left = 0
       this.width = 0
       this.height = 0
     },
-    clear () {
+    clear() {
       // 隐藏动画
       const fadeOut = () => {
         if (this.show) return
@@ -64,7 +64,7 @@ export default {
       this.show = false
       fadeOut()
     },
-    startDrag (e) {
+    startDrag(e) {
       if (e.button !== 0) {
         // 不是左键点击
         return

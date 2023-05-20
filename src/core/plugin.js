@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 class Plugin {
-  constructor (plugin) {
+  constructor(plugin) {
     const { name, components } = plugin.plugin
     this.name = name
     this.components = components
@@ -9,7 +9,7 @@ class Plugin {
     this.install(Vue)
   }
 
-  install (Vue) {
+  install(Vue) {
     const plugins = Vue.prototype.$plugins || []
     if (plugins.includes(this)) return plugins
     plugins.push(this)

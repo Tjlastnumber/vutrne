@@ -1,6 +1,6 @@
 import { isNone, isUndef } from '@/utils'
 
-export function parseMatrix (el) {
+export function parseMatrix(el) {
   const def = {
     scale: 1,
     rotate: 0,
@@ -28,13 +28,13 @@ export default class Rect {
    * @param {HTMLElement} el element元素
    * @param {Number} globalScale 全局缩放比例
    **/
-  constructor (el, globalScale) {
+  constructor(el, globalScale) {
     this.el = el
     this.globalScale = globalScale || 1
     this.init()
   }
 
-  init () {
+  init() {
     if (this.el.getBoundingClientRect) {
       const rect = this.el.getBoundingClientRect()
       this.width = rect.width
@@ -61,7 +61,7 @@ export default class Rect {
   /**
    * @param {Rect} other
    **/
-  colliding (other) {
+  colliding(other) {
     return !(
       other.top > this.bottom ||
       other.left > this.right ||
@@ -70,7 +70,7 @@ export default class Rect {
     )
   }
 
-  get offset () {
+  get offset() {
     return {
       x: this.offsetLeft,
       y: this.offsetTop,
@@ -79,7 +79,7 @@ export default class Rect {
     }
   }
 
-  get client () {
+  get client() {
     return {
       x: this.clientLeft,
       y: this.clientTop,
@@ -88,24 +88,24 @@ export default class Rect {
     }
   }
 
-  move (x, y) {
+  move(x, y) {
     this.offsetLeft += x
     this.offsetTop += y
     this.moveTo()
   }
 
-  moveTo (x, y) {
+  moveTo(x, y) {
     this.el.style.position = 'relative'
     this.el.style.left = `${x || this.offsetLeft}px`
     this.el.style.top = `${y || this.offsetTop}px`
   }
 
-  translateToPosition () {
+  translateToPosition() {
     this.transformTo()
     this.moveTo()
   }
 
-  translate (x, y) {
+  translate(x, y) {
     x = x / this.globalScale
     y = y / this.globalScale
     this.offsetLeft += x
@@ -115,12 +115,12 @@ export default class Rect {
     this.transformTo(this.#translateX, this.#translateY)
   }
 
-  resize (w, h) {
+  resize(w, h) {
     this.el.style.width = `${w}px`
     this.el.style.height = `${h}px`
   }
 
-  transformTo (x, y, scale, rotation) {
+  transformTo(x, y, scale, rotation) {
     this.el.style.willChange = 'transform'
     x = x || this.transform.translateX
     y = y || this.transform.translateY
