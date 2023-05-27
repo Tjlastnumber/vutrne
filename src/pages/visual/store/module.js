@@ -4,13 +4,20 @@ import storage from '@/utils/storage'
 
 const PAGES_KEY = 'VD_PAGES'
 const CURRENT_PAGE_KEY = 'VD_CURRENT_PAGE'
+const COMPONENT_TREE = 'VD_COMPONENT_TREE'
+const ACTIVE_ELEMENTS = 'VD_ACTIVE_ELEMENT'
+
 const _pages = storage.get(PAGES_KEY)
 const _currentPage = storage.get(CURRENT_PAGE_KEY)
+const _componentTree = storage.get(COMPONENT_TREE) ?? []
+const _activeElements = storage.get(ACTIVE_ELEMENTS) ?? []
 
 const state = {
   pages: _pages || [ { id: generatId(), name: 'page-1' } ],
   currentPage: _currentPage,
-  components: []
+  componentTree: _componentTree,
+  activeElements: _activeElements,
+  hoverElements: []
 }
 
 const mutations = {
@@ -36,6 +43,24 @@ const mutations = {
   },
   'PAGES_COMMIT'({ pages }) {
     storage.set(PAGES_KEY, pages)
+  },
+  COMPONENT_TREE_SET({ componentTree }, components) {
+    componentTree = components
+    storage.set(COMPONENT_TREE, componentTree)
+  },
+  ACTIVE_ELEMENTS({ activeElements }, els) {
+    activeElements = els instanceof Array ? els : [ els ]
+    storage.set(ACTIVE_ELEMENTS, activeElements)
+  },
+  ACTIVE_ELEMENTS_ADD({ activeElements }, el) {
+    activeElements.push(el)
+    storage.set(ACTIVE_ELEMENTS, activeElements)
+  },
+  HOVER_ELEMENTS_ADD({ hoverElements }, el) {
+    hoverElements.push(el)
+  },
+  HOVER_ELEMENTS({ hoverElements }, els) {
+    hoverElements = els
   }
 }
 

@@ -5,22 +5,8 @@
         <HeaderPanel />
       </template>
       <template #left>
-        <CollapsePanel :name="'Favorites'">
-          <CollapseItem
-            v-for="project in favorites"
-            :key="project.id"
-          >
-            {{ project.name }}
-          </CollapseItem>
-        </CollapsePanel>
-        <CollapsePanel :name="'Projects'">
-          <CollapseItem
-            v-for="project in projects"
-            :key="project.id"
-          >
-            {{ project.name }}
-          </CollapseItem>
-        </CollapsePanel>
+        <FavoritesTab />
+        <ProjectsTab />
       </template>
       <template #default>
         test
@@ -31,32 +17,17 @@
 
 <script>
 import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
-import CollapsePanel from '@/components/CollapsePanel.vue'
-import CollapseItem from '@/components/CollapseItem.vue'
 import HeaderPanel from '../layout/HeaderPanel.vue'
-import { mapState, mapActions } from 'vuex'
-import namespace, { init } from './store/namespace'
+import FavoritesTab from './FavoritesTab.vue'
+import ProjectsTab from './ProjectsTab.vue'
 
 export default {
   name: 'ProjectsPage',
   components: {
     LayoutPanel,
-    CollapsePanel,
-    CollapseItem,
-    HeaderPanel
-  },
-  data() {
-    return {}
-  },
-  computed: mapState(namespace, {
-    projects: state => state.projects,
-    favorites: state => state.favorites
-  }),
-  mounted() {
-    this.init({ projects: [ { name: 'p1' }, { name: 'p2' } ], favorites: [ { name: 'f1' } ] })
-  },
-  methods: {
-    ...mapActions(namespace, [ init ])
+    HeaderPanel,
+    FavoritesTab,
+    ProjectsTab
   }
 }
 </script>

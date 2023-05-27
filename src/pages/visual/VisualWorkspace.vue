@@ -35,6 +35,9 @@ import ResizeBox from '@/components/ResizeBox.vue'
 import Container from '@/components/Container.vue'
 import { isComponent, isNone } from '@/utils'
 
+import { mapState } from 'vuex'
+import namespace from './store/namespace'
+
 export default {
   name: 'Workspace', /* eslint-disable-line */
   components: {
@@ -57,6 +60,9 @@ export default {
       hoverElement: undefined,
       activeElement: []
     }
+  },
+  computed: {
+    ...mapState(namespace, [ 'hoverElements', 'activeElements' ])
   },
   watch: {
     hoverElement(nv) {

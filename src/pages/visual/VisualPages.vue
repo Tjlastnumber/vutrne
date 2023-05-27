@@ -85,9 +85,8 @@ export default {
   },
   methods: {
     ...mapActions(namespace, [ 'pagesAdd', 'setCurrentPage', 'pagesCommit' ]),
-    showContextMenu(page) {
+    showContextMenu() {
       this.isShowContextMenu = true
-      console.log(page)
     }
   }
 }

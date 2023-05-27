@@ -7,7 +7,7 @@ import visual from '@/pages/visual/store/module'
 Vue.use(Vuex)
 
 const state = {
-  appName: 'Visuel',
+  appName: 'Vutrne',
   menus: [ {
     name: 'Dashboard',
     to: '/projects'

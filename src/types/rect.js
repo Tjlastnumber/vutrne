@@ -1,24 +1,4 @@
-import { isNone, isUndef } from '@/utils'
-
-export function parseMatrix(el) {
-  const def = {
-    scale: 1,
-    rotate: 0,
-    translateX: 0,
-    translateY: 0
-  }
-  if (isUndef(el)) return def
-  const style = window.getComputedStyle(el, null)
-  const transform = style.transform
-  if (isNone(transform)) return def
-  const matrix = new DOMMatrix(style.transform)
-  return {
-    translateX: matrix.m41,
-    translateY: matrix.m42,
-    scale: Math.hypot(matrix.m11, matrix.m12),
-    rotation: -Math.atan2(-matrix.m21, matrix.m11) * (180 / Math.PI)
-  }
-}
+import { parseMatrix } from '@/utils/transform'
 
 export default class Rect {
   #translateX = 0
