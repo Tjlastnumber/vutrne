@@ -1,7 +1,6 @@
 <script>
-import CollapseItem from '@/components/CollapseItem.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
-import TextBox from '@/components/TextBox.vue'
+import MenuLink from '@/components/MenuLink.vue'
 
 import { mapState, mapActions } from 'vuex'
 import namespace, { init } from './store/namespace'
@@ -10,14 +9,13 @@ export default {
   name: 'ProjectsTab',
   components: {
     CollapsePanel,
-    CollapseItem,
-    TextBox
+    MenuLink
   },
   computed: mapState(namespace, {
     projects: state => state.projects
   }),
   mounted() {
-    this.init({ projects: [ { name: 'p1' }, { name: 'p2' } ] })
+    this.init({ projects: [ { name: 'p1', path: '1' }, { name: 'p2', path: '2' } ] })
   },
   methods: {
     ...mapActions(namespace, [ init ])
@@ -27,14 +25,14 @@ export default {
 
 <template>
   <CollapsePanel name="Projects">
-    <CollapseItem
-      v-for="project in projects"
-      :key="project.id"
-    >
-      <TextBox
-        v-model.lazy="project.name"
-        state="label"
-      />
-    </CollapseItem>
+    <div class="flex flex-col pt-4 space-y-2">
+      <MenuLink
+        v-for="project in projects"
+        :key="project.id"
+        :to="`/visual/${project.path}`"
+      >
+        {{ project.name }}
+      </MenuLink>
+    </div>
   </CollapsePanel>
 </template>

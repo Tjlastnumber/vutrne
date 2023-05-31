@@ -3,6 +3,12 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+const visual = {
+  path: '/visual/:id',
+  name: 'Visual',
+  component: () => import('@/pages/visual/index.vue')
+}
+
 const projects = {
   path: '/projects',
   name: 'Projcets',
@@ -26,12 +32,6 @@ const projects = {
   //     component: () => import('')
   //   }
   // ]
-}
-
-const visual = {
-  path: '/visual',
-  name: 'Visual',
-  component: () => import('@/pages/visual/index.vue')
 }
 
 const test = {

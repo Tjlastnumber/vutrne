@@ -19,7 +19,7 @@ export default {
     },
     deep: {
       type: Number,
-      default: 1
+      default: 0
     }
   },
   data() {
@@ -50,6 +50,9 @@ export default {
     },
     expanded() {
       return !!this.expansionMap[this.node.id]
+    },
+    hasChildren() {
+      return !!this.node.children
     }
   },
   methods: {
@@ -96,31 +99,36 @@ export default {
     class="text-xs font-normal text-center rounded-md"
     :class="{ 'bg-primary/50': actived }"
   >
-    <div>
+    <div
+      class="py-2 pl-1 rounded-t-md"
+      :class="{ 'bg-primary': actived, 'bg-dark-hover': hovered, 'rounded-md': !expanded || hovered }"
+      @mouseenter="enter"
+      @mouseleave="leave"
+      @click.left="handleActived"
+    >
       <div
-        class="flex flex-row p-1 space-x-1 rounded-t-md"
-        :class="{ 'bg-primary': actived, 'bg-dark-hover': hovered, 'rounded-md': !expanded || hovered }"
-        :style="{ paddingLeft: `${15 * deep}px` }"
-        @mouseenter="enter"
-        @mouseleave="leave"
-        @click.left="handleActived"
+        class="flex flex-row space-x-1"
+        :style="{ paddingLeft: `${16 * deep}px` }"
       >
         <ChevronDownIcon
-          v-show="node.children"
+          v-show="hasChildren"
           :expand="expanded"
           @click.native.stop.prevent="onToggle"
         />
-        <span class="before:content-['<'] after:content-['>']">{{ node.name }}</span>
+        <span
+          class="select-none before:content-['<'] after:content-['>']"
+          :class="{ 'pl-4': !hasChildren }"
+        >{{ node.name }}</span>
       </div>
-
-      <!-- children -->
-      <NodeInstance
-        v-for="node in node.children"
-        v-show="expanded"
-        :key="node.id"
-        :node="node"
-        :deep="deep + 1"
-      />
     </div>
+
+    <!-- children -->
+    <NodeInstance
+      v-for="node in node.children"
+      v-show="expanded"
+      :key="node.id"
+      :node="node"
+      :deep="deep + 1"
+    />
   </div>
 </template>

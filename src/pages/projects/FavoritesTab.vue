@@ -1,15 +1,15 @@
 <script>
-import CollapseItem from '@/components/CollapseItem.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 
 import { mapState, mapActions } from 'vuex'
 import namespace, { init } from './store/namespace'
+import MenuLink from '@/components/MenuLink.vue'
 
 export default {
   name: 'FavoritesTab',
   components: {
     CollapsePanel,
-    CollapseItem
+    MenuLink
   },
   computed: mapState(namespace, {
     favorites: state => state.favorites
@@ -30,13 +30,15 @@ export default {
 
 <template>
   <CollapsePanel :name="'Favorites'">
-    <CollapseItem
-      v-for="project in favorites"
-      :key="project.id"
-    >
-      <div class="p-2">
+    <div class="flex flex-col pt-4 space-y-2">
+      <MenuLink
+        v-for="project in favorites"
+        :key="project.id"
+        class="flex"
+        :to="`/visual/${project.path}`"
+      >
         {{ project.name }}
-      </div>
-    </CollapseItem>
+      </MenuLink>
+    </div>
   </CollapsePanel>
 </template>

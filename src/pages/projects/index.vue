@@ -8,7 +8,7 @@
         <HeaderPanel />
       </template>
       <template #left>
-        <div class="flex flex-col py-1">
+        <div class="flex flex-col py-4 space-y-2">
           <RecentsLink />
           <DraftsLink />
         </div>

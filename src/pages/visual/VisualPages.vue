@@ -8,19 +8,22 @@
         ✚
       </DefaultButton>
     </template>
-    <CollapseItem
-      v-for="(page, index) in pages"
-      :key="page.id"
-      :selected="currentPage === page"
-      @click.native.capture="setCurrentPage(index)"
-      @contextmenu.prevent.native="isShowContextMenu = true"
-    >
-      <TextBox
-        v-model.lazy="page.name"
-        state="label"
-        @input="pagesCommit()"
-      />
-    </CollapseItem>
+    <div class="pt-4 space-y-1">
+      <CollapseItem
+        v-for="(page, index) in pages"
+        :key="page.id"
+        :selected="currentPage === page"
+        @click.native.capture="setCurrentPage(index)"
+        @contextmenu.prevent.native="isShowContextMenu = true"
+      >
+        <TextBox
+          v-model.lazy="page.name"
+          state="label"
+          @input="pagesCommit()"
+        />
+      </CollapseItem>
+    </div>
+
     <!-- <VDropdown -->
     <!--   :distance="0" -->
     <!--   :skidding="0" -->

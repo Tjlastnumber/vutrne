@@ -18,7 +18,7 @@ export default {
 <template>
   <RouterLink
     :to="to"
-    class="w-full p-2 text-xs rounded-md dark:hover:bg-dark-hover hover:cursor-default"
+    class="flex w-full p-2 text-xs rounded-md dark:hover:bg-dark-hover hover:bg-light-disabled hover:cursor-default"
   >
     <slot />
   </RouterLink>

@@ -1,6 +1,6 @@
 <script>
 // import CollapsePanel from '@/components/CollapsePanel'
-import NodeInstance from './NodeInstance'
+import NodeInstance from './NodeInstance.vue'
 
 import { createNamespacedHelpers } from 'vuex'
 import namespace from '../store/namespace'
@@ -21,7 +21,7 @@ export default {
 
 <template>
   <div>
-    <div class="pt-2">
+    <div class="pt-4 border-t border-light-disabled dark:border-dark-disabled">
       <NodeInstance
         v-for="node in nodeTree"
         :key="node.id"

@@ -12,6 +12,15 @@ const _testNodes = [ {
     children: [ {
       id: 2,
       name: 'Text'
+    }, {
+      id: 5,
+      name: 'Container',
+      children: [
+        {
+          id: 6,
+          name: 'Text'
+        }
+      ]
     } ]
   } ]
 }, {

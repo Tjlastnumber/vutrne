@@ -8,7 +8,7 @@
     <main class="w-full h-full">
       <!-- defualt -->
       <div
-        class="fixed inset-y-0 z-auto flex flex-row w-full h-full bg-light dark:bg-dark"
+        class="fixed inset-y-0 z-auto flex flex-row w-full h-full dark:bg-light-secondary"
         :class="haveHeader"
       >
         <!-- left -->
@@ -22,7 +22,7 @@
         </SplitPanel>
         <!-- content -->
         <div
-          class="relative z-10 flex-initial basis-full"
+          class="relative z-10 flex-initial basis-full dark:bg-light-secondary"
         >
           <slot name="content" />
         </div>

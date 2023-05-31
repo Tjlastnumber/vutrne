@@ -1,7 +1,6 @@
 <template>
   <div
-    class="flex flex-col pt-4 border-t select-none border-light-disabled dark:border-dark-disabled space-y-1"
-    :class="isExpanded ? '' : 'pb-4'"
+    class="flex flex-col py-4 border-t select-none border-light-disabled dark:border-dark-disabled space-y-1"
   >
     <div
       class="flex flex-row items-center justify-between text-xs cursor-pointer text-light-primary hover:text-black dark:text-dark-primary dark:hover:text-white"
@@ -21,8 +20,8 @@
     </div>
 
     <div
-      v-show="isExpanded"
-      class="pb-4 space-y-1"
+      v-if="isExpanded"
+      style="margin: 0;"
     >
       <slot />
     </div>
