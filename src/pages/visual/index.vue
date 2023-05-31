@@ -1,3 +1,65 @@
+<script>
+import LayoutPanel from '../layout/LayoutPanel.vue'
+import CollapsePanel from '@/components/CollapsePanel.vue'
+import CollapseItem from '@/components/CollapseItem.vue'
+import TabPanel from '../../components/TabPanel.vue'
+import Workspace from './VisualWorkspace.vue'
+import TextBox from '@/components/TextBox'
+import VisualHeader from './VisualHeader'
+import VisualPages from './VisualPages'
+import VisualLayers from './VisualLayers'
+import VisualComponents from './VisualComponents'
+
+import { createNamespacedHelpers } from 'vuex'
+import namespace from './store/namespace'
+
+const { mapState } = createNamespacedHelpers(namespace)
+
+export default {
+  name: 'VisualIndex',
+  components: {
+    LayoutPanel,
+    CollapsePanel,
+    CollapseItem,
+    TabPanel,
+    Workspace,
+    TextBox,
+    VisualHeader,
+    VisualPages,
+    VisualLayers,
+    VisualComponents
+  },
+  data() {
+    return {
+      leftTab: 0,
+      rightTab: 0,
+      componentStyle: {
+        position: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        }
+      },
+      activeElement: undefined,
+      hoverElements: null
+    }
+  },
+  computed: {
+    ...mapState({
+      componentTree: state => state.componentTree,
+      activeElements: state => state.activeElements
+    })
+  },
+  watch: { },
+  methods: {
+    handleActiveElement(el) {
+    }
+  }
+}
+
+</script>
+
 <template>
   <div>
     <LayoutPanel>
@@ -21,7 +83,11 @@
 
           <template #Assets>
             <CollapsePanel :name="'Components'">
-              <CollapseItem> Components </CollapseItem>
+              <VisualComponents
+                v-for="component in componentTree"
+                :key="component.id"
+                :component="component"
+              />
             </CollapsePanel>
             <CollapsePanel :name="'Style'">
               <CollapseItem> h1 </CollapseItem>
@@ -78,44 +144,3 @@
     </LayoutPanel>
   </div>
 </template>
-
-<script>
-import LayoutPanel from '../layout/LayoutPanel.vue'
-import CollapsePanel from '@/components/CollapsePanel.vue'
-import CollapseItem from '@/components/CollapseItem.vue'
-import TabPanel from '../../components/TabPanel.vue'
-import Workspace from './VisualWorkspace.vue'
-import TextBox from '@/components/TextBox'
-import VisualHeader from './VisualHeader'
-import VisualPages from './VisualPages'
-import VisualLayers from './VisualLayers.vue'
-
-export default {
-  name: 'VisualPage',
-  components: {
-    LayoutPanel,
-    VisualHeader,
-    CollapsePanel,
-    CollapseItem,
-    TabPanel,
-    Workspace,
-    TextBox,
-    VisualPages,
-    VisualLayers
-  },
-  data() {
-    return {
-      leftTab: 0,
-      rightTab: 0,
-      componentStyle: {
-        position: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        }
-      }
-    }
-  }
-}
-</script>

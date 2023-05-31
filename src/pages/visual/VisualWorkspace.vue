@@ -1,34 +1,3 @@
-<template>
-  <div
-    v-stroke="hoverElement"
-    v-selection-box
-    class="top-0 left-0 w-full h-full bg-light-disabled dark:bg-dark/80"
-    @mousemove="onMouseMove"
-  >
-    <Zoom
-      class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
-      @scale="onScale"
-      @movearea="refreshTarget()"
-    >
-      <Container
-        @mousedown.left.native="onSelectedElement"
-      >
-        <img
-          ref="img"
-          vv-component
-          src="https://picsum.photos/1024/800"
-          width="500"
-          height="300"
-        >
-      </Container>
-    </Zoom>
-    <ResizeBox
-      ref="resizeBox"
-      :target="activeElement"
-    />
-  </div>
-</template>
-
 <script>
 import Zoom from '@/components/Zoom.vue'
 import ResizeBox from '@/components/ResizeBox.vue'
@@ -62,7 +31,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(namespace, [ 'hoverElements', 'activeElements' ])
+    ...mapState(namespace, [ 'hoverNodes', 'activeNodes' ])
   },
   watch: {
     hoverElement(nv) {
@@ -99,6 +68,33 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<template>
+  <div
+    v-stroke="hoverElement"
+    v-selection-box
+    class="top-0 left-0 w-full h-full bg-light-disabled dark:bg-dark/80"
+    @mousemove="onMouseMove"
+  >
+    <Zoom
+      class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
+      @scale="onScale"
+      @movearea="refreshTarget()"
+    >
+      <Container
+        @mousedown.left.native="onSelectedElement"
+      >
+        <img
+          ref="img"
+          vv-component
+          src="https://picsum.photos/1024/800"
+          width="500"
+          height="300"
+        >
+      </Container>
+    </Zoom>
+    <ResizeBox
+      ref="resizeBox"
+      :target="activeElement"
+    />
+  </div>
+</template>

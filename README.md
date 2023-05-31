@@ -1,24 +1,14 @@
-# visuel
+# Vutrne
 
-## Project setup
-```
-npm install
-```
+## Fauter
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- [ ] Visual edit dom
+- [ ] Visual edit component
+- [ ] Visual component extraction
+- [ ] Element drag
+- [ ] Element resize
+- [ ] Element transform
+- [ ] Page zoom
+- [ ] Page ruler
+- [ ] 
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

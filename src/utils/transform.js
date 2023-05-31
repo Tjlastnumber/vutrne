@@ -24,8 +24,9 @@ export function colliding(r1, r2) {
  * 获取元素集合的矩形累加大小
  *
  * @param {Array} els
+ * @returns {object} {widht, height, top, left, right, bottom}
  **/
-export function computeArea(els) {
+export function calcArea(els) {
   let rect = {}
   try {
     rect = els.filter(el => el.getBoundingClientRect)
@@ -45,9 +46,11 @@ export function computeArea(els) {
         const left = Math.min(pre.left, cur.left)
         const right = Math.max(pre.right, cur.right)
         const bottom = Math.max(pre.bottom, cur.bottom)
+        const width = Math.abs(right - left)
+        const height = Math.abs(bottom - top)
         return {
-          width: Math.abs(right - left),
-          height: Math.abs(bottom - top),
+          width,
+          height,
           top,
           left,
           right,

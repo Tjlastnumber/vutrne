@@ -1,16 +1,3 @@
-<template>
-  <div
-    class="bg-transparent border-dark-primary will-change-transform"
-  >
-    <div
-      class="w-full h-full select-none origin-center zoomer will-change-transform"
-      :style="`willChange: transform; transform: ${transformStyle}`"
-    >
-      <slot />
-    </div>
-  </div>
-</template>
-
 <script>
 import { debounce } from '@/utils'
 
@@ -149,4 +136,15 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<template>
+  <div
+    class="bg-transparent border-dark-primary will-change-transform"
+  >
+    <div
+      class="w-full h-full select-none origin-center zoomer will-change-transform"
+      :style="`willChange: transform; transform: ${transformStyle}`"
+    >
+      <slot />
+    </div>
+  </div>
+</template>

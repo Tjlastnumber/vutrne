@@ -22,8 +22,10 @@ import Avatar from '@/components/Avatar.vue'
 import HeaderPanel from '../layout/HeaderPanel.vue'
 import TextBox from '@/components/TextBox.vue'
 
-import { mapState } from 'vuex'
 import namespace from './store/namespace'
+import { createNamespacedHelpers } from 'vuex'
+
+const { mapState } = createNamespacedHelpers(namespace)
 
 export default {
   name: 'VisualHeader',
@@ -33,9 +35,9 @@ export default {
     TextBox
   },
   computed: {
-    ...mapState(namespace, [ 'currentPage' ])
-  },
-  methods: {
+    ...mapState({
+      currentPage: state => state.currentPage
+    })
   }
 }
 </script>

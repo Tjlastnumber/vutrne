@@ -22,3 +22,21 @@ export function setCurrentPage({ state, commit }, index) {
   if (index > state.pages.lenght) index = state.pages.lenght - 1
   commit('CURRENT_PAGE', state.pages[index])
 }
+
+export function activeNodes({ state, commit }, node) {
+  commit('ACTIVE_NODES', node)
+}
+
+export function toggleNode({ commit, dispatch }, { node, expanded, recursive }) {
+  commit('TOGGLE_NODE', { id: node.id, expanded })
+  if (recursive) {
+    const children = node.children ?? []
+    children.forEach(children => {
+      dispatch('toggleNode', {
+        node: children,
+        expanded,
+        recursive
+      })
+    })
+  }
+}

@@ -19,7 +19,7 @@ const projects = {
 const visual = {
   path: '/visual',
   name: 'Visual',
-  component: () => import('@/pages/visual/index')
+  component: () => import('@/pages/visual/index.vue')
 }
 
 const test = {

@@ -14,7 +14,7 @@
 
 <script>
 import RectBox from './RectBox.vue'
-import { computeArea } from '@/utils/transform'
+import { calcArea } from '@/utils/transform'
 
 const inital = {
   width: 0,
@@ -58,7 +58,7 @@ export default {
         this.top = inital.top
         this.left = inital.left
       }
-      const rect = computeArea(nv)
+      const rect = calcArea(nv)
       this.width = rect.width
       this.height = rect.height
       this.top = rect.top

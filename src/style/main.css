@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 /* Style */
+@layer base {
+  html {
+    font-family: Quotes, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .v-popper--theme-dropdown .v-popper__inner {
     border: none;

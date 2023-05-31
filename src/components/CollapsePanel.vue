@@ -8,12 +8,7 @@
       @click="isExpanded = !isExpanded"
     >
       <div class="flex flex-row items-center space-x-1">
-        <div
-          :class="isExpanded ? '' : '-rotate-90'"
-          class="duration-300"
-        >
-          <ChevronDownIcon />
-        </div>
+        <ChevronDownIcon :expand="isExpanded" />
         <div class="font-bold leading-5">
           <slot name="header">
             {{ name }}
@@ -27,7 +22,7 @@
 
     <div
       v-show="isExpanded"
-      class="pt-2 pb-2 space-y-1"
+      class="pb-4 space-y-1"
     >
       <slot />
     </div>

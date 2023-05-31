@@ -15,7 +15,7 @@ module.exports = {
         disabled: 'rgba(0, 0, 0, .10)'
       },
       dark: {
-        DEFAULT: '#202020',
+        DEFAULT: '#1A1A1A',
         primary: 'rgba(255, 255, 255, .87)',
         secondary: 'rgba(255, 255, 255, .70)',
         active: 'rgba(255, 255, 255, .22)',
