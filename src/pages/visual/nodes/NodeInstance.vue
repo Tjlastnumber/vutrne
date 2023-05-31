@@ -92,11 +92,14 @@ export default {
 </script>
 
 <template>
-  <div class="text-xs font-normal text-center rounded-md">
+  <div
+    class="text-xs font-normal text-center rounded-md"
+    :class="{ 'bg-primary/50': actived }"
+  >
     <div>
       <div
-        class="flex flex-row p-1 space-x-1 rounded-md"
-        :class="{ 'bg-primary': actived, 'bg-dark-hover': hovered }"
+        class="flex flex-row p-1 space-x-1 rounded-t-md"
+        :class="{ 'bg-primary': actived, 'bg-dark-hover': hovered, 'rounded-md': !expanded || hovered }"
         :style="{ paddingLeft: `${15 * deep}px` }"
         @mouseenter="enter"
         @mouseleave="leave"
@@ -115,7 +118,6 @@ export default {
         v-for="node in node.children"
         v-show="expanded"
         :key="node.id"
-        :class="{ 'bg-primary/50': actived }"
         :node="node"
         :deep="deep + 1"
       />

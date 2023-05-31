@@ -1,31 +1,3 @@
-<template>
-  <div
-    class="absolute inset-y-0 z-10"
-    :class="{
-      'right-0': right,
-      'left-0': left && !right
-    }"
-    :style="{width: styleWidth}"
-  >
-    <div
-      class="w-full h-full overflow-auto"
-    >
-      <slot />
-    </div>
-    <div
-      class="absolute top-0 z-20 w-1 h-full border-light-disabled dark:border-dark-disabled"
-      :class="{
-        'left-0': right,
-        'border-l': right,
-        'right-0': !right && left,
-        'border-r': !right && left,
-        'cursor-col-resize': canChangeSize
-      }"
-      @mousedown="dragStart"
-    />
-  </div>
-</template>
-
 <script>
 export default {
   name: 'SplitPanel',
@@ -48,7 +20,7 @@ export default {
     },
     canChangeSize: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data() {
@@ -71,7 +43,7 @@ export default {
      * @param {MouseEvent} ev
      */
     dragStart(ev) {
-      if (!this.canChangeSize) return
+      if (this.canChangeSize) return
 
       const dragEnd = () => {
         window.removeEventListener('mousemove', dragMove)
@@ -90,6 +62,34 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div
+    class="inset-y-0 z-10"
+    :class="{
+      'right-0': right,
+      'left-0': left && !right
+    }"
+    :style="{width: styleWidth}"
+  >
+    <div
+      class="w-full h-full overflow-auto"
+    >
+      <slot />
+    </div>
+    <div
+      class="absolute top-0 z-20 w-1 h-full border-light-disabled dark:border-dark-disabled"
+      :class="{
+        'left-0': right,
+        'border-l': right,
+        'right-0': !right && left,
+        'border-r': !right && left,
+        'cursor-col-resize': !canChangeSize
+      }"
+      @mousedown="dragStart"
+    />
+  </div>
+</template>
 
 <style>
 

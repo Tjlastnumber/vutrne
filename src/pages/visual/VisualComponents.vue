@@ -95,7 +95,7 @@ export default {
 
 <template>
   <div class="text-xs font-normal text-center rounded-md">
-    <div>
+    <div :class="{ 'bg-primary/50': actived }">
       <div
         class="flex flex-row p-1 space-x-1 rounded-md"
         :class="{ 'bg-primary': actived, 'bg-dark-hover': hovered }"
@@ -117,7 +117,6 @@ export default {
         v-for="component in component.children"
         v-show="expanded"
         :key="component.id"
-        :class="{ 'bg-primary/50': actived }"
         :component="component"
         :deep="deep + 1"
       />

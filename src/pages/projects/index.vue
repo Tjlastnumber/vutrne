@@ -1,25 +1,35 @@
 <template>
   <div id="projects">
-    <LayoutPanel :right="false">
+    <LayoutPanel
+      :right="false"
+      :fix-left="true"
+    >
       <template #header>
         <HeaderPanel />
       </template>
       <template #left>
+        <div class="flex flex-col py-1">
+          <RecentsLink />
+          <DraftsLink />
+        </div>
         <FavoritesTab />
         <ProjectsTab />
       </template>
-      <template #default>
-        test
+      <template #content>
+        <RouterView />
       </template>
     </LayoutPanel>
   </div>
 </template>
 
 <script>
-import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
-import HeaderPanel from '../layout/HeaderPanel.vue'
-import FavoritesTab from './FavoritesTab.vue'
-import ProjectsTab from './ProjectsTab.vue'
+import LayoutPanel from '@/pages/layout/LayoutPanel'
+import HeaderPanel from '../layout/HeaderPanel'
+import FavoritesTab from './FavoritesTab'
+import ProjectsTab from './ProjectsTab'
+import RecentsLink from './recents/RecentsLink'
+import DraftsLink from './drafts/DraftsLink'
+import { RouterView } from 'vue-router'
 
 export default {
   name: 'ProjectsPage',
@@ -27,7 +37,10 @@ export default {
     LayoutPanel,
     HeaderPanel,
     FavoritesTab,
-    ProjectsTab
+    ProjectsTab,
+    RecentsLink,
+    DraftsLink,
+    RouterView
   }
 }
 </script>

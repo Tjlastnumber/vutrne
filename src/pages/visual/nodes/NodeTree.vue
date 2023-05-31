@@ -1,5 +1,5 @@
 <script>
-import CollapsePanel from '@/components/CollapsePanel'
+// import CollapsePanel from '@/components/CollapsePanel'
 import NodeInstance from './NodeInstance'
 
 import { createNamespacedHelpers } from 'vuex'
@@ -9,7 +9,6 @@ const { mapState } = createNamespacedHelpers(namespace)
 export default {
   name: 'NodeTree',
   components: {
-    CollapsePanel,
     NodeInstance
   },
   computed: {
@@ -17,20 +16,17 @@ export default {
       nodeTree: state => state.nodeTree
     })
   }
-  // script code...
 }
 </script>
 
 <template>
-  <CollapsePanel name="root">
-    <NodeInstance
-      v-for="node in nodeTree"
-      :key="node.id"
-      :node="node"
-    />
-  </CollapsePanel>
+  <div>
+    <div class="pt-2">
+      <NodeInstance
+        v-for="node in nodeTree"
+        :key="node.id"
+        :node="node"
+      />
+    </div>
+  </div>
 </template>
-
-<style scoped>
-/* code... */
-</style>

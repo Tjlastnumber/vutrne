@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 z-40 flex items-center justify-between w-full px-8 py-2 font-mono text-xs font-normal border-b h-14 max-h-14 border-light-disabled dark:border-dark-disabled duration-500 dark:bg-dark supports-backdrop-blur:bg-white/60 bg-light"
+    class="fixed top-0 z-50 flex items-center justify-between w-full px-8 py-2 font-mono text-xs font-normal border-b h-14 max-h-14 border-light-disabled dark:border-dark-disabled duration-500 dark:bg-dark supports-backdrop-blur:bg-white/60 bg-light"
   >
     <div
       id="home-link"

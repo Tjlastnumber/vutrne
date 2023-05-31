@@ -1,33 +1,45 @@
 <template>
   <div>
-    <header v-show="header">
+    <header
+      v-show="header"
+    >
       <slot name="header" />
     </header>
     <main class="w-full h-full">
-      <!-- left panel -->
-      <SplitPanel
-        v-show="left"
-        class="fixed inset-y-0 z-20 px-4 bg-light dark:bg-dark"
-        left
+      <!-- defualt -->
+      <div
+        class="fixed inset-y-0 z-auto flex flex-row w-full h-full bg-light dark:bg-dark"
         :class="haveHeader"
       >
-        <slot name="left" />
-      </SplitPanel>
-      <!-- main panel -->
-      <div class="fixed inset-0 w-full h-full">
-        <slot />
+        <!-- left -->
+        <SplitPanel
+          v-show="left"
+          class="relative z-40 flex-none px-4 bg-light dark:bg-dark"
+          left
+          :can-change-size="fixLeft"
+        >
+          <slot name="left" />
+        </SplitPanel>
+        <!-- content -->
+        <div
+          class="relative z-10 flex-initial basis-full"
+        >
+          <slot name="content" />
+        </div>
+        <div class="fixed inset-0 z-20 w-full h-full">
+          <slot />
+        </div>
+        <!-- right -->
+        <SplitPanel
+          v-show="right"
+          class="relative z-40 flex-none px-4 bg-light dark:bg-dark"
+          right
+          :can-change-size="fixRight"
+          :min-width="250"
+        >
+          <slot name="right" />
+        </SplitPanel>
       </div>
-      <!-- right panel -->
-      <SplitPanel
-        v-show="right"
-        class="fixed inset-y-0 z-20 px-4 bg-light dark:bg-dark"
-        right
-        :min-width="250"
-        :can-change-size="false"
-        :class="haveHeader"
-      >
-        <slot name="right" />
-      </SplitPanel>
     </main>
     <footer />
   </div>
@@ -52,6 +64,14 @@ export default {
     right: {
       type: Boolean,
       default: true
+    },
+    fixLeft: {
+      type: Boolean,
+      default: false
+    },
+    fixRight: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

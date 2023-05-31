@@ -6,7 +6,19 @@ Vue.use(VueRouter)
 const projects = {
   path: '/projects',
   name: 'Projcets',
-  component: () => import('@/pages/projects/index.vue')
+  component: () => import('@/pages/projects/index.vue'),
+  children: [
+    {
+      path: 'recents',
+      name: 'Recents',
+      component: () => import('@/pages/projects/recents/index.vue')
+    },
+    {
+      path: 'drafts',
+      name: 'Drafts',
+      component: () => import('@/pages/projects/drafts/index.vue')
+    }
+  ]
   // children: [
   //   {
   //     path: '/folder',

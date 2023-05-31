@@ -57,7 +57,7 @@ export default {
 
 <template>
   <div>
-    <LayoutPanel>
+    <LayoutPanel :fix-right="true">
       <template #header>
         <VisualHeader />
       </template>
