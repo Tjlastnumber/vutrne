@@ -4,16 +4,16 @@ import { isUndef } from '@/utils'
 import ChevronDownIcon from '@/components/ChevronDownIcon'
 
 import { createNamespacedHelpers } from 'vuex'
-import namespace, { useNamespace } from './store/namespace'
+import namespace, { useNamespace } from '../store/namespace'
 const { mapState } = createNamespacedHelpers(namespace)
 
 export default {
-  name: 'VisualComponents',
+  name: 'NodeInstance',
   components: {
     ChevronDownIcon
   },
   props: {
-    component: {
+    node: {
       type: Object,
       default: undefined
     },
@@ -33,47 +33,45 @@ export default {
       expansionMap: state => state.expansionMap
     }),
     activeCss() {
-      return (!isUndef(this.activeElement) && this.activeElement.id === this.component.id)
+      return (!isUndef(this.activeElement) && this.activeElement.id === this.node.id)
         ? 'bg-primary'
         : ''
     },
     hoverCss() {
-      return this.hover || (!isUndef(this.hoverElement) && this.component.id === this.hoverElement.id)
+      return this.hover || (!isUndef(this.hoverElement) && this.node.id === this.hoverElement.id)
         ? 'bg-dark-hover'
         : ''
     },
     actived() {
-      return !!this.activeNodes[this.component.id]
+      return !!this.activeNodes[this.node.id]
     },
     hovered() {
-      return !!this.hoverNodes[this.component.id]
+      return !!this.hoverNodes[this.node.id]
     },
     expanded() {
-      return !!this.expansionMap[this.component.id]
+      return !!this.expansionMap[this.node.id]
     }
   },
   methods: {
     enter() {
-      this.$store.commit(useNamespace('HOVER_NODES'), this.component)
-      this.$emit('in', { target: this.component })
+      this.$store.commit(useNamespace('HOVER_NODES'), this.node)
+      this.$emit('in', { target: this.node })
     },
     leave() {
-      this.$store.commit(useNamespace('HOVER_NODES_DELETE'), this.component)
+      this.$store.commit(useNamespace('HOVER_NODES_DELETE'), this.node)
       this.$emit('out')
     },
     /**
      * @param {MouseEvent} e
      **/
     handleActived(e) {
-      if (e.shiftKey) {
-        this.$store.commit('visual/ACTIVE_NODES_PUSH', this.component)
-      } else {
-        this.$store.commit('visual/ACTIVE_NODES', this.component)
-      }
-      this.$emit('active', { target: this.component })
+      this.$store.dispatch(useNamespace('activeNodes'), {
+        node: this.node,
+        accumulative: e.shiftKey
+      })
+      this.$emit('active', { target: this.node })
     },
     onToggle(e) {
-      console.log('toggle')
       this.toggleNode(!this.expanded, e.altKey)
     },
     onExpand() {
@@ -84,7 +82,7 @@ export default {
     },
     toggleNode(expanded, recursive = false) {
       this.$store.dispatch('visual/toggleNode', {
-        node: this.component,
+        node: this.node,
         expanded,
         recursive
       })
@@ -105,20 +103,20 @@ export default {
         @click.left="handleActived"
       >
         <ChevronDownIcon
-          v-show="component.children"
+          v-show="node.children"
           :expand="expanded"
           @click.native.stop.prevent="onToggle"
         />
-        <span>{{ component.name }}</span>
+        <span class="before:content-['<'] after:content-['>']">{{ node.name }}</span>
       </div>
 
       <!-- children -->
-      <VisualComponents
-        v-for="component in component.children"
+      <NodeInstance
+        v-for="node in node.children"
         v-show="expanded"
-        :key="component.id"
+        :key="node.id"
         :class="{ 'bg-primary/50': actived }"
-        :component="component"
+        :node="node"
         :deep="deep + 1"
       />
     </div>

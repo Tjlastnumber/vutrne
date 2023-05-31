@@ -7,8 +7,7 @@ import Workspace from './VisualWorkspace.vue'
 import TextBox from '@/components/TextBox'
 import VisualHeader from './VisualHeader'
 import VisualPages from './VisualPages'
-import VisualLayers from './VisualLayers'
-import VisualComponents from './VisualComponents'
+import NodeTree from './nodes/NodeTree'
 
 import { createNamespacedHelpers } from 'vuex'
 import namespace from './store/namespace'
@@ -26,8 +25,7 @@ export default {
     TextBox,
     VisualHeader,
     VisualPages,
-    VisualLayers,
-    VisualComponents
+    NodeTree
   },
   data() {
     return {
@@ -52,10 +50,7 @@ export default {
     })
   },
   watch: { },
-  methods: {
-    handleActiveElement(el) {
-    }
-  }
+  methods: { }
 }
 
 </script>
@@ -78,17 +73,11 @@ export default {
           </template>
 
           <template #Layers>
-            <VisualLayers />
+            <NodeTree />
           </template>
 
           <template #Assets>
-            <CollapsePanel :name="'Components'">
-              <VisualComponents
-                v-for="component in componentTree"
-                :key="component.id"
-                :component="component"
-              />
-            </CollapsePanel>
+            <CollapsePanel name="Components" />
             <CollapsePanel :name="'Style'">
               <CollapseItem> h1 </CollapseItem>
             </CollapsePanel>

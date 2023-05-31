@@ -3,7 +3,7 @@ import * as actions from './actions'
 import { generatId } from '@/utils'
 import storage from '@/utils/storage'
 
-const _testComponents = [ {
+const _testNodes = [ {
   id: 0,
   name: 'Container',
   children: [ {
@@ -25,12 +25,12 @@ const _testComponents = [ {
 
 const PAGES_KEY = 'VD_PAGES'
 const CURRENT_PAGE_KEY = 'VD_CURRENT_PAGE'
-const COMPONENT_TREE = 'VD_COMPONENT_TREE'
+const NODE_TREE = 'VD_NODE_TREE'
 const ACTIVE_NODES = 'VD_ACTIVE_NODES'
 
 const _pages = storage.get(PAGES_KEY)
 const _currentPage = storage.get(CURRENT_PAGE_KEY)
-const _componentTree = storage.get(COMPONENT_TREE) ?? [ ..._testComponents ]
+const _nodeTree = storage.get(NODE_TREE) ?? [ ..._testNodes ]
 const _activeNodes = storage.get(ACTIVE_NODES) ?? {}
 
 const state = {
@@ -45,7 +45,7 @@ const state = {
   /**
    * 组件树
    **/
-  componentTree: _componentTree,
+  nodeTree: _nodeTree,
   /**
    * 当前激活元素
    **/
@@ -84,9 +84,9 @@ const mutations = {
   PAGES_COMMIT({ pages }) {
     storage.set(PAGES_KEY, pages)
   },
-  COMPONENT_TREE_SET({ componentTree }, components) {
-    componentTree = components
-    storage.set(COMPONENT_TREE, componentTree)
+  NODE_TREE_SET({ nodeTree }, components) {
+    nodeTree = components
+    storage.set(NODE_TREE, nodeTree)
   },
   ACTIVE_NODES(state, node) {
     state.activeNodes = { [node.id]: node }

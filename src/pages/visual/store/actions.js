@@ -23,8 +23,12 @@ export function setCurrentPage({ state, commit }, index) {
   commit('CURRENT_PAGE', state.pages[index])
 }
 
-export function activeNodes({ state, commit }, node) {
-  commit('ACTIVE_NODES', node)
+export function activeNodes({ commit }, { node, accumulative }) {
+  if (accumulative) {
+    commit('ACTIVE_NODES_PUSH', node)
+  } else {
+    commit('ACTIVE_NODES', node)
+  }
 }
 
 export function toggleNode({ commit, dispatch }, { node, expanded, recursive }) {
