@@ -1,6 +1,6 @@
 <script>
-import MenuLink from '@/components/MenuLink'
-import DraftIcon from '@/components/DraftIcon'
+import MenuLink from '@/components/MenuLink.vue'
+import DraftIcon from '@/components/DraftIcon.vue'
 
 export default {
   name: 'DraftsLink',
@@ -12,11 +12,12 @@ export default {
 </script>
 
 <template>
-  <MenuLink to="/projects/drafts">
-    <div class="flex flex-row items-center space-x-1">
-      <DraftIcon />
-      <span> Drafts </span>
-    </div>
+  <MenuLink
+    v-slot="{ isActive }"
+    to="/projects/drafts"
+  >
+    <DraftIcon :actived="isActive" />
+    <span> Drafts </span>
   </MenuLink>
 </template>
 

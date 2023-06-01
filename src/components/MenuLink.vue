@@ -10,6 +10,10 @@ export default {
     to: {
       type: String,
       default: ''
+    },
+    activeClass: {
+      type: String,
+      default: 'text-primary'
     }
   }
 }
@@ -17,10 +21,19 @@ export default {
 
 <template>
   <RouterLink
+    v-slot="{ isActive, navigate }"
+    custom
     :to="to"
+    :active-class="activeClass"
     class="flex w-full p-2 text-xs rounded-md dark:hover:bg-dark-hover hover:bg-light-disabled hover:cursor-default"
   >
-    <slot />
+    <div
+      class="flex flex-row items-center space-x-1"
+      :class="[ isActive && activeClass ]"
+      @click="navigate"
+    >
+      <slot :is-active="isActive" />
+    </div>
   </RouterLink>
 </template>
 

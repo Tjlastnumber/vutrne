@@ -1,7 +1,8 @@
 <template>
   <svg
     t="1685547298422"
-    class="icon fill-dark dark:fill-white"
+    class="icon"
+    :class="[ actived ? activeClass : 'fill-dark dark:fill-white' ]"
     viewBox="0 0 1024 1024"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +16,9 @@
 </template>
 
 <script>
+import IconMixin from '@/mixins/IconMixin'
 export default {
-  name: 'DraftIcon'
+  name: 'DraftIcon',
+  mixins: [ IconMixin ]
 }
 </script>

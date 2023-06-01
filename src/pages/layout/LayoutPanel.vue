@@ -5,10 +5,10 @@
     >
       <slot name="header" />
     </header>
-    <main class="w-full h-full">
+    <main>
       <!-- defualt -->
       <div
-        class="fixed inset-y-0 z-auto flex flex-row w-full h-full dark:bg-light-secondary"
+        class="fixed inset-y-0 z-auto flex flex-row w-full h-full max-w-full dark:bg-light-secondary"
         :class="haveHeader"
       >
         <!-- left -->

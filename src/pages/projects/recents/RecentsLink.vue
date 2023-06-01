@@ -12,11 +12,12 @@ export default {
 </script>
 
 <template>
-  <MenuLink to="/projects/recents">
-    <div class="flex flex-row items-center space-x-1">
-      <ClockIcon />
-      <span> Recents </span>
-    </div>
+  <MenuLink
+    v-slot="{ isActive }"
+    to="/projects/recents"
+  >
+    <ClockIcon :actived="isActive" />
+    <span> Recents </span>
   </MenuLink>
 </template>
 

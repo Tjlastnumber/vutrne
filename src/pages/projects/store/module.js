@@ -2,7 +2,8 @@ import * as actions from './actions'
 
 const state = {
   projects: [/* { id, name, description, comments } */],
-  favorites: [/* { projects } */]
+  favorites: [/* { projects } */],
+  currentPage: {}
 }
 
 const mutations = {

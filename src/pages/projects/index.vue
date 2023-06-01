@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import LayoutPanel from '@/pages/layout/LayoutPanel'
-import HeaderPanel from '../layout/HeaderPanel'
-import FavoritesTab from './FavoritesTab'
-import ProjectsTab from './ProjectsTab'
-import RecentsLink from './recents/RecentsLink'
-import DraftsLink from './drafts/DraftsLink'
+import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
+import HeaderPanel from '../layout/HeaderPanel.vue'
+import FavoritesTab from './FavoritesTab.vue'
+import ProjectsTab from './ProjectsTab.vue'
+import RecentsLink from './recents/RecentsLink.vue'
+import DraftsLink from './drafts/DraftsLink.vue'
 import { RouterView } from 'vue-router'
 
 export default {

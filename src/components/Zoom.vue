@@ -56,7 +56,7 @@ export default {
   mounted() {
     window.addEventListener('resize', this.onWindowResize)
     window.addEventListener('mousedown', this.onMouseMiddleDown)
-    window.addEventListener('wheel', this.onMouseWheel)
+    window.addEventListener('wheel', this.onMouseWheel, { passive: false })
     this.onWindowResize()
   },
   destroyed() {
@@ -102,6 +102,7 @@ export default {
      * @param {MouseEvent} ev
      **/
     onMouseWheel(ev) {
+      ev.preventDefault()
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
         debounce(() => this.onZoom({
