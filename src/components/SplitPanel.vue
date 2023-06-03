@@ -65,20 +65,16 @@ export default {
 
 <template>
   <div
-    class="inset-y-0 z-10"
+    class="z-10 w-full h-full"
     :class="{
       'right-0': right,
       'left-0': left && !right
     }"
     :style="{width: styleWidth}"
   >
+    <slot />
     <div
-      class="w-full h-full overflow-auto"
-    >
-      <slot />
-    </div>
-    <div
-      class="absolute top-0 z-20 w-1 h-full border-light-disabled dark:border-dark-disabled"
+      class="absolute inset-y-0 z-20 w-1 border-light-disabled dark:border-dark-disabled"
       :class="{
         'left-0': right,
         'border-l': right,

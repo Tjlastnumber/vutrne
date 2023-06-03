@@ -54,15 +54,15 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('resize', this.onWindowResize)
-    window.addEventListener('mousedown', this.onMouseMiddleDown)
-    window.addEventListener('wheel', this.onMouseWheel, { passive: false })
+    this.$el.addEventListener('resize', this.onWindowResize)
+    this.$el.addEventListener('mousedown', this.onMouseMiddleDown)
+    this.$el.addEventListener('wheel', this.onMouseWheel, { passive: false })
     this.onWindowResize()
   },
   destroyed() {
-    window.removeEventListener('resize', this.onWindowResize)
-    window.removeEventListener('mousedown', this.onMouseMiddleDown)
-    window.removeEventListener('wheel', this.onMouseWheel)
+    this.$el.removeEventListener('resize', this.onWindowResize)
+    this.$el.removeEventListener('mousedown', this.onMouseMiddleDown)
+    this.$el.removeEventListener('wheel', this.onMouseWheel)
   },
   methods: {
     onWindowResize() {
@@ -102,7 +102,6 @@ export default {
      * @param {MouseEvent} ev
      **/
     onMouseWheel(ev) {
-      ev.preventDefault()
       if (ev.ctrlKey || ev.metaKey) {
         const scaleDelta = (Math.pow(1.1, Math.sign(ev.wheelDelta)))
         debounce(() => this.onZoom({
@@ -113,6 +112,7 @@ export default {
       } else {
         debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))()
       }
+      ev.preventDefault()
     },
     onMouseMiddleDown(e) {
       if (e.button === 1) {
@@ -125,12 +125,12 @@ export default {
 
         const up = () => {
           setGlobalCursor('auto')
-          window.removeEventListener('mousemove', move)
-          window.removeEventListener('mouseup', up)
+          this.$el.removeEventListener('mousemove', move)
+          this.$el.removeEventListener('mouseup', up)
         }
 
-        window.addEventListener('mousemove', move)
-        window.addEventListener('mouseup', up)
+        this.$el.addEventListener('mousemove', move)
+        this.$el.addEventListener('mouseup', up)
       }
     }
   }

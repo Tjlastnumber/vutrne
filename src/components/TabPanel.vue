@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="w-full h-auto duration-500">
+  <div class="flex flex-col w-full h-full overflow-auto duration-500">
+    <div class="px-4">
       <div
-        class="grid grid-cols-3 items-center justify-between w-full p-0.5 my-4 rounded-lg select-none dark:bg-dark-disabled bg-light-disabled"
+        class="grid grid-cols-3 w-full p-0.5 my-4 rounded-lg select-none dark:bg-dark-disabled bg-light-disabled"
       >
         <div
           v-for="(tab, index) in tabs"
@@ -15,16 +15,18 @@
           class="items-center px-1 py-1.5 text-xs text-center rounded-md cursor-pointer duration-300 after:w-0.5"
           @click="selectTab(index)"
         >
-          {{ tab }}
+          <span> {{ tab }} </span>
         </div>
       </div>
-      <div
-        v-for="(tab, index) in tabs"
-        v-show="currentTab === index"
-        :key="index"
-      >
-        <slot :name="tab" />
-      </div>
+    </div>
+
+    <div
+      v-for="(tab, index) in tabs"
+      v-show="currentTab === index"
+      :key="index"
+      class="w-full h-full overflow-auto"
+    >
+      <slot :name="tab" />
     </div>
   </div>
 </template>

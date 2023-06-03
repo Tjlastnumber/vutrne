@@ -81,7 +81,7 @@ export default {
       @movearea="refreshTarget()"
     >
       <Container
-        @mousedown.left.native="onSelectedElement"
+        @mousedown.left.native.prevent="onSelectedElement"
       >
         <img
           ref="img"

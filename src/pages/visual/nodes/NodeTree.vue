@@ -4,12 +4,14 @@ import NodeInstance from './NodeInstance.vue'
 
 import { createNamespacedHelpers } from 'vuex'
 import namespace from '../store/namespace'
+import ScrollPanel from '@/components/ScrollPanel.vue'
 const { mapState } = createNamespacedHelpers(namespace)
 
 export default {
   name: 'NodeTree',
   components: {
-    NodeInstance
+    NodeInstance,
+    ScrollPanel
   },
   computed: {
     ...mapState({
@@ -20,13 +22,11 @@ export default {
 </script>
 
 <template>
-  <div>
-    <div class="pt-4 border-t border-light-disabled dark:border-dark-disabled">
-      <NodeInstance
-        v-for="node in nodeTree"
-        :key="node.id"
-        :node="node"
-      />
-    </div>
-  </div>
+  <ScrollPanel class="pt-2 border-t border-light-disabled dark:border-dark-disabled">
+    <NodeInstance
+      v-for="node in nodeTree"
+      :key="node.id"
+      :node="node"
+    />
+  </ScrollPanel>
 </template>

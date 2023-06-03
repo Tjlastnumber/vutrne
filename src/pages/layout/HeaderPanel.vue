@@ -10,7 +10,7 @@
         placement="bottom-start"
         :menus="menus"
       >
-        <button>{{ appName }}</button>
+        <VutrneLog />
       </MenuPanel>
       <slot name="left" />
     </div>
@@ -20,17 +20,14 @@
 </template>
 
 <script>
+import VutrneLog from '@/components/VutrneLog.vue'
 import MenuPanel from '@/components/MenuPanel.vue'
 import { mapState } from 'vuex'
 
 export default {
   name: 'HeaderPanel',
-  components: { MenuPanel },
-  data() {
-    return { }
-  },
+  components: { MenuPanel, VutrneLog },
   computed: mapState({
-    appName: state => state.appName,
     menus: state => state.menus
   })
 }

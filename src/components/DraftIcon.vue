@@ -1,12 +1,9 @@
 <template>
   <svg
-    t="1685547298422"
     class="icon"
     :class="[ actived ? activeClass : 'fill-dark dark:fill-white' ]"
     viewBox="0 0 1024 1024"
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    p-id="4065"
     width="16"
     height="16"
   ><path

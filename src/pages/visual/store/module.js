@@ -22,12 +22,80 @@ const _testNodes = [ {
         }
       ]
     } ]
+  }, {
+    id: 31,
+    name: 'Button',
+    children: [ {
+      id: 32,
+      name: 'Text'
+    }, {
+      id: 35,
+      name: 'Container',
+      children: [
+        {
+          id: 36,
+          name: 'Text'
+        }
+      ]
+    } ]
+  }, {
+    id: 41,
+    name: 'Button',
+    children: [ {
+      id: 42,
+      name: 'Text'
+    }, {
+      id: 45,
+      name: 'Container',
+      children: [
+        {
+          id: 46,
+          name: 'Text'
+        }
+      ]
+    } ]
   } ]
 }, {
   id: 3,
   name: 'Panel',
   children: [ {
     id: '4',
+    name: 'div'
+  }, {
+    id: '11',
+    name: 'div'
+  }, {
+    id: '12',
+    name: 'div'
+  }, {
+    id: '13',
+    name: 'div'
+  }, {
+    id: '14',
+    name: 'div'
+  }, {
+    id: '15',
+    name: 'div'
+  }, {
+    id: '16',
+    name: 'div'
+  }, {
+    id: '17',
+    name: 'div'
+  }, {
+    id: '18',
+    name: 'div'
+  }, {
+    id: '19',
+    name: 'div'
+  }, {
+    id: '20',
+    name: 'div'
+  }, {
+    id: '21',
+    name: 'div'
+  }, {
+    id: '22',
     name: 'div'
   } ]
 } ]

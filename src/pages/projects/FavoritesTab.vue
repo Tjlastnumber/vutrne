@@ -18,7 +18,10 @@ export default {
     this.init({
       favorites: [
         { id: 1, name: 'p1' },
-        { id: 2, name: 'p2' }
+        { id: 1, name: 'p1' },
+        { id: 1, name: 'p1' },
+        { id: 1, name: 'p1' },
+        { id: 2, name: 'last' }
       ]
     })
   },
@@ -29,16 +32,20 @@ export default {
 </script>
 
 <template>
-  <CollapsePanel :name="'Favorites'">
-    <div class="flex flex-col pt-4 space-y-2">
-      <MenuLink
-        v-for="project in favorites"
-        :key="project.id"
-        class="flex"
-        :to="`/visual/${project.path}`"
-      >
-        {{ project.name }}
-      </MenuLink>
-    </div>
+  <CollapsePanel name="Favorites">
+    <MenuLink
+      v-for="project in favorites"
+      :key="project.id"
+      class="flex"
+      :to="`/visual/${project.path}`"
+    >
+      {{ project.name }}
+    </MenuLink>
   </CollapsePanel>
 </template>
+
+<style>
+.m-h {
+  max-height: 50%;
+}
+</style>

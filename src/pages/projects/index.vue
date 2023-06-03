@@ -1,23 +1,25 @@
 <template>
   <div id="projects">
     <LayoutPanel
-      :right="false"
       :fix-left="true"
     >
       <template #header>
         <HeaderPanel />
       </template>
       <template #left>
-        <div class="flex flex-col py-4 space-y-2">
+        <section class="flex-none p-4 space-y-2">
           <RecentsLink />
           <DraftsLink />
+        </section>
+        <div class="flex flex-col">
+          <FavoritesTab />
+          <ProjectsTab />
         </div>
-        <FavoritesTab />
-        <ProjectsTab />
       </template>
       <template #content>
         <RouterView />
       </template>
+      <template #right />
     </LayoutPanel>
   </div>
 </template>

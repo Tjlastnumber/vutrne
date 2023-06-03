@@ -6,11 +6,12 @@ import TabPanel from '../../components/TabPanel.vue'
 import Workspace from './VisualWorkspace.vue'
 import TextBox from '@/components/TextBox'
 import VisualHeader from './VisualHeader'
-import VisualPages from './VisualPages'
+import VisualPages from './VisualPages.vue'
 import NodeTree from './nodes/NodeTree'
 
 import { createNamespacedHelpers } from 'vuex'
 import namespace from './store/namespace'
+import ComponentsPanel from './components/ComponentsPanel.vue'
 
 const { mapState } = createNamespacedHelpers(namespace)
 
@@ -25,7 +26,8 @@ export default {
     TextBox,
     VisualHeader,
     VisualPages,
-    NodeTree
+    NodeTree,
+    ComponentsPanel
   },
   data() {
     return {
@@ -77,10 +79,12 @@ export default {
           </template>
 
           <template #Assets>
-            <CollapsePanel name="Components" />
-            <CollapsePanel :name="'Style'">
-              <CollapseItem> h1 </CollapseItem>
-            </CollapsePanel>
+            <div class="flex flex-col">
+              <ComponentsPanel />
+              <CollapsePanel :name="'Style'">
+                style
+              </CollapsePanel>
+            </div>
           </template>
         </TabPanel>
       </template>

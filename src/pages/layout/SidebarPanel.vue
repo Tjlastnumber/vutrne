@@ -1,21 +1,3 @@
-<template>
-  <nav
-    class="fixed inset-y-0 z-20 duration-500"
-    :class="dock"
-  >
-    <SplitPanel
-      :left="left"
-      :right="right"
-      :min-width="minWidth"
-      :max-width="maxWidth"
-      class="bg-light dark:bg-dark"
-    >
-      <div class="px-4">
-        <slot />
-      </div>
-    </SplitPanel>
-  </nav>
-</template>
 
 <script>
 import SplitPanel from '@/components/SplitPanel.vue'
@@ -55,5 +37,18 @@ export default {
   }
 }
 </script>
+
+<template>
+  <SplitPanel
+    :class="dock"
+    :left="left"
+    :right="right"
+    :min-width="minWidth"
+    :max-width="maxWidth"
+    class="fixed inset-y-0 z-20 h-full duration-500 bg-light dark:bg-dark"
+  >
+    <slot />
+  </SplitPanel>
+</template>
 
 <style></style>

@@ -1,52 +1,30 @@
 <template>
-  <CollapsePanel name="Page">
-    <template #HeaderRight>
-      <DefaultButton
-        class="px-2 py-1"
-        @click.native.stop="pagesAdd({ name: `page-${pages.length + 1}` })"
-      >
-        ✚
-      </DefaultButton>
+  <CollapsePanel>
+    <template #header>
+      <div class="flex flex-row items-center justify-between">
+        <span>Page</span>
+        <DefaultButton
+          class="px-2 py-1"
+          @click.native.stop="pagesAdd({ name: `page-${pages.length + 1}` })"
+        >
+          ✚
+        </DefaultButton>
+      </div>
     </template>
-    <div class="pt-4 space-y-1">
-      <CollapseItem
-        v-for="(page, index) in pages"
-        :key="page.id"
-        :selected="currentPage === page"
-        @click.native.capture="setCurrentPage(index)"
-        @contextmenu.prevent.native="isShowContextMenu = true"
-      >
-        <TextBox
-          v-model.lazy="page.name"
-          state="label"
-          @input="pagesCommit()"
-        />
-      </CollapseItem>
-    </div>
 
-    <!-- <VDropdown -->
-    <!--   :distance="0" -->
-    <!--   :skidding="0" -->
-    <!--   :shown.sync="isShowContextMenu" -->
-    <!--   theme="sub-menu" -->
-    <!-- > -->
-    <!--   <template #popper> -->
-    <!--     <div -->
-    <!--       v-for="menu in contextmenu" -->
-    <!--       :key="menu.name" -->
-    <!--       class="px-2 py-1 text-xs font-medium dark:text-white" -->
-    <!--     > -->
-    <!--       <span>{{ menu.name }}</span> -->
-    <!--     </div> -->
-    <!--   </template> -->
-    <!-- </VDropdown> -->
-    <MenuPanel
-      placement="right-start"
-      :menus="contextmenu"
-      :distance="0"
-      :skidding="0"
-      :shown.sync="isShowContextMenu"
-    />
+    <CollapseItem
+      v-for="(page, index) in pages"
+      :key="page.id"
+      :selected="currentPage === page"
+      @click.native.capture="setCurrentPage(index)"
+      @contextmenu.prevent.native="isShowContextMenu = true"
+    >
+      <TextBox
+        v-model.lazy="page.name"
+        state="label"
+        @input="pagesCommit()"
+      />
+    </CollapseItem>
   </CollapsePanel>
 </template>
 
@@ -55,7 +33,6 @@ import CollapsePanel from '@/components/CollapsePanel'
 import CollapseItem from '@/components/CollapseItem'
 import DefaultButton from '@/components/DefaultButton'
 import TextBox from '@/components/TextBox'
-import MenuPanel from '@/components/MenuPanel'
 
 import { mapActions, mapState } from 'vuex'
 import namespace from './store/namespace'
@@ -66,8 +43,7 @@ export default {
     CollapsePanel,
     CollapseItem,
     DefaultButton,
-    TextBox,
-    MenuPanel
+    TextBox
   },
   data() {
     return {
