@@ -1,12 +1,13 @@
 <template>
   <div
-    class="flex items-center justify-between w-full text-center gap-2 text-light-primary dark:text-dark dark:text-dark-primary"
+    class="flex items-center justify-between w-full text-xs text-center outline-none gap-2 text-light-primary dark:text-dark dark:text-dark-primary"
     @dblclick="editMode()"
+    @keyup.enter.self.stop="editMode"
   >
     <span
       v-if="text"
-      class="inline-block w-1/4 text-xs font-medium text-left shrink-0"
-      @click="$refs.editor.focus()"
+      class="inline-block w-1/4 font-medium text-left shrink-0"
+      @click="editMode()"
     >
       {{ text }}
     </span>
@@ -16,9 +17,9 @@
         v-bind="$attrs"
         ref="editor"
         type="textbox"
-        class="w-full p-2 text-xs border outline-none grow rounded-md border-light-disabled focus:border-primary dark:bg-dark-disabled duration-300"
+        class="w-full p-2 border outline-none grow rounded-md border-light-disabled focus:border-primary dark:bg-dark-disabled duration-300"
         :value="value"
-        @input="$emit('input', $event.target.value)"
+        @input.stop.prevent="$emit('input', $event.target.value)"
         @blur="commit"
         @keyup.enter="commit"
       >
@@ -45,9 +46,9 @@ export default {
       type: String,
       default: ''
     },
-    state: {
+    mode: {
       type: String,
-      default: 'edit' /* edit, label */
+      default: 'label' /* edit, label */
     }
   },
   data() {
@@ -57,7 +58,7 @@ export default {
   },
   computed: {
     isEdit() {
-      return this.state === 'edit'
+      return this.mode === 'edit'
     }
   },
   methods: {
@@ -71,6 +72,7 @@ export default {
     commit(e) {
       this.edit = false
       this.$emit('input', e.target.value)
+      this.$el.focus()
     }
   }
 }

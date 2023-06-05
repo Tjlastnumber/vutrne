@@ -18,9 +18,6 @@ export default {
     this.init({
       favorites: [
         { id: 1, name: 'p1' },
-        { id: 1, name: 'p1' },
-        { id: 1, name: 'p1' },
-        { id: 1, name: 'p1' },
         { id: 2, name: 'last' }
       ]
     })

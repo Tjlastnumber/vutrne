@@ -17,6 +17,7 @@ module.exports = {
     'vue/one-component-per-file': 'off',
     'vue/no-template-shadow': 'off',
     'vue/component-definition-name-casing': [ 'error', 'PascalCase' ],
+    'vue/no-unused-components': [ 'warn' ],
     'vue/component-name-in-template-casing': [
       'error',
       'PascalCase',

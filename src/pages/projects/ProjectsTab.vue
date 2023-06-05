@@ -25,7 +25,7 @@ export default {
 
 <template>
   <CollapsePanel name="Projects">
-    <div class="flex flex-col space-y-2">
+    <div class="flex flex-col">
       <MenuLink
         v-for="project in projects"
         :key="project.id"

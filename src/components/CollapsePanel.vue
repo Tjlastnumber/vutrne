@@ -25,9 +25,7 @@ export default {
 </script>
 
 <template>
-  <div
-    class="flex flex-col h-full overflow-auto border-t select-none border-light-disabled dark:border-dark-disabled"
-  >
+  <div class="flex flex-col h-full overflow-auto border-t select-none border-light-disabled dark:border-dark-disabled">
     <!-- header -->
     <div
       class="flex flex-row items-center justify-between px-2 py-4 text-xs cursor-pointer space-x-1 text-light-primary hover:text-black dark:text-dark-primary dark:hover:text-white"
@@ -47,14 +45,14 @@ export default {
       </div>
     </div>
     <!-- body -->
-    <transition name="collapse">
-      <ScrollPanel
-        v-if="isExpanded"
-        class="flex flex-col space-y-2"
-      >
-        <slot />
-      </ScrollPanel>
-    </transition>
+    <!-- <transition name="collapse"> -->
+    <ScrollPanel
+      v-if="isExpanded"
+      class="flex flex-col space-y-2"
+    >
+      <slot />
+    </ScrollPanel>
+    <!-- </transition> -->
   </div>
 </template>
 

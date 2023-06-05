@@ -101,12 +101,11 @@ const _testNodes = [ {
 } ]
 
 const PAGES_KEY = 'VD_PAGES'
-const CURRENT_PAGE_KEY = 'VD_CURRENT_PAGE'
+const CURRENT_PAGE_INDEX_KEY = 'VD_CURRENT_PAGE_INDEX'
 const NODE_TREE = 'VD_NODE_TREE'
 const ACTIVE_NODES = 'VD_ACTIVE_NODES'
 
 const _pages = storage.get(PAGES_KEY)
-const _currentPage = storage.get(CURRENT_PAGE_KEY)
 const _nodeTree = storage.get(NODE_TREE) ?? [ ..._testNodes ]
 const _activeNodes = storage.get(ACTIVE_NODES) ?? {}
 
@@ -116,9 +115,9 @@ const state = {
    **/
   pages: _pages || [ { id: generatId(), name: 'page-1' } ],
   /**
-   * 当前页面
+   * 当前页面索引
    **/
-  currentPage: _currentPage,
+  currentPageIndex: 0,
   /**
    * 组件树
    **/
@@ -138,9 +137,9 @@ const state = {
 }
 
 const mutations = {
-  CURRENT_PAGE(state, page) {
-    state.currentPage = page
-    storage.set(CURRENT_PAGE_KEY, page)
+  CURRENT_PAGE_INDEX(state, index) {
+    state.currentPageIndex = index
+    storage.set(CURRENT_PAGE_INDEX_KEY, index)
   },
   PAGES_ADD({ pages }, page) {
     pages.push(page)
@@ -187,9 +186,16 @@ const mutations = {
   }
 }
 
+const getters = {
+  currentPage: state => {
+    return state.pages[state.currentPageIndex] ?? []
+  }
+}
+
 export default {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations
 }

@@ -32,4 +32,9 @@ export default {
   background-color: #4f4f4f;
 }
 
+.scrollbar::-webkit-scrollbar-thumb:hover,
+.scrollbar::-webkit-scrollbar-thumb:active {
+  background-color: #5f5f5f;
+}
+
 </style>

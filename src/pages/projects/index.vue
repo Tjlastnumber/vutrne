@@ -11,7 +11,7 @@
           <RecentsLink />
           <DraftsLink />
         </section>
-        <div class="flex flex-col">
+        <div class="flex flex-col justify-start h-full">
           <FavoritesTab />
           <ProjectsTab />
         </div>

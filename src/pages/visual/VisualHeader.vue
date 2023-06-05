@@ -5,7 +5,6 @@
         <TextBox
           v-model.lazy="currentPage.name"
           class="text-center"
-          state="lable"
         />
       </div>
     </template>
@@ -25,7 +24,7 @@ import TextBox from '@/components/TextBox.vue'
 import namespace from './store/namespace'
 import { createNamespacedHelpers } from 'vuex'
 
-const { mapState } = createNamespacedHelpers(namespace)
+const { mapGetters } = createNamespacedHelpers(namespace)
 
 export default {
   name: 'VisualHeader',
@@ -35,9 +34,9 @@ export default {
     TextBox
   },
   computed: {
-    ...mapState({
-      currentPage: state => state.currentPage
-    })
+    ...mapGetters([
+      'currentPage'
+    ])
   }
 }
 </script>
