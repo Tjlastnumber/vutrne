@@ -1,3 +1,22 @@
+<script>
+import MenuItem from './MenuItem.vue'
+export default {
+  name: 'MenuPanel',
+  components: { MenuItem },
+  props: {
+    menus: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {
+      currentMenu: -1,
+    }
+  },
+}
+</script>
+
 <template>
   <VDropdown
     v-bind="$attrs"
@@ -15,25 +34,6 @@
     </template>
   </VDropdown>
 </template>
-
-<script>
-import MenuItem from './MenuItem.vue'
-export default {
-  name: 'MenuPanel',
-  components: { MenuItem },
-  props: {
-    menus: {
-      type: Array,
-      default: () => []
-    }
-  },
-  data() {
-    return {
-      currentMenu: -1
-    }
-  }
-}
-</script>
 
 <style scoped>
 .left-99p {

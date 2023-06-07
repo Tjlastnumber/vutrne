@@ -1,3 +1,26 @@
+<script>
+import ChevronDownIcon from './ChevronDownIcon.vue'
+
+export default {
+  name: 'MenuItem',
+  components: {
+    ChevronDownIcon,
+  },
+  props: {
+    menu: {
+      type: [ Object, String ],
+      default: null,
+      require: true,
+    },
+  },
+  computed: {
+    hasChildren() {
+      return !!this.menu.children
+    },
+  },
+}
+</script>
+
 <template>
   <div class="text-xs font-normal">
     <div
@@ -58,28 +81,5 @@
     </VDropdown>
   </div>
 </template>
-
-<script>
-import ChevronDownIcon from './ChevronDownIcon.vue'
-
-export default {
-  name: 'MenuItem',
-  components: {
-    ChevronDownIcon
-  },
-  props: {
-    menu: {
-      type: [ Object, String ],
-      default: null,
-      require: true
-    }
-  },
-  computed: {
-    hasChildren() {
-      return !!this.menu.children
-    }
-  }
-}
-</script>
 
 <style></style>

@@ -10,17 +10,17 @@ const { mapState } = createNamespacedHelpers(namespace)
 export default {
   name: 'VisualComponents',
   components: {
-    ChevronDownIcon
+    ChevronDownIcon,
   },
   props: {
     component: {
       type: Object,
-      default: undefined
+      default: undefined,
     },
     deep: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
     ...mapState({
       activeNodes: state => state.activeNodes,
       hoverNodes: state => state.hoverNodes,
-      expansionMap: state => state.expansionMap
+      expansionMap: state => state.expansionMap,
     }),
     activeCss() {
       return (!isUndef(this.activeElement) && this.activeElement.id === this.component.id)
@@ -50,7 +50,7 @@ export default {
     },
     expanded() {
       return !!this.expansionMap[this.component.id]
-    }
+    },
   },
   methods: {
     enter() {
@@ -86,10 +86,10 @@ export default {
       this.$store.dispatch('visual/toggleNode', {
         node: this.component,
         expanded,
-        recursive
+        recursive,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,3 +1,19 @@
+<script>
+export default {
+  name: 'BaseTextbox',
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <input
@@ -7,22 +23,6 @@
     >
   </div>
 </template>
-
-<script>
-export default {
-  name: 'BaseTextbox',
-  model: {
-    prop: 'value',
-    event: 'change'
-  },
-  props: {
-    value: {
-      type: String,
-      default: ''
-    }
-  }
-}
-</script>
 
 <style>
 

@@ -18,5 +18,5 @@ export default {
     try {
       localStorage.clear()
     } catch (e) {}
-  }
+  },
 }

@@ -1,3 +1,11 @@
+<script>
+import IconMixin from '@/mixins/IconMixin'
+export default {
+  name: 'DraftIcon',
+  mixins: [ IconMixin ],
+}
+</script>
+
 <template>
   <svg
     class="icon"
@@ -11,11 +19,3 @@
     p-id="4067"
   /></svg>
 </template>
-
-<script>
-import IconMixin from '@/mixins/IconMixin'
-export default {
-  name: 'DraftIcon',
-  mixins: [ IconMixin ]
-}
-</script>

@@ -1,12 +1,3 @@
-<template>
-  <button
-    :class="typeClass"
-    class="text-xs font-medium rounded-lg ring-inset hover:bg-light-hover active:bg-white bg-light border-light-disabled dark:text-dark-primary dark:bg-dark-disabled dark:hover:bg-dark-hover active:dark:bg-dark-active disabled:dark:hover:bg-dark-secondary hover:drop-shadow-md duration-300"
-  >
-    <slot />
-  </button>
-</template>
-
 <script>
 export default {
   name: 'DefaultButton',
@@ -16,8 +7,8 @@ export default {
       default: 'default',
       validator(v) {
         return [ 'primary', 'default' ].includes(v)
-      }
-    }
+      },
+    },
   },
   computed: {
     typeClass() {
@@ -34,7 +25,7 @@ export default {
             'dark:hover:bg-primary-hover',
             'dark:hover:ring-primary-hover',
             'dark:active:bg-primary-active',
-            'dark:active:ring-primary-active'
+            'dark:active:ring-primary-active',
           ]
           break
         case 'defautl':
@@ -43,7 +34,16 @@ export default {
           break
       }
       return result
-    }
-  }
+    },
+  },
 }
 </script>
+
+<template>
+  <button
+    :class="typeClass"
+    class="text-xs font-medium rounded-lg ring-inset hover:bg-light-hover active:bg-white bg-light border-light-disabled dark:text-dark-primary dark:bg-dark-disabled dark:hover:bg-dark-hover active:dark:bg-dark-active disabled:dark:hover:bg-dark-secondary hover:drop-shadow-md duration-300"
+  >
+    <slot />
+  </button>
+</template>

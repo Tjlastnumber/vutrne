@@ -18,7 +18,7 @@ function strokeInstance (Vue, options) { /* eslint-disable-line */
     Object.assign(_instance, _options, options)
   } else {
     _instance = new (Vue.extend(Stroke))({
-      propsData: options
+      propsData: options,
     }).$mount()
   }
   return _instance
@@ -30,7 +30,7 @@ export default {
       bind(el, _, vnode) {
         vnode.context.$stroke = strokeInstance(Vue, {})
         el.appendChild(_instance.$el)
-      }
+      },
     })
-  }
+  },
 }

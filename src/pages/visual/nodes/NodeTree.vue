@@ -11,18 +11,18 @@ export default {
   name: 'NodeTree',
   components: {
     NodeInstance,
-    ScrollPanel
+    ScrollPanel,
   },
   computed: {
     ...mapState({
-      nodeTree: state => state.nodeTree
-    })
-  }
+      nodeTree: state => state.nodeTree,
+    }),
+  },
 }
 </script>
 
 <template>
-  <ScrollPanel class="pt-2 border-t border-light-disabled dark:border-dark-disabled">
+  <ScrollPanel class="py-4 border-t border-light-disabled dark:border-dark-disabled">
     <NodeInstance
       v-for="node in nodeTree"
       :key="node.id"

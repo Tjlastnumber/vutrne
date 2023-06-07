@@ -12,26 +12,26 @@ export default {
   components: {
     Zoom,
     ResizeBox,
-    Container
+    Container,
   },
   model: {
     prop: 'scale',
-    event: 'change'
+    event: 'change',
   },
   props: {
     scale: {
       type: Number,
-      default: 100
-    }
+      default: 100,
+    },
   },
   data() {
     return {
       hoverElement: undefined,
-      activeElement: []
+      activeElement: [],
     }
   },
   computed: {
-    ...mapState(namespace, [ 'hoverNodes', 'activeNodes' ])
+    ...mapState(namespace, [ 'hoverNodes', 'activeNodes' ]),
   },
   watch: {
     hoverElement(nv) {
@@ -43,7 +43,7 @@ export default {
     },
     activeElement() {
       this.$stroke.hide()
-    }
+    },
   },
   methods: {
     refreshTarget() {
@@ -63,8 +63,8 @@ export default {
       if (isComponent(hoverElement)) {
         this.hoverElement = hoverElement
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -78,7 +78,7 @@ export default {
     <Zoom
       class="top-0 left-0 w-full h-full overflow-hidden border-dark-primary"
       @scale="onScale"
-      @movearea="refreshTarget()"
+      @movearea="refreshTarget"
     >
       <Container
         @mousedown.left.native.prevent="onSelectedElement"

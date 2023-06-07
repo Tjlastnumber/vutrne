@@ -10,17 +10,17 @@ const { mapState } = createNamespacedHelpers(namespace)
 export default {
   name: 'NodeInstance',
   components: {
-    ChevronDownIcon
+    ChevronDownIcon,
   },
   props: {
     node: {
       type: Object,
-      default: undefined
+      default: undefined,
     },
     deep: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
     ...mapState({
       activeNodes: state => state.activeNodes,
       hoverNodes: state => state.hoverNodes,
-      expansionMap: state => state.expansionMap
+      expansionMap: state => state.expansionMap,
     }),
     activeCss() {
       return (!isUndef(this.activeElement) && this.activeElement.id === this.node.id)
@@ -53,7 +53,7 @@ export default {
     },
     hasChildren() {
       return !!this.node.children
-    }
+    },
   },
   methods: {
     enter() {
@@ -70,7 +70,7 @@ export default {
     handleActived(e) {
       this.$store.dispatch(useNamespace('activeNodes'), {
         node: this.node,
-        accumulative: e.shiftKey
+        accumulative: e.shiftKey,
       })
       this.$emit('active', { target: this.node })
     },
@@ -87,10 +87,10 @@ export default {
       this.$store.dispatch('visual/toggleNode', {
         node: this.node,
         expanded,
-        recursive
+        recursive,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -101,7 +101,12 @@ export default {
   >
     <div
       class="py-2 pl-1 rounded-t-md"
-      :class="{ 'bg-primary': actived, 'bg-dark-hover': hovered, 'rounded-md': !expanded || hovered }"
+      :class="{
+        'bg-primary': actived,
+        'bg-dark-hover': hovered,
+        'rounded-md': !expanded || hovered
+      }"
+      @dblclick.left="onToggle"
       @mouseenter="enter"
       @mouseleave="leave"
       @click.left="handleActived"

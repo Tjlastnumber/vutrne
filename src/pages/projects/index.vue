@@ -1,29 +1,3 @@
-<template>
-  <div id="projects">
-    <LayoutPanel
-      :fix-left="true"
-    >
-      <template #header>
-        <HeaderPanel />
-      </template>
-      <template #left>
-        <section class="flex-none p-4 space-y-2">
-          <RecentsLink />
-          <DraftsLink />
-        </section>
-        <div class="flex flex-col justify-start h-full">
-          <FavoritesTab />
-          <ProjectsTab />
-        </div>
-      </template>
-      <template #content>
-        <RouterView />
-      </template>
-      <template #right />
-    </LayoutPanel>
-  </div>
-</template>
-
 <script>
 import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
 import HeaderPanel from '../layout/HeaderPanel.vue'
@@ -42,10 +16,36 @@ export default {
     ProjectsTab,
     RecentsLink,
     DraftsLink,
-    RouterView
-  }
+    RouterView,
+  },
 }
 </script>
+
+<template>
+  <div id="projects">
+    <LayoutPanel
+      :fix-left="true"
+    >
+      <template #header>
+        <HeaderPanel tabindex="0" />
+      </template>
+      <template #left>
+        <section class="flex-none p-4 space-y-2">
+          <RecentsLink tabindex="0" />
+          <DraftsLink tabindex="0" />
+        </section>
+        <div class="flex flex-col justify-start h-full">
+          <FavoritesTab />
+          <ProjectsTab />
+        </div>
+      </template>
+      <template #content>
+        <RouterView />
+      </template>
+      <template #right />
+    </LayoutPanel>
+  </div>
+</template>
 
 <style scoped>
 /* code... */

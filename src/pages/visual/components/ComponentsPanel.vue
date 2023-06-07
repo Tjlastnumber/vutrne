@@ -4,8 +4,8 @@ import CollapsePanel from '@/components/CollapsePanel.vue'
 export default {
   name: 'ComponentsPanel',
   components: {
-    CollapsePanel
-  }
+    CollapsePanel,
+  },
 }
 // code...
 </script>

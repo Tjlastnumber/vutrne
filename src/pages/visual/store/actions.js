@@ -1,10 +1,10 @@
 import { generatId } from '@/utils'
 
 function initPages(state) {
-  state.pages = [ {
+  state.pages = [{
     id: generatId(),
-    name: 'page-1'
-  } ]
+    name: 'page-1',
+  }]
 }
 
 export function pagesAdd({ commit }, page) {
@@ -62,7 +62,7 @@ export function toggleNode({ commit, dispatch }, { node, expanded, recursive }) 
       dispatch('toggleNode', {
         node: children,
         expanded,
-        recursive
+        recursive,
       })
     })
   }

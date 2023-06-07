@@ -6,8 +6,8 @@ export default {
   name: 'RecentsLink',
   components: {
     MenuLink,
-    ClockIcon
-  }
+    ClockIcon,
+  },
 }
 </script>
 

@@ -3,9 +3,9 @@ export default {
   name: 'ScrollPanel',
   data() {
     return {
-      scrollbar: false
+      scrollbar: false,
     }
-  }
+  },
 }
 </script>
 

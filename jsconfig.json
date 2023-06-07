@@ -1,4 +1,10 @@
 {
+  "vueCompilerOptions": {
+    "target": 2.7,
+    "extensions": [
+      ".vue"
+    ]
+  },
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
@@ -11,6 +17,19 @@
       "@utils/*": ["src/utils/*"],
       "@assets/*": ["src/assets/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-  }
+    "lib": [
+      "esnext", 
+      "dom", 
+      "dom.iterable", 
+      "scripthost"
+    ],
+    "importHelpers": true
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

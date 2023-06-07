@@ -8,15 +8,15 @@ Vue.use(Vuex)
 
 const state = {
   appName: 'Vutrne',
-  menus: [ {
+  menus: [{
     name: 'Dashboard',
-    to: '/projects'
+    to: '/projects',
   },
   {
-    name: '|'
+    name: '|',
   },
   {
-    name: 'File'
+    name: 'File',
   },
   {
     name: 'View',
@@ -25,16 +25,16 @@ const state = {
       { name: 'Redo' },
       { name: '|' },
       { name: 'Cut' },
-      { name: 'Copy', children: [ { name: 'Copy' } ] },
-      { name: 'Pause' }
-    ]
-  } ]
+      { name: 'Copy', children: [{ name: 'Copy' }] },
+      { name: 'Pause' },
+    ],
+  }],
 }
 
 export default new Vuex.Store({
   state,
   modules: {
     projects,
-    visual
-  }
+    visual,
+  },
 })

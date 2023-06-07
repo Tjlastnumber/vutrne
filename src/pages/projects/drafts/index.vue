@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'DraftsPage'
+  name: 'DraftsPage',
 }
 // code...
 </script>

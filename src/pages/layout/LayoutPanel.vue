@@ -3,35 +3,35 @@ import SplitPanel from '@/components/SplitPanel.vue'
 export default {
   name: 'LayoutPanel',
   components: {
-    SplitPanel
+    SplitPanel,
   },
   props: {
     header: {
       type: Boolean,
-      default: true
+      default: true,
     },
     left: {
       type: Boolean,
-      default: true
+      default: true,
     },
     right: {
       type: Boolean,
-      default: true
+      default: true,
     },
     fixLeft: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fixRight: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     haveHeader() {
       return this.header ? 'top-14' : 'top-0'
-    }
-  }
+    },
+  },
 }
 </script>
 

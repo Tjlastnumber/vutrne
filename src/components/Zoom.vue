@@ -10,8 +10,8 @@ export default {
   props: {
     scale: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   data() {
     return {
@@ -24,7 +24,7 @@ export default {
       x: 0,
       y: 0,
       cw: 1,
-      ch: 1
+      ch: 1,
     }
   },
   computed: {
@@ -38,9 +38,9 @@ export default {
         scale: this.scaleProp,
         scalePercent: `${this.scaleProp * 100}%`,
         x: this.translateX,
-        y: this.translateY
+        y: this.translateY,
       }
-    }
+    },
   },
   watch: {
     translateX() {
@@ -51,7 +51,7 @@ export default {
     },
     scale(nv) {
       this.scaleProp = nv
-    }
+    },
   },
   mounted() {
     this.$el.addEventListener('resize', this.onWindowResize)
@@ -107,7 +107,7 @@ export default {
         debounce(() => this.onZoom({
           scaleDelta,
           clientX: ev.clientX,
-          clientY: ev.clientY
+          clientY: ev.clientY,
         }))()
       } else {
         debounce(() => this.onMove(-ev.deltaX, -ev.deltaY))()
@@ -132,8 +132,8 @@ export default {
         this.$el.addEventListener('mousemove', move)
         this.$el.addEventListener('mouseup', up)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

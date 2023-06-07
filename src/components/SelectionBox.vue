@@ -1,18 +1,3 @@
-<template>
-  <RectBox
-    ref="rect"
-    class="static"
-    color="stroke-blue-400"
-    fill="fill-blue-400/20"
-    :style="{ opacity }"
-    :width="width"
-    :height="height"
-    :left="left"
-    :top="top"
-    :stroke-width="2"
-  />
-</template>
-
 <script>
 import { raf } from '@/utils/raf'
 import RectBox from './RectBox.vue'
@@ -27,7 +12,7 @@ export default {
       left: 0,
       opacity: 0,
       show: false,
-      hide: true
+      hide: true,
     }
   },
   mounted() {
@@ -80,14 +65,14 @@ export default {
       const onMouseMove = (ev) => {
         this.dragging(
           { x: clientX, y: clientY },
-          { x: ev.clientX, y: ev.clientY }
+          { x: ev.clientX, y: ev.clientY },
         )
       }
 
       const onWheel = (ev) => {
         this.dragging(
           { x: clientX -= ev.deltaX, y: clientY -= ev.deltaY },
-          { x: ev.clientX, y: ev.clientY }
+          { x: ev.clientX, y: ev.clientY },
         )
       }
 
@@ -101,10 +86,25 @@ export default {
       window.addEventListener('mouseup', onMouseUp)
       window.addEventListener('mousemove', onMouseMove)
       window.addEventListener('wheel', onWheel)
-    }
-  }
+    },
+  },
 }
 </script>
+
+<template>
+  <RectBox
+    ref="rect"
+    class="static"
+    color="stroke-blue-400"
+    fill="fill-blue-400/20"
+    :style="{ opacity }"
+    :width="width"
+    :height="height"
+    :left="left"
+    :top="top"
+    :stroke-width="2"
+  />
+</template>
 
 <style>
 

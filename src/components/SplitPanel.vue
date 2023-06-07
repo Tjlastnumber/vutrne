@@ -4,24 +4,24 @@ export default {
   props: {
     minWidth: {
       type: Number,
-      default: 240
+      default: 240,
     },
     maxWidth: {
       type: Number,
-      default: 500
+      default: 500,
     },
     left: {
       type: Boolean,
-      default: true
+      default: true,
     },
     right: {
       type: Boolean,
-      default: false
+      default: false,
     },
     canChangeSize: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -29,14 +29,14 @@ export default {
       dragging: false,
       movement: {
         x: 0,
-        y: 0
-      }
+        y: 0,
+      },
     }
   },
   computed: {
     styleWidth() {
       return typeof this.width === 'number' ? `${Math.max(this.width, this.minWidth)}px` : this.width
-    }
+    },
   },
   methods: {
     /**
@@ -58,8 +58,8 @@ export default {
 
       window.addEventListener('mousemove', dragMove)
       window.addEventListener('mouseup', dragEnd)
-    }
-  }
+    },
+  },
 }
 </script>
 

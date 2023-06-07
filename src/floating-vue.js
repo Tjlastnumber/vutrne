@@ -9,7 +9,7 @@ Vue.use(FloatingVue, {
       $extend: 'dropdown',
       triggers: [ 'hover', 'focus' ],
       popperTriggers: [ 'hover', 'focus' ],
-      placement: 'right-start'
-    }
-  }
+      placement: 'right-start',
+    },
+  },
 })

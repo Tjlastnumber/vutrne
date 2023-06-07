@@ -9,5 +9,5 @@ module.exports = defineConfig({
       .use('url-loader')
       .loader('url-loader')
       .end()
-  }
+  },
 })

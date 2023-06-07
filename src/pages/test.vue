@@ -1,12 +1,3 @@
-<template>
-  <div class="h-full">
-    <TextBox
-      :value="value"
-      class="p-1 text-sm"
-    />
-  </div>
-</template>
-
 <script>
 import TextBox from '@/components/TextBox.vue'
 
@@ -15,11 +6,20 @@ export default {
   components: { TextBox },
   data() {
     return {
-      value: 'text'
+      value: 'text',
     }
-  }
+  },
 }
 </script>
+
+<template>
+  <div class="h-full">
+    <TextBox
+      :value="value"
+      class="p-1 text-sm"
+    />
+  </div>
+</template>
 
 <style>
 

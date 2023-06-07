@@ -1,3 +1,32 @@
+<script>
+export default {
+  name: 'ChevronDownIcon',
+  props: {
+    width: {
+      type: String,
+      default: 'w-4',
+    },
+    height: {
+      type: String,
+      default: 'h-4',
+    },
+    currentColor: {
+      type: String,
+      default: 'fill-black dark:fill-white',
+    },
+    expand: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  computed: {
+    currentClass() {
+      return this.width + ' ' + this.height + ' ' + this.currentColor
+    },
+  },
+}
+</script>
+
 <template>
   <div
     class="duration-150"
@@ -16,34 +45,5 @@
     </svg>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'ChevronDownIcon',
-  props: {
-    width: {
-      type: String,
-      default: 'w-4'
-    },
-    height: {
-      type: String,
-      default: 'h-4'
-    },
-    currentColor: {
-      type: String,
-      default: 'fill-black dark:fill-white'
-    },
-    expand: {
-      type: Boolean,
-      default: true
-    }
-  },
-  computed: {
-    currentClass() {
-      return this.width + ' ' + this.height + ' ' + this.currentColor
-    }
-  }
-}
-</script>
 
 <style></style>

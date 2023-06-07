@@ -1,4 +1,8 @@
 <script>
+import { createNamespacedHelpers } from 'vuex'
+import namespace from './store/namespace'
+
+import ComponentsPanel from './components/ComponentsPanel.vue'
 import LayoutPanel from '../layout/LayoutPanel.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import CollapseItem from '@/components/CollapseItem.vue'
@@ -8,10 +12,6 @@ import TextBox from '@/components/TextBox'
 import VisualHeader from './VisualHeader'
 import VisualPages from './VisualPages.vue'
 import NodeTree from './nodes/NodeTree'
-
-import { createNamespacedHelpers } from 'vuex'
-import namespace from './store/namespace'
-import ComponentsPanel from './components/ComponentsPanel.vue'
 
 const { mapState } = createNamespacedHelpers(namespace)
 
@@ -27,7 +27,7 @@ export default {
     VisualHeader,
     VisualPages,
     NodeTree,
-    ComponentsPanel
+    ComponentsPanel,
   },
   data() {
     return {
@@ -38,21 +38,21 @@ export default {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0
-        }
+          left: 0,
+        },
       },
       activeElement: undefined,
-      hoverElements: null
+      hoverElements: null,
     }
   },
   computed: {
     ...mapState({
       componentTree: state => state.componentTree,
-      activeElements: state => state.activeElements
-    })
+      activeElements: state => state.activeElements,
+    }),
   },
   watch: { },
-  methods: { }
+  methods: { },
 }
 
 </script>

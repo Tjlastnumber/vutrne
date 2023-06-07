@@ -7,24 +7,24 @@ export default {
   props: {
     left: {
       type: Boolean,
-      default: true
+      default: true,
     },
     right: {
       type: Boolean,
-      default: false
+      default: false,
     },
     canChangeSize: {
       type: Boolean,
-      default: true
+      default: true,
     },
     maxWidth: {
       type: Number,
-      default: 360
+      default: 360,
     },
     minWidth: {
       type: Number,
-      default: 240
-    }
+      default: 240,
+    },
   },
   computed: {
     dock() {
@@ -33,8 +33,8 @@ export default {
         : this.left
           ? 'left-0'
           : ''
-    }
-  }
+    },
+  },
 }
 </script>
 

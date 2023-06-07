@@ -12,7 +12,7 @@ module.exports = {
         secondary: 'rgba(0, 0, 0, .54)',
         active: 'rgba(0, 0, 0, .05)',
         hover: 'rgba(0, 0, 0, .03)',
-        disabled: 'rgba(0, 0, 0, .10)'
+        disabled: 'rgba(0, 0, 0, .10)',
       },
       dark: {
         DEFAULT: '#1A1A1A',
@@ -20,22 +20,22 @@ module.exports = {
         secondary: 'rgba(255, 255, 255, .70)',
         active: 'rgba(255, 255, 255, .22)',
         hover: 'rgba(255, 255, 255, .17)',
-        disabled: 'rgba(255, 255, 255, .10)'
+        disabled: 'rgba(255, 255, 255, .10)',
       },
       primary: {
         light: colors.emerald[600],
         DEFAULT: colors.emerald[500],
         dark: colors.emerald[400],
         hover: colors.emerald[300],
-        active: colors.emerald[200]
+        active: colors.emerald[200],
       },
       secondary: {
-        DEFAULT: colors.neutral[700]
+        DEFAULT: colors.neutral[700],
       },
       disabled: {
-        DEFAULT: colors.neutral[300]
-      }
-    }
+        DEFAULT: colors.neutral[300],
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 }

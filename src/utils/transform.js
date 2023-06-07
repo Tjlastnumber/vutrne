@@ -38,7 +38,7 @@ export function calcArea(els) {
           top,
           left,
           right,
-          bottom
+          bottom,
         }
       })
       .reduce((pre, cur) => {
@@ -54,7 +54,7 @@ export function calcArea(els) {
           top,
           left,
           right,
-          bottom
+          bottom,
         }
       })
   } catch {
@@ -85,7 +85,7 @@ export function parseMatrix(el) {
     scale: 1,
     rotate: 0,
     translateX: 0,
-    translateY: 0
+    translateY: 0,
   }
   if (isUndef(el)) return def
   const style = window.getComputedStyle(el, null)
@@ -96,7 +96,7 @@ export function parseMatrix(el) {
     translateX: matrix.m41,
     translateY: matrix.m42,
     scale: Math.hypot(matrix.m11, matrix.m12),
-    rotation: -Math.atan2(-matrix.m21, matrix.m11) * (180 / Math.PI)
+    rotation: -Math.atan2(-matrix.m21, matrix.m11) * (180 / Math.PI),
   }
 }
 

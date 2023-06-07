@@ -3,102 +3,102 @@ import * as actions from './actions'
 import { generatId } from '@/utils'
 import storage from '@/utils/storage'
 
-const _testNodes = [ {
+const _testNodes = [{
   id: 0,
   name: 'Container',
-  children: [ {
+  children: [{
     id: 1,
     name: 'Button',
-    children: [ {
+    children: [{
       id: 2,
-      name: 'Text'
+      name: 'Text',
     }, {
       id: 5,
       name: 'Container',
       children: [
         {
           id: 6,
-          name: 'Text'
-        }
-      ]
-    } ]
+          name: 'Text',
+        },
+      ],
+    }],
   }, {
     id: 31,
     name: 'Button',
-    children: [ {
+    children: [{
       id: 32,
-      name: 'Text'
+      name: 'Text',
     }, {
       id: 35,
       name: 'Container',
       children: [
         {
           id: 36,
-          name: 'Text'
-        }
-      ]
-    } ]
+          name: 'Text',
+        },
+      ],
+    }],
   }, {
     id: 41,
     name: 'Button',
-    children: [ {
+    children: [{
       id: 42,
-      name: 'Text'
+      name: 'Text',
     }, {
       id: 45,
       name: 'Container',
       children: [
         {
           id: 46,
-          name: 'Text'
-        }
-      ]
-    } ]
-  } ]
+          name: 'Text',
+        },
+      ],
+    }],
+  }],
 }, {
   id: 3,
   name: 'Panel',
-  children: [ {
+  children: [{
     id: '4',
-    name: 'div'
+    name: 'div',
   }, {
     id: '11',
-    name: 'div'
+    name: 'div',
   }, {
     id: '12',
-    name: 'div'
+    name: 'div',
   }, {
     id: '13',
-    name: 'div'
+    name: 'div',
   }, {
     id: '14',
-    name: 'div'
+    name: 'div',
   }, {
     id: '15',
-    name: 'div'
+    name: 'div',
   }, {
     id: '16',
-    name: 'div'
+    name: 'div',
   }, {
     id: '17',
-    name: 'div'
+    name: 'div',
   }, {
     id: '18',
-    name: 'div'
+    name: 'div',
   }, {
     id: '19',
-    name: 'div'
+    name: 'div',
   }, {
     id: '20',
-    name: 'div'
+    name: 'div',
   }, {
     id: '21',
-    name: 'div'
+    name: 'div',
   }, {
     id: '22',
-    name: 'div'
-  } ]
-} ]
+    name: 'div',
+  }],
+}]
 
 const PAGES_KEY = 'VD_PAGES'
 const CURRENT_PAGE_INDEX_KEY = 'VD_CURRENT_PAGE_INDEX'
@@ -113,7 +113,7 @@ const state = {
   /**
    * 页面列表
    **/
-  pages: _pages || [ { id: generatId(), name: 'page-1' } ],
+  pages: _pages || [{ id: generatId(), name: 'page-1' }],
   /**
    * 当前页面索引
    **/
@@ -133,7 +133,7 @@ const state = {
   /**
    * 节点展开映射
    **/
-  expansionMap: {}
+  expansionMap: {},
 }
 
 const mutations = {
@@ -183,13 +183,13 @@ const mutations = {
   },
   TOGGLE_NODE({ expansionMap }, { id, expanded }) {
     Vue.set(expansionMap, id, expanded)
-  }
+  },
 }
 
 const getters = {
   currentPage: state => {
     return state.pages[state.currentPageIndex] ?? []
-  }
+  },
 }
 
 export default {
@@ -197,5 +197,5 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 }

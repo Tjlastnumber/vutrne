@@ -9,17 +9,17 @@ export default {
   name: 'ProjectsTab',
   components: {
     CollapsePanel,
-    MenuLink
+    MenuLink,
   },
   computed: mapState(namespace, {
-    projects: state => state.projects
+    projects: state => state.projects,
   }),
   mounted() {
-    this.init({ projects: [ { name: 'p1', path: '1' }, { name: 'p2', path: '2' } ] })
+    this.init({ projects: [{ name: 'p1', path: '1' }, { name: 'p2', path: '2' }] })
   },
   methods: {
-    ...mapActions(namespace, [ init ])
-  }
+    ...mapActions(namespace, [ init ]),
+  },
 }
 </script>
 
@@ -29,6 +29,7 @@ export default {
       <MenuLink
         v-for="project in projects"
         :key="project.id"
+        tabindex="0"
         :to="`/visual/${project.path}`"
       >
         {{ project.name }}

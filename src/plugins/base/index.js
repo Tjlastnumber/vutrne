@@ -12,6 +12,6 @@ export default {
 
   plugin: {
     name: 'Base Components',
-    components
-  }
+    components,
+  },
 }

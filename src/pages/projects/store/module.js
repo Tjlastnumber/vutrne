@@ -3,7 +3,7 @@ import * as actions from './actions'
 const state = {
   projects: [/* { id, name, description, comments } */],
   favorites: [/* { projects } */],
-  currentPage: {}
+  currentPage: {},
 }
 
 const mutations = {
@@ -12,12 +12,12 @@ const mutations = {
   },
   INIT_FAVORITES(state, favorites) {
     state.favorites = favorites
-  }
+  },
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 }

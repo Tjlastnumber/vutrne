@@ -55,7 +55,7 @@ export default class Rect {
       x: this.offsetLeft,
       y: this.offsetTop,
       width: this.offsetWidth,
-      height: this.offsetHeight
+      height: this.offsetHeight,
     }
   }
 
@@ -64,7 +64,7 @@ export default class Rect {
       x: this.clientLeft,
       y: this.clientTop,
       width: this.clientWidth,
-      height: this.clientHeight
+      height: this.clientHeight,
     }
   }
 

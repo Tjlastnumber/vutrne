@@ -1,12 +1,3 @@
-<template>
-  <div
-    id="app"
-    class="font-mono antialiased bg-light text-light-primary border-light-disabled dark:border-dark-disabled dark:bg-dark dark:text-dark-primary duration-300"
-  >
-    <router-view />
-  </div>
-</template>
-
 <script>
 export default {
   name: 'App',
@@ -15,9 +6,18 @@ export default {
     document.addEventListener('contextmenu', (e) => {
       e.preventDefault()
     })
-  }
+  },
 }
 </script>
+
+<template>
+  <div
+    id="app"
+    class="font-mono antialiased bg-light text-light-primary border-light-disabled dark:border-dark-disabled dark:bg-dark dark:text-dark-primary duration-300"
+  >
+    <router-view />
+  </div>
+</template>
 
 <style>
 html {
@@ -31,4 +31,5 @@ body {
 img {
   max-width: none !important;
 }
+
 </style>

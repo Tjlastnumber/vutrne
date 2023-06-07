@@ -6,21 +6,33 @@ export default {
   name: 'CollapsePanel',
   components: {
     ChevronDownIcon,
-    ScrollPanel
+    ScrollPanel,
   },
   props: {
     name: {
       type: String,
       default: 'NoName',
-      require: true
-    }
+      require: true,
+    },
+    expansion: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
       isExpanded: true,
-      isHover: false
+      isHover: false,
     }
-  }
+  },
+  watch: {
+    expansion() {
+      this.isExpanded = this.expansion
+    },
+    isExpanded() {
+      this.$emit('expanded', { isExpanded: this.isExpanded })
+    },
+  },
 }
 </script>
 
@@ -29,14 +41,14 @@ export default {
     <!-- header -->
     <div
       class="flex flex-row items-center justify-between px-2 py-4 text-xs cursor-pointer space-x-1 text-light-primary hover:text-black dark:text-dark-primary dark:hover:text-white"
-      @click="isExpanded = !isExpanded"
+      @click.prevent.stop="isExpanded = !isExpanded"
       @mouseenter="isHover = true"
       @mouseleave="isHover = false"
     >
       <ChevronDownIcon
         class="flex-initial duration-300 transition-opacity will-change-transform"
         :expand="isExpanded"
-        :class="[ isHover ? 'opacity-100' : 'opacity-0' ]"
+        :class="[isHover ? 'opacity-100' : 'opacity-0']"
       />
       <div class="flex-1 font-bold leading-5">
         <slot name="header">
@@ -57,7 +69,6 @@ export default {
 </template>
 
 <style scoped>
-
 .collapse-enter-active,
 .collapse-leave-active {
   opacity: 1;
@@ -71,5 +82,4 @@ export default {
   opacity: 0;
   transform: scaleY(0);
 }
-
 </style>

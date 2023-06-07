@@ -1,3 +1,25 @@
+<script>
+export default {
+  name: 'TabPanel',
+  props: {
+    tabs: {
+      type: Array,
+      require: true,
+      default: () => [],
+    },
+    currentTab: {
+      type: Number,
+      default: 0,
+    },
+  },
+  methods: {
+    selectTab(index) {
+      this.$emit('tab-change', { tabIndex: index })
+    },
+  },
+}
+</script>
+
 <template>
   <div class="flex flex-col w-full h-full overflow-auto duration-500">
     <div class="px-4">
@@ -30,27 +52,5 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'TabPanel',
-  props: {
-    tabs: {
-      type: Array,
-      require: true,
-      default: () => []
-    },
-    currentTab: {
-      type: Number,
-      default: 0
-    }
-  },
-  methods: {
-    selectTab(index) {
-      this.$emit('tab-change', { tabIndex: index })
-    }
-  }
-}
-</script>
 
 <style></style>

@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'RecentPage'
+  name: 'RecentPage',
 }
 </script>
 

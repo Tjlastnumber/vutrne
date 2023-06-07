@@ -1,3 +1,12 @@
+<script>
+import IconMixin from '@/mixins/IconMixin'
+
+export default {
+  name: 'ClockIcon',
+  mixins: [ IconMixin ],
+}
+</script>
+
 <template>
   <svg
     class="icon"
@@ -11,12 +20,3 @@
     p-id="2384"
   /></svg>
 </template>
-
-<script>
-import IconMixin from '@/mixins/IconMixin'
-
-export default {
-  name: 'ClockIcon',
-  mixins: [ IconMixin ]
-}
-</script>

@@ -9,22 +9,22 @@ export default {
   name: 'FavoritesTab',
   components: {
     CollapsePanel,
-    MenuLink
+    MenuLink,
   },
   computed: mapState(namespace, {
-    favorites: state => state.favorites
+    favorites: state => state.favorites,
   }),
   mounted() {
     this.init({
       favorites: [
         { id: 1, name: 'p1' },
-        { id: 2, name: 'last' }
-      ]
+        { id: 2, name: 'last' },
+      ],
     })
   },
   methods: {
-    ...mapActions(namespace, [ init ])
-  }
+    ...mapActions(namespace, [ init ]),
+  },
 }
 </script>
 

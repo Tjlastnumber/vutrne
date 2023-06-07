@@ -1,17 +1,3 @@
-<template>
-  <RectBox
-    class="pointer-events-none stroke"
-    color="stroke-sky-500"
-    :width="width"
-    :height="height"
-    :top="top"
-    :left="left"
-    :stroke-width="strokeWidth"
-  >
-    <slot />
-  </RectBox>
-</template>
-
 <script>
 import RectBox from './RectBox.vue'
 import { calcArea } from '@/utils/transform'
@@ -22,7 +8,7 @@ const inital = {
   top: 0,
   left: 0,
   right: 0,
-  bottom: 0
+  bottom: 0,
 }
 
 export default {
@@ -31,12 +17,12 @@ export default {
   props: {
     ignore: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     strokeWidth: {
       type: Number,
-      default: 4
-    }
+      default: 4,
+    },
   },
   data() {
     return {
@@ -44,7 +30,7 @@ export default {
       top: 0,
       left: 0,
       width: 0,
-      height: 0
+      height: 0,
     }
   },
   watch: {
@@ -63,7 +49,7 @@ export default {
       this.height = rect.height
       this.top = rect.top
       this.left = rect.left
-    }
+    },
   },
   methods: {
     refreshTarget() {
@@ -78,10 +64,24 @@ export default {
     },
     hide() {
       this.target = undefined
-    }
-  }
+    },
+  },
 }
 </script>
+
+<template>
+  <RectBox
+    class="pointer-events-none stroke"
+    color="stroke-sky-500"
+    :width="width"
+    :height="height"
+    :top="top"
+    :left="left"
+    :stroke-width="strokeWidth"
+  >
+    <slot />
+  </RectBox>
+</template>
 
 <style scoped>
 .stroke {

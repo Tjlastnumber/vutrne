@@ -18,7 +18,7 @@ function getInstance (Vue, options) { /* eslint-disable-line */
     Object.assign(_instance, _options, options)
   } else {
     _instance = new (Vue.extend(SelectionBox))({
-      propsData: options
+      propsData: options,
     }).$mount()
   }
   return _instance
@@ -41,7 +41,7 @@ export default {
       },
       update(_, binding) {
         _instance.target = binding.target
-      }
+      },
     })
-  }
+  },
 }

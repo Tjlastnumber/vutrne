@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const visual = {
   path: '/visual/:id',
   name: 'Visual',
-  component: () => import('@/pages/visual/index.vue')
+  component: () => import('@/pages/visual/index.vue'),
 }
 
 const projects = {
@@ -17,14 +17,14 @@ const projects = {
     {
       path: 'recents',
       name: 'Recents',
-      component: () => import('@/pages/projects/recents/index.vue')
+      component: () => import('@/pages/projects/recents/index.vue'),
     },
     {
       path: 'drafts',
       name: 'Drafts',
-      component: () => import('@/pages/projects/drafts/index.vue')
-    }
-  ]
+      component: () => import('@/pages/projects/drafts/index.vue'),
+    },
+  ],
   // children: [
   //   {
   //     path: '/folder',
@@ -37,7 +37,7 @@ const projects = {
 const test = {
   path: '/test',
   name: 'Test',
-  component: () => import('@/pages/test')
+  component: () => import('@/pages/test'),
 }
 
 const app = [
@@ -60,18 +60,18 @@ const app = [
   // },
   {
     path: '/',
-    redirect: '/projects'
+    redirect: '/projects',
   },
   {
     path: '/404',
-    component: () => import('@/pages/error-pages/404.vue')
+    component: () => import('@/pages/error-pages/404.vue'),
   },
-  { path: '*', redirect: '/404' }
+  { path: '*', redirect: '/404' },
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  routes: app
+  routes: app,
 })
 
 // TODO: Login router

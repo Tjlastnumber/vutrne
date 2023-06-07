@@ -1,34 +1,3 @@
-<template>
-  <Stroke
-    ref="stroke"
-    class="pointer-events-auto select-none resize-container will-change-transform"
-    :class="show ? '' : 'opacity-0'"
-    :show="show"
-    :stroke-width="3"
-    @mousedown.native.left.stop.exact="onDrag"
-    @mousedown.native.right="onMouseRightDown"
-    @keydown.native="onKeyDown"
-    @keyup.native="onKeyUp"
-  >
-    <div
-      v-for="stroke in resizeStroke"
-      :key="stroke.index"
-      :class="stroke.class"
-      @mousedown.left.stop="resize($event, stroke)"
-    />
-
-    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -top-[3px] -left-[3px] border-sky-500" />
-    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -top-[3px] -right-[3px] border-sky-500" />
-    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -bottom-[3px] -left-[3px] border-sky-500" />
-    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -bottom-[3px] -right-[3px] border-sky-500" />
-
-    <div class="absolute top-0 left-0 w-3 h-3 hover:cursor-nwse-resize" />
-    <div class="absolute top-0 right-0 w-3 h-3 hover:cursor-nesw-resize" />
-    <div class="absolute bottom-0 left-0 w-3 h-3 hover:cursor-nesw-resize" />
-    <div class="absolute bottom-0 right-0 w-3 h-3 hover:cursor-nwse-resize" />
-  </Stroke>
-</template>
-
 <script>
 
 import Stroke from './Stroke.vue'
@@ -54,29 +23,29 @@ const resizeStroke = [
     position: 'top',
     class: 'absolute w-full h-4 pointer-events-auto -top-2 hover:cursor-ns-resize will-change-transform',
     angle: 90,
-    handleResize
+    handleResize,
   },
   {
     index: 1,
     position: 'right',
     class: 'absolute inset-y-0 w-4 pointer-events-auto -right-2 hover:cursor-ew-resize will-change-transform',
     angle: 0,
-    handleResize
+    handleResize,
   },
   {
     index: 2,
     position: 'bottom',
     class: 'absolute w-full h-4 pointer-events-auto -bottom-2 hover:cursor-ns-resize will-change-transform',
     angle: -90,
-    handleResize
+    handleResize,
   },
   {
     index: 3,
     position: 'left',
     class: 'absolute inset-y-0 w-4 pointer-events-auto -left-2 hover:cursor-ew-resize will-change-transform',
     angle: 180,
-    handleResize
-  }
+    handleResize,
+  },
 ]
 
 export default {
@@ -84,8 +53,8 @@ export default {
   props: {
     target: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -94,7 +63,7 @@ export default {
       dragging: false,
       resizing: false,
       resizeStroke,
-      rects: []
+      rects: [],
     }
   },
   computed: {
@@ -103,7 +72,7 @@ export default {
     target(nv) {
       this.show = true
       this.$refs.stroke.setTarget(nv)
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -167,10 +136,41 @@ export default {
       document.addEventListener('mousemove', onMouseMove)
       document.addEventListener('mouseup', onMouseUp)
       document.addEventListener('mouseleave', onMouseUp)
-    }
-  }
+    },
+  },
 }
 </script>
+
+<template>
+  <Stroke
+    ref="stroke"
+    class="pointer-events-auto select-none resize-container will-change-transform"
+    :class="show ? '' : 'opacity-0'"
+    :show="show"
+    :stroke-width="3"
+    @mousedown.native.left.stop.exact="onDrag"
+    @mousedown.native.right="onMouseRightDown"
+    @keydown.native="onKeyDown"
+    @keyup.native="onKeyUp"
+  >
+    <div
+      v-for="stroke in resizeStroke"
+      :key="stroke.index"
+      :class="stroke.class"
+      @mousedown.left.stop="resize($event, stroke)"
+    />
+
+    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -top-[3px] -left-[3px] border-sky-500" />
+    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -top-[3px] -right-[3px] border-sky-500" />
+    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -bottom-[3px] -left-[3px] border-sky-500" />
+    <div class="absolute w-[8px] h-[8px] bg-white border-[1px] -bottom-[3px] -right-[3px] border-sky-500" />
+
+    <div class="absolute top-0 left-0 w-3 h-3 hover:cursor-nwse-resize" />
+    <div class="absolute top-0 right-0 w-3 h-3 hover:cursor-nesw-resize" />
+    <div class="absolute bottom-0 left-0 w-3 h-3 hover:cursor-nesw-resize" />
+    <div class="absolute bottom-0 right-0 w-3 h-3 hover:cursor-nwse-resize" />
+  </Stroke>
+</template>
 
 <style>
 .resize-container {

@@ -1,3 +1,13 @@
+<script>
+import HeaderPanel from '../layout/HeaderPanel.vue'
+export default {
+  name: 'Error404Page',
+  components: {
+    HeaderPanel,
+  },
+}
+</script>
+
 <template>
   <div>
     <div class="w-full">
@@ -39,16 +49,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import HeaderPanel from '../layout/HeaderPanel.vue'
-export default {
-  name: 'Error404Page',
-  components: {
-    HeaderPanel
-  }
-}
-</script>
 
 <style scoped>
 .error {

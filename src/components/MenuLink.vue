@@ -4,18 +4,18 @@ import { RouterLink } from 'vue-router'
 export default {
   name: 'MenuLink',
   components: {
-    RouterLink
+    RouterLink,
   },
   props: {
     to: {
       type: String,
-      default: ''
+      default: '',
     },
     activeClass: {
       type: String,
-      default: 'text-primary'
-    }
-  }
+      default: 'text-primary',
+    },
+  },
 }
 </script>
 

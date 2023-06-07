@@ -6,8 +6,8 @@ export default {
   name: 'DraftsLink',
   components: {
     MenuLink,
-    DraftIcon
-  }
+    DraftIcon,
+  },
 }
 </script>
 
