@@ -1,10 +1,10 @@
 <script>
+import { createNamespacedHelpers } from 'vuex'
+import namespace, { useNamespace } from '../store/namespace'
 import { isUndef } from '@/utils'
 
 import ChevronDownIcon from '@/components/ChevronDownIcon'
 
-import { createNamespacedHelpers } from 'vuex'
-import namespace, { useNamespace } from '../store/namespace'
 const { mapState } = createNamespacedHelpers(namespace)
 
 export default {
@@ -104,7 +104,7 @@ export default {
       :class="{
         'bg-primary': actived,
         'bg-dark-hover': hovered,
-        'rounded-md': !expanded || hovered
+        'rounded-md': !expanded || hovered,
       }"
       @dblclick.left="onToggle"
       @mouseenter="enter"
@@ -112,7 +112,7 @@ export default {
       @click.left="handleActived"
     >
       <div
-        class="flex flex-row space-x-1"
+        class="flex gap-2"
         :style="{ paddingLeft: `${16 * deep}px` }"
       >
         <ChevronDownIcon

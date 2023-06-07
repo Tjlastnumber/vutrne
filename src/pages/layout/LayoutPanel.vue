@@ -1,5 +1,6 @@
 <script>
 import SplitPanel from '@/components/SplitPanel.vue'
+
 export default {
   name: 'LayoutPanel',
   components: {
@@ -79,4 +80,5 @@ export default {
     <footer />
   </div>
 </template>
+
 <style></style>

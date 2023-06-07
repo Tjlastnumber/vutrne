@@ -1,5 +1,6 @@
 <script>
 import MenuItem from './MenuItem.vue'
+
 export default {
   name: 'MenuPanel',
   components: { MenuItem },

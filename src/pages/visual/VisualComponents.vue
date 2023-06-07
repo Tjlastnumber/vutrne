@@ -1,10 +1,10 @@
 <script>
+import { createNamespacedHelpers } from 'vuex'
+import namespace, { useNamespace } from './store/namespace'
 import { isUndef } from '@/utils'
 
 import ChevronDownIcon from '@/components/ChevronDownIcon'
 
-import { createNamespacedHelpers } from 'vuex'
-import namespace, { useNamespace } from './store/namespace'
 const { mapState } = createNamespacedHelpers(namespace)
 
 export default {

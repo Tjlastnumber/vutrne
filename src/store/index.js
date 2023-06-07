@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex, { Store } from 'vuex'
 
 import projects from '@/pages/projects/store/module'
 import visual from '@/pages/visual/store/module'
@@ -31,7 +31,7 @@ const state = {
   }],
 }
 
-export default new Vuex.Store({
+export default new Store({
   state,
   modules: {
     projects,

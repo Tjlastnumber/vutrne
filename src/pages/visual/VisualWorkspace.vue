@@ -1,11 +1,10 @@
 <script>
+import { mapState } from 'vuex'
+import namespace from './store/namespace'
 import Zoom from '@/components/Zoom.vue'
 import ResizeBox from '@/components/ResizeBox.vue'
 import Container from '@/components/Container.vue'
 import { isComponent, isNone } from '@/utils'
-
-import { mapState } from 'vuex'
-import namespace from './store/namespace'
 
 export default {
   name: 'Workspace', /* eslint-disable-line */

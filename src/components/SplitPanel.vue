@@ -68,7 +68,7 @@ export default {
     class="z-10 w-full h-full"
     :class="{
       'right-0': right,
-      'left-0': left && !right
+      'left-0': left && !right,
     }"
     :style="{width: styleWidth}"
   >
@@ -80,7 +80,7 @@ export default {
         'border-l': right,
         'right-0': !right && left,
         'border-r': !right && left,
-        'cursor-col-resize': !canChangeSize
+        'cursor-col-resize': !canChangeSize,
       }"
       @mousedown="dragStart"
     />

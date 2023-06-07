@@ -1,11 +1,14 @@
-const colors = require('tailwindcss/colors')
+// const colors = require('tailwindcss/colors')
+import colors from 'tailwindcss/colors'
+
+// const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [ './src/**/*.{html,js,vue}' ],
   theme: {
     colors: {
-      current: 'currentColor',
       ...colors,
+      current: 'currentColor',
       light: {
         DEFAULT: '#ffffff',
         primary: 'rgba(0, 0, 0, .87)',
@@ -37,5 +40,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [ ],
 }

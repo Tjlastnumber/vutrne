@@ -29,7 +29,7 @@ export default {
     />
     <div
       v-else-if="!hasChildren"
-      class="relative w-full p-2 select-none rounded-md space-x-0 hover:bg-primary hover:text-black dark:text-white/60 dark:hover:bg-primary dark:hover:text-white"
+      class="relative w-full p-2 select-none rounded-md hover:bg-primary hover:text-black dark:text-white/60 dark:hover:bg-primary dark:hover:text-white"
     >
       <router-link
         v-if="menu.to"

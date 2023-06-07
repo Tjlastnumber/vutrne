@@ -103,10 +103,11 @@ export default {
         v-model.lazy="page.name"
         mode="label"
         tabindex="1"
-        @input="pagesCommit()"
+        @submit="pagesCommit"
         @keyup.native.self.delete="onDelete"
         @keyup.native.self.up="onPrevPage"
         @keyup.native.self.down="onNextPage"
+        @blur.native="focus"
       />
     </CollapseItem>
   </CollapsePanel>

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { set as useSet } from 'vue'
 import * as actions from './actions'
 import { generatId } from '@/utils'
 import storage from '@/utils/storage'
@@ -169,20 +169,20 @@ const mutations = {
     storage.set(ACTIVE_NODES, state.activeNodes)
   },
   ACTIVE_NODES_PUSH({ activeNodes }, node) {
-    Vue.set(activeNodes, node.id, node)
+    useSet.set(activeNodes, node.id, node)
     storage.set(ACTIVE_NODES, activeNodes)
   },
   ACTIVE_NODES_DELETE({ activeNodes }, node) {
-    Vue.delete(activeNodes, node.id)
+    useSet.delete(activeNodes, node.id)
   },
   HOVER_NODES({ hoverNodes }, node) {
-    Vue.set(hoverNodes, node.id, node)
+    useSet.set(hoverNodes, node.id, node)
   },
   HOVER_NODES_DELETE({ hoverNodes }, node) {
-    Vue.delete(hoverNodes, node.id)
+    useSet.delete(hoverNodes, node.id)
   },
   TOGGLE_NODE({ expansionMap }, { id, expanded }) {
-    Vue.set(expansionMap, id, expanded)
+    useSet(expansionMap, id, expanded)
   },
 }
 

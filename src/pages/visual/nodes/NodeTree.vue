@@ -1,10 +1,11 @@
 <script>
 // import CollapsePanel from '@/components/CollapsePanel'
-import NodeInstance from './NodeInstance.vue'
 
 import { createNamespacedHelpers } from 'vuex'
 import namespace from '../store/namespace'
+import NodeInstance from './NodeInstance.vue'
 import ScrollPanel from '@/components/ScrollPanel.vue'
+
 const { mapState } = createNamespacedHelpers(namespace)
 
 export default {

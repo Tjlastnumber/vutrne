@@ -9,6 +9,20 @@
   }
 }
 
+@layer components {
+  .bg-base {
+    @apply bg-light dark:bg-dark;
+  }
+  .text-primary {
+    @apply text-light-primary dark:text-dark-primary
+  }
+  .text-secodary {
+    @apply text-light-secondary dark:text-dark-secondary;
+  }
+
+}
+
+
 @media (prefers-color-scheme: dark) {
   .v-popper--theme-dropdown .v-popper__inner {
     border: none;

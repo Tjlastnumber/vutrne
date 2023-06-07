@@ -1,6 +1,6 @@
 <script>
-import { raf } from '@/utils/raf'
 import RectBox from './RectBox.vue'
+import { raf } from '@/utils/raf'
 
 export default {
   components: { RectBox },

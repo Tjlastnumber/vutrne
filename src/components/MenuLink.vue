@@ -25,10 +25,10 @@ export default {
     custom
     :to="to"
     :active-class="activeClass"
-    class="flex w-full p-2 text-xs rounded-md dark:hover:bg-dark-hover hover:bg-light-disabled hover:cursor-default"
+    class="flex w-full p-2 text-xs gap-y-2 rounded-md dark:hover:bg-dark-hover hover:bg-light-disabled hover:cursor-default"
   >
     <div
-      class="flex flex-row items-center space-x-1"
+      class="gap-1"
       :class="[ isActive && activeClass ]"
       @click="navigate"
     >

@@ -1,10 +1,9 @@
 <script>
-import Avatar from '@/components/Avatar.vue'
-import HeaderPanel from '../layout/HeaderPanel.vue'
-import TextBox from '@/components/TextBox.vue'
-
-import namespace from './store/namespace'
 import { createNamespacedHelpers } from 'vuex'
+import HeaderPanel from '../layout/HeaderPanel.vue'
+import namespace from './store/namespace'
+import Avatar from '@/components/Avatar.vue'
+import TextBox from '@/components/TextBox.vue'
 
 const { mapGetters } = createNamespacedHelpers(namespace)
 

@@ -1,5 +1,6 @@
 <script>
 import HeaderPanel from '../layout/HeaderPanel.vue'
+
 export default {
   name: 'Error404Page',
   components: {

@@ -1,5 +1,6 @@
 <script>
 import IconMixin from '@/mixins/IconMixin'
+
 export default {
   name: 'DraftIcon',
   mixins: [ IconMixin ],

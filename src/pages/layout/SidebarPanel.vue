@@ -1,6 +1,7 @@
 
 <script>
 import SplitPanel from '@/components/SplitPanel.vue'
+
 export default {
   name: 'SidebarPanel',
   components: { SplitPanel },

@@ -1,8 +1,8 @@
 <script>
-import CollapsePanel from '@/components/CollapsePanel.vue'
 
 import { mapState, mapActions } from 'vuex'
 import namespace, { init } from './store/namespace'
+import CollapsePanel from '@/components/CollapsePanel.vue'
 import MenuLink from '@/components/MenuLink.vue'
 
 export default {
@@ -30,14 +30,16 @@ export default {
 
 <template>
   <CollapsePanel name="Favorites">
-    <MenuLink
-      v-for="project in favorites"
-      :key="project.id"
-      class="flex"
-      :to="`/visual/${project.path}`"
-    >
-      {{ project.name }}
-    </MenuLink>
+    <section class="pb-2">
+      <MenuLink
+        v-for="project in favorites"
+        :key="project.id"
+        class="flex"
+        :to="`/visual/${project.path}`"
+      >
+        {{ project.name }}
+      </MenuLink>
+    </section>
   </CollapsePanel>
 </template>
 

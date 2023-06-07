@@ -1,9 +1,8 @@
 <script>
-import CollapsePanel from '@/components/CollapsePanel.vue'
-import MenuLink from '@/components/MenuLink.vue'
-
 import { mapState, mapActions } from 'vuex'
 import namespace, { init } from './store/namespace'
+import CollapsePanel from '@/components/CollapsePanel.vue'
+import MenuLink from '@/components/MenuLink.vue'
 
 export default {
   name: 'ProjectsTab',

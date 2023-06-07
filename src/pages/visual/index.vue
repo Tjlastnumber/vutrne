@@ -1,17 +1,18 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
-import namespace from './store/namespace'
 
-import ComponentsPanel from './components/ComponentsPanel.vue'
 import LayoutPanel from '../layout/LayoutPanel.vue'
-import CollapsePanel from '@/components/CollapsePanel.vue'
-import CollapseItem from '@/components/CollapseItem.vue'
 import TabPanel from '../../components/TabPanel.vue'
+import ComponentsPanel from './components/ComponentsPanel.vue'
+import namespace from './store/namespace'
 import Workspace from './VisualWorkspace.vue'
-import TextBox from '@/components/TextBox'
 import VisualHeader from './VisualHeader'
 import VisualPages from './VisualPages.vue'
 import NodeTree from './nodes/NodeTree'
+import CollapseItem from '@/components/CollapseItem.vue'
+import CollapsePanel from '@/components/CollapsePanel.vue'
+import TextBox from '@/components/TextBox'
+import BaseTextbox from '@/plugins/base/BaseTextbox.vue'
 
 const { mapState } = createNamespacedHelpers(namespace)
 
@@ -28,6 +29,7 @@ export default {
     VisualPages,
     NodeTree,
     ComponentsPanel,
+    BaseTextbox,
   },
   data() {
     return {
@@ -43,6 +45,7 @@ export default {
       },
       activeElement: undefined,
       hoverElements: null,
+      inputTest: 'test',
     }
   },
   computed: {
@@ -113,13 +116,19 @@ export default {
               <TextBox
                 v-model="componentStyle.position.bottom"
                 text="bottom"
+                mode="input"
+                name="bottom"
                 class="w-full"
               />
-              <TextBox
-                v-model="componentStyle.position.left"
+              <BaseTextbox
+                v-model.number.lazy="inputTest"
+                label="left"
+                name="left"
+                class="dark:text-dark"
                 text="left"
-                class="w-full"
+                mode="input"
               />
+              {{ inputTest }}
             </CollapsePanel>
           </template>
           <template #Css>
