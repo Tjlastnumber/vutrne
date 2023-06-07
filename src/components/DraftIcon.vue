@@ -10,7 +10,7 @@ export default {
 <template>
   <svg
     class="icon"
-    :class="[ actived ? activeClass : 'fill-dark dark:fill-white' ]"
+    :class="[ actived ? activeClass : 'fill-dark dark:fill-light' ]"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
     width="16"

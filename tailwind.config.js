@@ -4,8 +4,15 @@ import colors from 'tailwindcss/colors'
 // const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [ './src/**/*.{html,js,vue}' ],
+  content: [
+    './src/components/**/*.{html,js,vue}',
+    './src/mixins/**/*.{html,js,vue}',
+    './src/pages/**/*.{html,js,vue}',
+  ],
   theme: {
+    fontFamily: {
+      sans: 'Avenir, Helvetica, Arial, sans-serif',
+    },
     colors: {
       ...colors,
       current: 'currentColor',
@@ -18,7 +25,7 @@ module.exports = {
         disabled: 'rgba(0, 0, 0, .10)',
       },
       dark: {
-        DEFAULT: '#1A1A1A',
+        DEFAULT: '#151515',
         primary: 'rgba(255, 255, 255, .87)',
         secondary: 'rgba(255, 255, 255, .70)',
         active: 'rgba(255, 255, 255, .22)',

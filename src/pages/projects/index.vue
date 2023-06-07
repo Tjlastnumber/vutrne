@@ -6,6 +6,7 @@ import ProjectsTab from './ProjectsTab.vue'
 import RecentsLink from './recents/RecentsLink.vue'
 import DraftsLink from './drafts/DraftsLink.vue'
 import LayoutPanel from '@/pages/layout/LayoutPanel.vue'
+import ScrollPanel from '@/components/ScrollPanel.vue'
 
 export default {
   name: 'ProjectsPage',
@@ -17,6 +18,7 @@ export default {
     RecentsLink,
     DraftsLink,
     RouterView,
+    ScrollPanel,
   },
 }
 </script>
@@ -30,14 +32,14 @@ export default {
         <HeaderPanel tabindex="0" />
       </template>
       <template #left>
-        <section class="flex-none px-4 py-2 gap-y-2">
+        <section class="flex-none px-4 py-2 border-b gap-y-2 border-light-disabled dark:border-dark-disabled">
           <RecentsLink tabindex="0" />
           <DraftsLink tabindex="0" />
         </section>
-        <div class="justify-start grid grid-cols-1">
+        <ScrollPanel>
           <FavoritesTab />
           <ProjectsTab />
-        </div>
+        </ScrollPanel>
       </template>
       <template #content>
         <RouterView />
