@@ -8,6 +8,7 @@ module.exports = {
     './src/components/**/*.{html,js,vue}',
     './src/mixins/**/*.{html,js,vue}',
     './src/pages/**/*.{html,js,vue}',
+    './src/style/main.css',
   ],
   theme: {
     fontFamily: {

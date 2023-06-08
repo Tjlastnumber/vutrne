@@ -22,7 +22,7 @@ export default {
 
 <template>
   <div class="flex flex-col w-full h-full overflow-auto duration-500">
-    <div class="px-4">
+    <div class="px-4 border-b border-light-disabled dark:border-dark-disabled">
       <div
         class="grid grid-cols-3 w-full p-0.5 my-4 rounded-lg select-none dark:bg-dark-disabled bg-light-disabled"
       >

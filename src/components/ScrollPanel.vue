@@ -10,10 +10,8 @@ export default {
 </script>
 
 <template>
-  <div class="h-full pr-1 overflow-hidden">
-    <div class="w-full h-full pl-4 pr-3 overflow-auto scrollbar">
-      <slot />
-    </div>
+  <div class="w-full h-full overflow-auto scrollbar">
+    <slot />
   </div>
 </template>
 

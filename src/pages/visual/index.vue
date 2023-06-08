@@ -13,6 +13,7 @@ import CollapseItem from '@/components/CollapseItem.vue'
 import CollapsePanel from '@/components/CollapsePanel.vue'
 import TextBox from '@/components/TextBox'
 import BaseTextbox from '@/plugins/base/BaseTextbox.vue'
+import ScrollPanel from '@/components/ScrollPanel.vue'
 
 const { mapState } = createNamespacedHelpers(namespace)
 
@@ -30,6 +31,7 @@ export default {
     NodeTree,
     ComponentsPanel,
     BaseTextbox,
+    ScrollPanel,
   },
   data() {
     return {
@@ -74,20 +76,24 @@ export default {
           @tab-change="$event => leftTab = $event.tabIndex"
         >
           <template #Pages>
-            <VisualPages />
+            <ScrollPanel>
+              <VisualPages />
+            </ScrollPanel>
           </template>
 
           <template #Layers>
-            <NodeTree />
+            <ScrollPanel>
+              <NodeTree />
+            </ScrollPanel>
           </template>
 
           <template #Assets>
-            <div class="flex flex-col">
+            <ScrollPanel>
               <ComponentsPanel />
               <CollapsePanel :name="'Style'">
                 style
               </CollapsePanel>
-            </div>
+            </ScrollPanel>
           </template>
         </TabPanel>
       </template>

@@ -58,7 +58,7 @@ export default {
     </div>
     <!-- body -->
     <transition name="collapse">
-      <div v-if="isExpanded" class="flex flex-col space-y-2">
+      <div v-if="isExpanded" class="flex flex-col px-4 pb-4 gap-y-1">
         <slot />
       </div>
     </transition>
