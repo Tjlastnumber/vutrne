@@ -1,7 +1,11 @@
 {
   "name": "vutrne",
-  "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "lastnumber", 
+    "url": "https://github.com/Tjlastnumber",
+    "email": "tjlastnumber@gmail.com"
+  },
+  "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service serve",
