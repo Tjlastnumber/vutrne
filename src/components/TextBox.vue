@@ -73,7 +73,7 @@ export default {
         v-if="isEdit || edit"
         v-bind="$attrs"
         ref="editor"
-        class="w-full p-2 border outline-none grow rounded-md border-light-disabled focus:ring-1 focus:ring-primary dark:bg-dark-disabled duration-300"
+        class="w-full p-2 border outline-none grow rounded-md border-light-disabled focus:ring-2 focus:ring-primary dark:bg-dark-disabled duration-300"
         :value="value"
         @blur="commit"
         @keyup.enter="commit"

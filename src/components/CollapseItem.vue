@@ -14,7 +14,7 @@ export default {
   <div
     v-bind="$attrs"
     class="collapse-item collapse-item-active collapse-item-hover"
-    :class="selected ? 'bg-light-disabled text-black dark:text-white dark:bg-dark-disabled ' : 'font-medium'"
+    :class="selected ? 'bg-light-disabled text-black dark:text-white dark:bg-dark-disabled font-medium' : ''"
   >
     <slot />
   </div>
